@@ -26,52 +26,52 @@
                 <li class="nav-item pr-5">
                   管理者ログイン中
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "申請楽曲", admin_root_path, method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 申請楽曲", admin_root_path, method: :get, class: 'btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "楽曲一覧", admin_members_path, method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 楽曲一覧", admin_members_path, method: :get, class: 'btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "作曲家一覧", admin_orders_path, method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 作曲家一覧", admin_composers_path, method: :get, class: 'btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item pl-4">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                <li class="nav-item pl-4 text-nowrap">
+                  <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
                 </li>
               <% elsif member_signed_in? %>
-                <li class="nav-item pr-5">
-                  ようこそ、<%= current_member.last_name %>さん！
+                <li class="nav-item pr-5 text-nowrap">
+                  ようこそ、<%= current_member.nickname %>さん！
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "タイムライン", member_path(current_member), method: :get, class: "btn btn-outline-dark" %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " タイムライン", member_path(current_member), method: :get, class: "fas fa-users btn btn-outline-dark" %>
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "楽曲一覧", musical_pieces_path, method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "作曲家一覧", composers_path, method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
-                  <%= link_to "マイリスト", lists_path(current_member), method: :get, class: 'btn btn-outline-dark' %>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " マイリスト", lists_path(current_member), method: :get, class: 'fas fa-list btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item pl-4">
-                  <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                <li class="nav-item pl-4 text-nowrap">
+                  <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt btn btn-outline-dark' %>
                 </li>
               <!--管理者でも会員でもログインしていないとき-->
               <% else %>
-                <li class="nav-item px-4">
+                <li class="nav-item px-4 text-nowrap">
                   <%= link_to " About", home_about_path, method: :get, class: 'fas fa-question btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
+                <li class="nav-item px-4 text-nowrap">
                   <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
+                <li class="nav-item px-4 text-nowrap">
                   <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4">
+                <li class="nav-item px-4 text-nowrap">
                   <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item pl-4">
+                <li class="nav-item pl-4 text-nowrap">
                   <%= link_to " ログイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
                 </li>
               <% end %>

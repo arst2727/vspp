@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   # 管理者側のルーティング設定
   namespace :admin do
-    root :to => "admin#homes#top"
+    root :to => "homes#top"
     resources :musical_pieces
     resources :composers,only: [:index,:show,:edit,:update]
     resources :members, :except => [:new,:create,:destroy]
