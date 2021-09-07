@@ -9,10 +9,12 @@ Rails.application.routes.draw do
       registrations: 'admins/registrations',
       passwords: 'admins/passwords'}
 
+  # resources :musical_pieces,only: [:index,:show]
+  # resources :composers,only: [:index,:show]
+
   scope module: :member do
     root :to => "homes#top"
     get "home/about" => "homes#about"
-
     resources :musical_pieces,only: [:index,:show,:new,:create]
     resources :composers,only: [:index,:show]
 
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
 
   # 管理者側のルーティング設定
   namespace :admin do
+    root :to => "admin#homes#top"
     resources :musical_pieces
     resources :composers,only: [:index,:show,:edit,:update]
     resources :members, :except => [:new,:create,:destroy]

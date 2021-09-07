@@ -4,12 +4,82 @@
     <title>VSPP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="shadow-sm">
+      <!-- コピーした kit code -->
+      <script src="https://kit.fontawesome.com/c4ee658136.js" crossorigin="anonymous"></script>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+                <li class="nav-item pr-5">
+                  管理者ログイン中
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "申請楽曲", admin_root_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "楽曲一覧", admin_members_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "作曲家一覧", admin_orders_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item pl-4">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                </li>
+              <% elsif member_signed_in? %>
+                <li class="nav-item pr-5">
+                  ようこそ、<%= current_member.last_name %>さん！
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "タイムライン", member_path(current_member), method: :get, class: "btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "楽曲一覧", musical_pieces_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "作曲家一覧", composers_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to "マイリスト", lists_path(current_member), method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item pl-4">
+                  <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-outline-dark' %>
+                </li>
+              <!--管理者でも会員でもログインしていないとき-->
+              <% else %>
+                <li class="nav-item px-4">
+                  <%= link_to " About", home_about_path, method: :get, class: 'fas fa-question btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4">
+                  <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item pl-4">
+                  <%= link_to " ログイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
