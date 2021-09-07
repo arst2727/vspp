@@ -1,0 +1,2 @@
+module Member::MusicalPiecesHelper
+end
