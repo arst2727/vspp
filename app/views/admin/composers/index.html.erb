@@ -1,0 +1,45 @@
+<div class='container'>
+  <div class="row">
+    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">作曲家一覧(管理者用)</h4>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <div class="text-right mb-4">
+        <%= link_to new_admin_composer_path do %>
+          <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+        <% end %>
+      </div>
+      <table class='table table-striped'>
+        <tr>
+          <th>作曲家ID</th>
+          <th>作曲家画像</th>
+          <th>作曲家名</th>
+          <th>生誕年-没年</th>
+          <th>参考URL</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+        <% @composers.each do |composer| %>
+        <tr>
+          <td><%= composer.id %></td>
+          <td><%= attachment_image_tag(composer, :image, size: "30x40", format: 'jpeg', fallback: "no_image.jpg") %></td>
+          <td><%= composer.name_kana %> / <%= composer.name_lang_en %></td>
+          <td><%= composer.year_of_birth %>-<%= composer.year_of_death %></td>
+          <td><%= composer.reference_url %></td>
+          <td>
+          <% if composer.is_active == TRUE %>
+          <%= "公開中" %>
+          <% else %>
+          <%= "非公開中" %>
+          <% end %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_admin_composer_path(composer), class: "btn btn-success btn-sm" %>
+            <%= link_to "削除", admin_composer_path(composer), method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

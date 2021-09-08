@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="<col-2></col-2>">
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">楽曲データ編集</h4>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="text-center">
+      <% if @musical_piece.errors.any? %>
+        <%= @musical_piece.errors.count %> errors prohibited this musical_piece from being saved:<br>
+        <% @musical_piece.errors.full_messages.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      <% end %>
+      </div>
+    <%= form_with model: @musical_piece, url: admin_musical_piece_path, method: :patch, local: true do |f| %>
+      <table class='table table-borderless field d-flex justify-content-center'>
+        <tr><th>作曲家名(既存)</th><td><%= f.collection_select :composer_id, Composer.all, :id, :name_kana %></td></tr>
+        <!--<tr><th>作曲家名(新規)</th><td>%= f.text_field :composer_name, :placeholder => "ショパン" %></td></tr>-->
+        <tr><th>楽曲名</th><td><%= f.text_field :musical_piece_name %></td></tr>
+        <tr><th>作曲年</th><td><%= f.text_field :year_of_composition %></td></tr>
+        <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time %></td></tr>
+        <tr><th>参考リンク</th><td><%= f.text_field :reference_URL %></td></tr>
+        <tr><th>表示ステータス</th><td>
+        <%= f.radio_button :is_active, TRUE %>
+        <%= f.label :is_active, "公開中" %>
+        <%= f.radio_button :is_active, FALSE %>
+        <%= f.label :is_active, "非公開中" %>
+        </td></tr>
+        <tr><th></th><td>
+        <button type="submit" class="btn btn-success">
+        <% f.submit %>編集を保存
+        </button>
+        </td></tr>
+      </table>
+    <% end %>
+    </div>
+  </div>
+</div>

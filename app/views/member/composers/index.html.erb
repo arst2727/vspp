@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class="row">
+    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">作曲家一覧</h4>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <table class='table table-striped'>
+        <tr>
+          <th>作曲家名</th>
+          <th>登録楽曲数</th>
+          <th>総コメント数</th>
+        </tr>
+        <% @composers.each do |composer| %>
+          <% if composer.is_active == TRUE %>
+          <tr>
+            <td>
+              <%= link_to composer_path(composer) do %>
+                <%= composer.name_kana %>
+              <% end %>
+              / <%= composer.name_lang_en %>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

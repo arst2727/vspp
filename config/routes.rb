@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   scope module: :member do
     root :to => "homes#top"
     get "home/about" => "homes#about"
-    resources :musical_pieces,only: [:index,:show,:new,:create]
+    resources :musical_pieces,only: [:index,:show,:new,:create] do
+      resources :musical_pieces_comments, only: [:create, :destroy]
+    end
     resources :composers,only: [:index,:show]
 
     resources :members,only: [:show,:edit,:update] do
@@ -35,8 +37,8 @@ Rails.application.routes.draw do
   # 管理者側のルーティング設定
   namespace :admin do
     root :to => "homes#top"
-    resources :musical_pieces
-    resources :composers,only: [:index,:show,:edit,:update]
+    resources :musical_pieces, :except => [:show]
+    resources :composers, :except => [:show]
     resources :members, :except => [:new,:create,:destroy]
   end
 

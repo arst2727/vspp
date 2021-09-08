@@ -1,0 +1,22 @@
+<% if @musical_piece.is_active == TRUE %>
+  <div class='container'>
+    <div class="row">
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">
+        <%= @musical_piece.composer.name_kana %> :<%= @musical_piece.musical_piece_name %>
+      </h4>
+    </div>
+    <div class='row'>
+      <div class='col-3'>
+        <table class='table table-striped'>
+          <tr><th>作曲年</th><td><%= @musical_piece.year_of_composition %></td></tr>
+          <tr><th>総演奏時間[min]</th><td><%= @musical_piece.performance_time %></td></tr>
+          <tr><th>参考URL</th><td><%= @musical_piece.reference_URL %></td></tr>
+        </table>
+        
+      </div>
+      <div class='col-9'>
+        
+      </div>
+    </div>
+  </div>
+<% end %>

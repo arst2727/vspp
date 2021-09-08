@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_073002) do
+ActiveRecord::Schema.define(version: 2021_09_08_154019) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_073002) do
   create_table "composers", force: :cascade do |t|
     t.string "name_kana", null: false
     t.string "name_lang_en"
-    t.integer "image_id"
+    t.string "image_id"
     t.integer "year_of_birth"
     t.integer "year_of_death"
     t.string "reference_url"
@@ -56,11 +56,21 @@ ActiveRecord::Schema.define(version: 2021_09_07_073002) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "musical_piece_comments", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "musical_piece_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "musical_pieces", force: :cascade do |t|
-    t.string "name", null: false
+    t.integer "composer_id"
+    t.string "composer_name"
+    t.string "musical_piece_name", null: false
     t.integer "year_of_composition"
     t.integer "performance_time"
-    t.string "movie_reference_URL"
+    t.string "reference_URL"
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
