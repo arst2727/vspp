@@ -4,7 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :lists, dependent: :destroy
-  
+  has_many :musical_piece_comments, dependent: :destroy
+
   ###########フォローフォロワー機能Start###########
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
