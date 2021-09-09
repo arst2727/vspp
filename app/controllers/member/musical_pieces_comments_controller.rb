@@ -1,6 +1,6 @@
-class Member::MusicalPiecesCommentsController < 
+class Member::MusicalPiecesCommentsController <
   def create
-    musical_piece = MusicalPiece.find(params[:musical_piece_id])
+    musical_piece = MusicalPieceComment.find(params[:musical_piece_id])
     comment = current_user.musical_piece_comments.new(musical_piece_comment_params)
     comment.musical_piece_id = musical_piece.id
     if comment.save
@@ -15,7 +15,7 @@ class Member::MusicalPiecesCommentsController <
     MusicalPieceComment.find_by(id: params[:id], musical_piece_id: params[:musical_piece_id]).destroy
     redirect_to musical_piece_path(params[:musical_piece_id])
   end
-  
+
   private
 
   def musical_piece_comment_params
