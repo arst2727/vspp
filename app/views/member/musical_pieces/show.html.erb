@@ -7,15 +7,17 @@
     </div>
     <div class='row'>
       <div class='col-3'>
-        <table class='table table-striped'>
-          <tr><th>作曲年</th><td><%= @musical_piece.year_of_composition %></td></tr>
-          <tr><th>総演奏時間[min]</th><td><%= @musical_piece.performance_time %></td></tr>
-          <tr><th>参考URL</th><td><%= @musical_piece.reference_URL %></td></tr>
+        <table class='table table-bordered border-dark text-nowrap'>
+          <tr><th class="table-secondary">作曲年</th><td><%= @musical_piece.year_of_composition %></td></tr>
+          <tr><th class="table-secondary">総演奏時間[min]</th><td><%= @musical_piece.performance_time %></td></tr>
+          <tr><th class="table-secondary">参考リンク</th><td>
+            <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer" %>
+          </td></tr>
         </table>
-        
+
       </div>
       <div class='col-9'>
-        
+
       </div>
     </div>
   </div>

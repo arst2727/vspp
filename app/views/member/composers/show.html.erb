@@ -7,10 +7,10 @@
     </div>
     <div class='row'>
       <div class='col-4'>
-        <%= attachment_image_tag(@composer, :image, size: "120x160", format: 'jpeg', fallback: "no_image.jpg") %>
+        <%= attachment_image_tag(@composer, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg") %>
       </div>
       <div class='col-8'>
-        参考リンク
+        参考リンク:<%= link_to "別タブへ", @composer.reference_url, target: :_blank, rel: "noopener noreferrer" %>
         <table class='table table-striped'>
           <tr>
             <th>楽曲名</th>
