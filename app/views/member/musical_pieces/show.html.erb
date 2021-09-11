@@ -14,10 +14,26 @@
             <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer" %>
           </td></tr>
         </table>
-
+        <%= render 'form', musical_piece_comment: @musical_piece_comment, musical_piece: @musical_piece %>
       </div>
       <div class='col-9'>
-
+        <table class='table table-striped'>
+        <% @musical_piece.musical_piece_comments.each do |mc| %>
+          <tr>
+            <td><%= link_to member_path(mc.member) do %>
+            <!--%= attachment_image_tag(mc.member, :profile_image, fallback: "no-image-icon.jpg", size: "50x50") %><br>-->
+            <%= mc.member.nickname %>
+            <% end %>
+          </td>
+          <td style="word-wrap:break-word;"><%= mc.comment %></td>
+          <% if mc.member == current_member %>
+          <td>
+            <%= link_to "Destroy", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete,remote: true, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %>
+          </td>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
       </div>
     </div>
   </div>

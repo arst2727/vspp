@@ -1,4 +1,5 @@
 class Admin::MusicalPiecesController < ApplicationController
+  before_action :authenticate_admin!
   # 楽曲一覧
   def index
     @musical_pieces = MusicalPiece.all

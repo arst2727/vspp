@@ -4,6 +4,7 @@ class CreateMusicalPieceComments < ActiveRecord::Migration[5.2]
       t.integer :member_id
       t.integer :musical_piece_id
       t.string :comment
+      t.float :evaluation
 
       t.timestamps
     end

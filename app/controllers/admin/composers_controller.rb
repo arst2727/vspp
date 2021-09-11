@@ -1,4 +1,6 @@
 class Admin::ComposersController < ApplicationController
+  before_action :authenticate_admin!
+
   # 作曲家一覧
   def index
     @composers = Composer.all
