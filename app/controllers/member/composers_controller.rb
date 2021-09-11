@@ -7,6 +7,5 @@ class Member::ComposersController < ApplicationController
   # 作曲家詳細
   def show
     @composer = Composer.find(params[:id])
-    @musical_pieces = @composer.id
   end
 end

@@ -39,24 +39,33 @@
                   <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
                 </li>
               <% elsif member_signed_in? %>
+                <ul class="navbar-nav">
+                  <li class="nav-item text-nowrap">
+                    <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
+                  </li>
+                  <li class="nav-item text-nowrap">
+                    <%= link_to " マイリスト", lists_path, method: :get, class: 'fas fa-list btn btn-outline-dark' %>
+                  </li>
+                  <li class="nav-item text-nowrap">
+                    <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
+                  </li>
+                  <li class="nav-item text-nowrap">
+                    <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                  </li>
+                  <li class="nav-item text-nowrap">
+                    <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt btn btn-outline-dark' %>
+                  </li>
+                </ul>
                 <li class="nav-item pr-5 text-nowrap">
-                  ようこそ、<%= current_member.nickname %>さん！
+                  <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"%>
+                  <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
+                    <%= current_member.nickname %>
+                  <% end %>
                 </li>
-                <li class="nav-item px-4 text-nowrap">
-                  <%= link_to " タイムライン", member_path(current_member), method: :get, class: "fas fa-users btn btn-outline-dark" %>
-                </li>
-                <li class="nav-item px-4 text-nowrap">
-                  <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
-                </li>
-                <li class="nav-item px-4 text-nowrap">
-                  <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
-                </li>
-                <li class="nav-item px-4 text-nowrap">
-                  <%= link_to " マイリスト", lists_path(current_member), method: :get, class: 'fas fa-list btn btn-outline-dark' %>
-                </li>
-                <li class="nav-item pl-4 text-nowrap">
-                  <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt btn btn-outline-dark' %>
-                </li>
+                <!--<form class="form-inline">-->
+                <!--  <input class="form-control mr-sm-2" type="search" aria-label="Search">-->
+                <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>-->
+                <!--</form>-->
               <!--管理者でも会員でもログインしていないとき-->
               <% else %>
                 <li class="nav-item px-4 text-nowrap">
@@ -81,5 +90,8 @@
       </nav>
     </header>
     <%= yield %>
+    <footer>
+      フッター文章
+    </footer>
   </body>
 </html>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :member do
+    get 'members/my_page'
+    get 'members/show'
+    get 'members/timeline'
+  end
   # gemのdevise導入
   devise_for :member,controllers: {
     sessions: 'members/sessions',
@@ -23,8 +28,12 @@ Rails.application.routes.draw do
     resources :members,only: [:show,:edit,:update] do
       # フォローフォロワー機能のため追加
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      get 'followings' => 'relationships#followings', as: :followings
+      get 'followers' => 'relationships#followers', as: :followers
+      collection do
+        get "my_page", to: 'members#my_page',as: :my_page
+        get "timeline", to: 'members#timeline',as: :timeline
+      end
     end
 
     resources :lists do

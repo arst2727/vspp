@@ -1,11 +1,11 @@
 <%= form_with model: MusicalPieceComment.new(musical_piece_id: musical_piece.id), url: musical_piece_musical_pieces_comments_path(musical_piece_id: musical_piece.id), local:true, method: :post do |f| %>
   <div>
-    <%= f.label :comment %>
+    <%= f.label :comment,'コメント' %>
     <%= f.text_area :comment, size: "30x10" %>
   </div>
    <!--評価-->
-  <div class="form-group row" id="star">
-    <%= f.label :evaluation,'Rate', class: 'col-md-3 col-form-label' %>
+  <div class="form-group row text-nowrap" id="star">
+    <%= f.label :evaluation,'評価', class: 'col-md-3 col-form-label' %>
     <%= f.hidden_field :evaluation, id: :evaluation_star %>
   </div>
    <!--評価javascript-->

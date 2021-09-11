@@ -5,6 +5,8 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :lists, dependent: :destroy
   has_many :musical_piece_comments, dependent: :destroy
+  # refileを使ったプロフィール画像用
+  attachment :profile_image
 
   ###########フォローフォロワー機能Start###########
   # 自分がフォローされる（被フォロー）側の関係性

@@ -4,23 +4,25 @@
   </div>
   <div class='row'>
     <div class='col'>
-      <table class='table table-striped'>
-        <tr>
+      <table class='table table-sm table-hover'>
+        <tr class="thead-dark">
           <th>作曲家名</th>
           <th>登録楽曲数</th>
           <th>総コメント数</th>
         </tr>
         <% @composers.each do |composer| %>
-          <% if composer.is_active == TRUE %>
+          <% if composer.is_active == true %>
           <tr>
             <td>
-              <%= link_to composer_path(composer) do %>
+              <%= link_to composer_path(composer) ,class: 'text-dark' do %>
                 <%= composer.name_kana %>
               <% end %>
               / <%= composer.name_lang_en %>
             </td>
-            <td></td>
-            <td></td>
+            <td><%= composer.musical_pieces.count %></td>
+            <td>
+
+            </td>
           </tr>
           <% end %>
         <% end %>

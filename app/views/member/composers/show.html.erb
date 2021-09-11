@@ -1,4 +1,4 @@
-<% if @composer.is_active == TRUE %>
+<% if @composer.is_active == true %>
   <div class='container'>
     <div class="row">
       <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">
@@ -6,10 +6,10 @@
       </h4>
     </div>
     <div class='row'>
-      <div class='col-4'>
+      <div class='col-xs-6 col-lg-4'>
         <%= attachment_image_tag(@composer, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg") %>
       </div>
-      <div class='col-8'>
+      <div class='col-xs-6 col-lg-8'>
         参考リンク:<%= link_to "別タブへ", @composer.reference_url, target: :_blank, rel: "noopener noreferrer" %>
         <table class='table table-striped'>
           <tr>
@@ -17,20 +17,19 @@
             <th>コメント数</th>
             <th>最終更新日</th>
           </tr>
-          <!--% @musical_pieces.each do |musical_piece| %>-->
-          <!--  % if musical_piece.is_active == TRUE %>-->
-          <!--  <tr>-->
-          <!--    <td>-->
-          <!--      [%= musical_piece.composer.name_kana %>]-->
-          <!--      %= link_to musical_piece_path(musical_piece) do %>-->
-          <!--        %= musical_piece.musical_piece_name %>-->
-          <!--      % end %>-->
-          <!--    </td>-->
-          <!--    <td></td>-->
-          <!--    <td></td>-->
-          <!--  </tr>-->
-          <!--  % end %>-->
-          <!--% end %>-->
+          <% @composer.musical_pieces.each do |musical_piece| %>
+            <% if musical_piece.is_active == true %>
+              <tr>
+                <td>
+                  <%= link_to musical_piece_path(musical_piece) do %>
+                    <%= musical_piece.musical_piece_name %>
+                  <% end %>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            <% end %>
+          <% end %>
         </table>
       </div>
     </div>

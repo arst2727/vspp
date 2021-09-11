@@ -7,7 +7,7 @@ class Member::MusicalPiecesCommentsController < ApplicationController
     if comment.save
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "comment can't be blank<br>maximum is 200 characters"
+      flash[:alert] = "Comment can't be blank.Maximum is 200 characters."
       redirect_back(fallback_location: root_path)
     end
   end
