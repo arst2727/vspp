@@ -4,7 +4,6 @@ class Member::MusicalPiecesController < ApplicationController
   # 楽曲一覧
   def index
     @musical_pieces = MusicalPiece.all
-    @musical_piece_comment = MusicalPieceComment.all.order(created_at: :desc).limit(1)
   end
 
   # 楽曲詳細
