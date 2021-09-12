@@ -7,6 +7,9 @@
     </div>
     <div class='row'>
       <div class='col-xs-6 col-lg-3'>
+        <!------------>
+        <!--楽曲情報-->
+        <!------------>
         <table class='table table-bordered border-dark text-nowrap'>
           <tr><th class="table-secondary">作曲年</th><td><%= @musical_piece.year_of_composition %></td></tr>
           <tr><th class="table-secondary">総演奏時間[min]</th><td><%= @musical_piece.performance_time %></td></tr>
@@ -28,6 +31,9 @@
          <p>すでにコメントを投稿済みです</p>
 
         <% else %>
+          <!---------------->
+          <!--コメント投稿-->
+          <!---------------->
           <%= form_with model: @musical_piece_comment, url: musical_piece_musical_pieces_comments_path(musical_piece_id: @musical_piece.id), local:true, method: :post do |f| %>
             <div>
               <%= f.label :comment,'コメント' %>
@@ -40,24 +46,27 @@
             </div>
              <!--評価javascript-->
             <script>
-            $('#star').empty();
+            $('#star').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
             $('#star').raty({
               size     : 36,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
-              // # MusicalPieceCommentモデルのrateカラムに値を保存する
+              // # MusicalPieceCommentモデルのevaluationカラムに値を保存する
               scoreName: 'musical_piece_comment[evaluation]',
               // ★の半分の入力を行う
               half: true
             });
             </script>
             <div>
-              <%= f.submit "感想投稿", class: 'btn btn-success' %>
+              <%= f.submit "コメント投稿", class: 'btn btn-success' %>
             </div>
           <% end %>
         <% end %>
       </div>
+      <!---------------->
+      <!--コメント一覧-->
+      <!---------------->
       <div class='col-xs-6 col-lg-8 offset-1'>
         <table class='table table-striped'>
           <% @musical_piece.musical_piece_comments.each do |mc| %>
@@ -79,7 +88,7 @@
           <% end %>
         </table>
         <script>
-          $('.musical_piece-evaluation').empty();
+          $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
           $('.musical_piece-evaluation').raty({
             readOnly: true,
             score: function() {

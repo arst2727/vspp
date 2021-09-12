@@ -5,6 +5,9 @@ class Member::MembersController < ApplicationController
   # 他人のマイページ
   def show
     @member = Member.find(params[:id])
+    if @member.id==current_member.id
+      render :my_page
+    end
   end
   # 自分のタイムライン
   def timeline
