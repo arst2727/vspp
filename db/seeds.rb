@@ -9,9 +9,9 @@
 
   #admins = Admin.create([{email: 'admin@admin'},{encrypted_password: 'adminadmin'}])
   Admin.create!(
-    email: 'admin@admin',
-    password: 'adminadmin'
-    )
+    email: ENV['ADMIN_EMAIL'],
+    password: ENV['ADMIN_PASSWORD']
+  )
 
   Composer.create!(name_kana: 'ショパン',name_lang_en:  'Chopin, Frederic',image: File.open('./public/composer_images/135.jpeg'),year_of_birth:  1810,year_of_death: 1849,reference_url: 'https://enc.piano.or.jp/persons/135',is_active: true)
   Composer.create!(name_kana:"バッハ",name_lang_en: "Bach, Johann Sebastian",image: File.open("./public/composer_images/233.jpeg"),year_of_birth: 1685,year_of_death:1750,reference_url: "https://enc.piano.or.jp/persons/233",is_active: true)

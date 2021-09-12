@@ -15,9 +15,8 @@
           <tr>
             <td>
               <%= link_to composer_path(composer) ,class: 'text-dark' do %>
-                <%= composer.name_kana %>
+                <%= composer.name_kana %> / <%= composer.name_lang_en %>
               <% end %>
-              / <%= composer.name_lang_en %>
             </td>
             <td><%= composer.musical_pieces.count %></td>
             <td>
