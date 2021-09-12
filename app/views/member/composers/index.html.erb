@@ -20,7 +20,12 @@
             </td>
             <td><%= composer.musical_pieces.count %></td>
             <td>
-
+              <!--総コメント数totalを初期化-->
+              <% total = 0 %>
+              <% composer.musical_pieces.each do |cm| %>
+                <% total += cm.musical_piece_comment_ids.count %>
+              <% end %>
+              <%= total %>
             </td>
           </tr>
           <% end %>

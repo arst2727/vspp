@@ -17,6 +17,7 @@
             <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer" %>
           </td></tr>
         </table>
+        <!--コメントcreate時のエラーメッセージ-->
         <% if @musical_piece_comment.errors.any? %>
           <div class = "alert">
             <ul>
@@ -26,10 +27,9 @@
             </ul>
           </div>
         <% end %>
-
+        <!--コメント投稿済みであればformは非表示-->
         <% if  @musical_piece_comments.where(member_id: current_member.id).present? %>
          <p>すでにコメントを投稿済みです</p>
-
         <% else %>
           <!---------------->
           <!--コメント投稿-->
@@ -78,7 +78,7 @@
                 <% end %>
               </div>
               <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
-              <div><%= l mc.created_at, formats: :long %>にレビュー済み</div>
+              <div><%= l mc.created_at, format: :default %>にレビュー済み</div>
               <div style="word-wrap:break-word;"><%= mc.comment %></div>
               <% if mc.member == current_member %>
                 <div>
