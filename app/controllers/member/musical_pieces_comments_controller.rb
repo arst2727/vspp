@@ -1,14 +1,15 @@
 class Member::MusicalPiecesCommentsController < ApplicationController
 
   def create
-    musical_piece = MusicalPiece.find(params[:musical_piece_id])
-    comment = current_member.musical_piece_comments.new(musical_piece_comment_params)
-    comment.musical_piece_id = musical_piece.id
-    if comment.save
-      redirect_back(fallback_location: root_path)
+    @musical_piece = MusicalPiece.find(params[:musical_piece_id])
+    @musical_piece_comment = current_member.musical_piece_comments.new(musical_piece_comment_params)
+    @musical_piece_comment.musical_piece_id = @musical_piece.id
+
+    if @musical_piece_comment.save
+      redirect_to musical_piece_path(params[:musical_piece_id])
     else
-      flash[:alert] = "Comment can't be blank.Maximum is 200 characters."
-      redirect_back(fallback_location: root_path)
+      @musical_piece_comments = @musical_piece.musical_piece_comments
+      render 'member/musical_pieces/show', id: @musical_piece.id
     end
   end
 

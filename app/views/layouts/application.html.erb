@@ -57,7 +57,7 @@
                   </li>
                 </ul>
                 <li class="nav-item pr-5 text-nowrap">
-                  <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"%>
+                  <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50'%>
                   <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
                     <%= current_member.nickname %>
                   <% end %>

@@ -14,29 +14,80 @@
             <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer" %>
           </td></tr>
         </table>
-        <%= flash[:alert] %>
-        <%= render 'form', musical_piece_comment: @musical_piece_comment, musical_piece: @musical_piece %>
+        <% if @musical_piece_comment.errors.any? %>
+          <div class = "alert">
+            <ul>
+              <% @musical_piece_comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <% if  @musical_piece_comments.where(member_id: current_member.id).present? %>
+         <p>すでにコメントを投稿済みです</p>
+
+        <% else %>
+          <%= form_with model: @musical_piece_comment, url: musical_piece_musical_pieces_comments_path(musical_piece_id: @musical_piece.id), local:true, method: :post do |f| %>
+            <div>
+              <%= f.label :comment,'コメント' %>
+              <%= f.text_area :comment, size: "30x10" %>
+            </div>
+             <!--評価-->
+            <div class="form-group row text-nowrap" id="star">
+              <%= f.label :evaluation,'評価', class: 'col-md-3 col-form-label' %>
+              <%= f.hidden_field :evaluation, id: :evaluation_star %>
+            </div>
+             <!--評価javascript-->
+            <script>
+            $('#star').empty();
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              // # MusicalPieceCommentモデルのrateカラムに値を保存する
+              scoreName: 'musical_piece_comment[evaluation]',
+              // ★の半分の入力を行う
+              half: true
+            });
+            </script>
+            <div>
+              <%= f.submit "感想投稿", class: 'btn btn-success' %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      <div class='col-xs-6 col-lg-9'>
+      <div class='col-xs-6 col-lg-8 offset-1'>
         <table class='table table-striped'>
           <% @musical_piece.musical_piece_comments.each do |mc| %>
             <tr>
-              <td>
+              <div class='text-nowrap'>
                 <%= link_to member_path(mc.member) do %>
-                  <%= attachment_image_tag(mc.member, :profile_image, fallback: "no-image-icon.jpg", size: "50x50") %><br>
+                  <%= attachment_image_tag(mc.member, :profile_image, fallback: "no_image.jpg", size: "50x50") %>
                   <%= mc.member.nickname %>
                 <% end %>
-              </td>
-              <td style="word-wrap:break-word;"><%= mc.comment %></td>
-              <!---->
+              </div>
+              <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
+              <div style="word-wrap:break-word;"><%= mc.comment %></div>
               <% if mc.member == current_member %>
-                <td>
-                  <%= link_to "Destroy", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete,remote: true, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %>
-                </td>
+                <div>
+                  <%= link_to "削除", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+                </div>
               <% end %>
             </tr>
           <% end %>
         </table>
+        <script>
+          $('.musical_piece-evaluation').empty();
+          $('.musical_piece-evaluation').raty({
+            readOnly: true,
+            score: function() {
+              return $(this).attr('data-score');
+            },
+            path: '/assets/'
+          });
+        </script>
       </div>
     </div>
   </div>

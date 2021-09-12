@@ -1,2 +1,22 @@
-<h1>Member::Members#show</h1>
-<p>Find me in app/views/member/members/show.html.erb</p>
+<div "container">
+  <div class='row'>
+    <div class='col-4 offset-4 text-center'>
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-secondary text-white"><%= @member.nickname %>さん</h4>
+      <table class="table table-borderless my-3">
+        <tr>
+          <th>プロフィール画像</th>
+          <td><%= attachment_image_tag @member, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= @member.nickname %></td>
+        </tr>
+        <!--<tr>-->
+        <!--  <th>メールアドレス</th>-->
+          <!--<td>< %= current_member.email %></td>-->
+        <!--</tr>-->
+      </table>
+      <%= link_to "フォローする",edit_member_path(current_member),class: 'btn btn-outline-dark'%>
+    </div>
+  </div>
+</div>
