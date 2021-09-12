@@ -4,6 +4,8 @@ class Member::MusicalPiecesController < ApplicationController
   # 楽曲一覧
   def index
     @musical_pieces = MusicalPiece.all
+    # @musical_piece = MusicalPiece(params[:id])
+    @musical_piece_comments = MusicalPieceComment.all
   end
 
   # 楽曲詳細

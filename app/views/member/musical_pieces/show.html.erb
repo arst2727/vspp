@@ -78,6 +78,7 @@
                 <% end %>
               </div>
               <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
+              <div><%= l mc.created_at, formats: :long %>にレビュー済み</div>
               <div style="word-wrap:break-word;"><%= mc.comment %></div>
               <% if mc.member == current_member %>
                 <div>
