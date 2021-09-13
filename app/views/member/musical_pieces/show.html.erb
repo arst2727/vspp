@@ -2,7 +2,10 @@
   <div class='container'>
     <div class="row">
       <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">
-        <%= @musical_piece.composer.name_kana %> :<%= @musical_piece.musical_piece_name %>
+        <%= link_to composer_path(@musical_piece.composer), class: 'text-dark' do %>
+          <%= @musical_piece.composer.name_kana %>
+        <% end %>
+        :<%= @musical_piece.musical_piece_name %>
       </h4>
     </div>
     <div class='row'>
@@ -82,7 +85,7 @@
               <div style="word-wrap:break-word;"><%= mc.comment %></div>
               <% if mc.member == current_member %>
                 <div>
-                  <%= link_to "削除", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+                  <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>
                 </div>
               <% end %>
             </tr>

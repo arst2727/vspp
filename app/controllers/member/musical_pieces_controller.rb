@@ -3,7 +3,7 @@ class Member::MusicalPiecesController < ApplicationController
 
   # 楽曲一覧
   def index
-    @musical_pieces = MusicalPiece.all
+    @musical_pieces = MusicalPiece.all.page(params[:page]).per(4)
   end
 
   # 楽曲詳細

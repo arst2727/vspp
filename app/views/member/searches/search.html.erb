@@ -1,0 +1,7 @@
+<% if @model == 'composers' %>
+    <h3>composers search for "<%= @content %>"</h3>
+    <%= render 'member/composers/index', composers: @records %>
+<% else @model == 'musical_pieces' %>
+    <h3>musical_pieces search for "<%= @content %>"</h3>
+    <%= render 'member/musical_pieces/index', musical_pieces: @records %>
+<% end %>

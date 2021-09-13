@@ -14,3 +14,17 @@
  *= require_self
  */
 @import "bootstrap";
+// ページネーションアレンジ(ベースはkaminari+bootstrap)
+.pagination {
+  justify-content: center;
+}
+.pagecolor .pagination>li>a,
+.pagecolor .pagination>li>span {
+  border: 1px solid black;
+  color: black;
+}
+.pagecolor .pagination>li.active>a {
+  border: 1px solid black;
+  background: black;
+  color: #fff;
+}

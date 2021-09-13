@@ -1,0 +1,23 @@
+<table class='table table-sm table-hover'>
+  <tr class="thead-dark">
+    <th>楽曲名</th>
+    <th>コメント数</th>
+    <th>コメント最終更新日</th>
+  </tr>
+  <% musical_pieces.each do |musical_piece| %>
+    <% if musical_piece.is_active == true %>
+    <tr>
+      <td>
+        [<%= musical_piece.composer.name_kana %>]
+        <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
+          <%= musical_piece.musical_piece_name %>
+        <% end %>
+      </td>
+      <td><%= musical_piece.musical_piece_comment_ids.count %></td>
+      <td>
+        <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>

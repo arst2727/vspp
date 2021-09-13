@@ -11,8 +11,8 @@
       </div>
       <div class='col-xs-6 col-lg-8'>
         参考リンク:<%= link_to "別タブへ", @composer.reference_url, target: :_blank, rel: "noopener noreferrer" %>
-        <table class='table table-striped'>
-          <tr>
+        <table class='table table-bordered border-dark'>
+          <tr class='table-secondary'>
             <th>楽曲名</th>
             <th>コメント数</th>
             <th>最終更新日</th>
@@ -21,12 +21,12 @@
             <% if musical_piece.is_active == true %>
               <tr>
                 <td>
-                  <%= link_to musical_piece_path(musical_piece) do %>
+                  <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
                     <%= musical_piece.musical_piece_name %>
                   <% end %>
                 </td>
-                <td></td>
-                <td></td>
+                <td><%= musical_piece.musical_piece_comment_ids.count %></td>
+                <td><%= l musical_piece.musical_piece_comments.last.created_at, format: :short %></td>
               </tr>
             <% end %>
           <% end %>

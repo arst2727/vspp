@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :member do
-    get 'members/my_page'
-    get 'members/show'
-    get 'members/timeline'
-  end
   # gemのdevise導入
   devise_for :member,controllers: {
     sessions: 'members/sessions',
@@ -14,12 +9,11 @@ Rails.application.routes.draw do
       registrations: 'admins/registrations',
       passwords: 'admins/passwords'}
 
-  # resources :musical_pieces,only: [:index,:show]
-  # resources :composers,only: [:index,:show]
 
   scope module: :member do
     root :to => "homes#top"
     get "home/about" => "homes#about"
+    get '/search', to: 'searches#search'
     resources :musical_pieces,only: [:index,:show,:new,:create] do
       resources :musical_pieces_comments, only: [:create, :destroy]
     end

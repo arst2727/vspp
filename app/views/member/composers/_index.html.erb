@@ -1,0 +1,27 @@
+<table class='table table-sm table-hover'>
+  <tr class="thead-dark">
+    <th>作曲家名</th>
+    <th>登録楽曲数</th>
+    <th>総コメント数</th>
+  </tr>
+  <% composers.each do |composer| %>
+    <% if composer.is_active == true %>
+      <tr>
+        <td>
+          <%= link_to composer_path(composer) ,class: 'text-dark' do %>
+            <%= composer.name_kana %> / <%= composer.name_lang_en %>
+          <% end %>
+        </td>
+        <td><%= composer.musical_pieces.count %></td>
+        <td>
+          <!--総コメント数totalを初期化-->
+          <% total = 0 %>
+          <% composer.musical_pieces.each do |cm| %>
+            <% total += cm.musical_piece_comment_ids.count %>
+          <% end %>
+          <%= total %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

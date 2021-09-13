@@ -1,7 +1,7 @@
 class Member::ComposersController < ApplicationController
   # 作曲家一覧
   def index
-    @composers = Composer.all
+    @composers = Composer.all.page(params[:page]).per(15)
   end
 
   # 作曲家詳細
