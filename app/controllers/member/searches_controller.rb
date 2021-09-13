@@ -11,15 +11,14 @@ class Member::SearchesController < ApplicationController
   def search_for(model, content, method)
     if model == 'composers'
       if method == "forward_match"
-        Composer.where('name_kana LIKE?', content+'%')
+        Composer.where('name_kana LIKE? or name_lang_en LIKE?', content+'%', content+'%')
       elsif method == "backward_match"
-        Composer.where('name_kana LIKE?', '%'+content)
+        Composer.where('name_kana LIKE? or name_lang_en LIKE?', '%'+content, '%'+content)
       elsif method == "perfect_match"
-        Composer.where(name_kana: content)
+        Composer.where('name_kana = ? or name_lang_en = ?', content, content)
       elsif method == "partial_match"
-        Composer.where('name_kana LIKE ?', '%'+content+'%')
+        Composer.where('name_kana LIKE ? or name_lang_en LIKE?', '%'+content+'%', '%'+content+'%')
       else
-
       end
     elsif model == 'musical_pieces'
       if method == "forward_match"
