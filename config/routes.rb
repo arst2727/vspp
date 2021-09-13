@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # gemのdevise導入
   devise_for :member,controllers: {
     sessions: 'members/sessions',

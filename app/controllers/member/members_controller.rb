@@ -1,4 +1,5 @@
 class Member::MembersController < ApplicationController
+  before_action :authenticate_member!
   # ログインしているユーザのマイページ
   def my_page
   end

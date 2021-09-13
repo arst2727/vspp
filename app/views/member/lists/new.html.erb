@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="<col-2></col-2>">
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">新規リスト追加</h4>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="text-center">
+        <% if @list.errors.any? %>
+          <%= @list.errors.count %> errors prohibited this list from being saved:<br>
+          <% @list.errors.full_messages.each do |message| %>
+            <%= message %><br>
+          <% end %>
+        <% end %>
+        <%= form_with model: @list, url: lists_path, method: :post, local: true do |f| %>
+          <table class='table table-borderless field d-flex justify-content-center'>
+            <tr><th>リスト名(10文字以内)</th><td><%= f.text_field :name, :placeholder => "あとで聴きたい" %></td></tr>
+          </table>
+          <button type="submit" class="btn btn-outline-dark">
+            <% f.submit %>新規追加
+          </button>
+        <% end %>
+        <%= link_to 'キャンセル',lists_path, class: 'btn btn-outline-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

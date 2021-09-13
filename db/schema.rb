@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_154019) do
   end
 
   create_table "lists", force: :cascade do |t|
+    t.integer "member_id"
     t.string "name", null: false
     t.integer "number"
     t.datetime "created_at", null: false

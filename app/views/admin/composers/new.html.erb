@@ -22,9 +22,9 @@
         <tr><th>生誕年-没年</th><td><%= f.text_field :year_of_birth, :placeholder => "1810" %>-<%= f.text_field :year_of_death, :placeholder => "1849" %></td></tr>
         <tr><th>参考URL</th><td><%= f.text_field :reference_url, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
         <tr><th>表示ステータス</th><td>
-        <%= f.radio_button :is_active, TRUE %>
+        <%= f.radio_button :is_active, true %>
         <%= f.label :is_active, "公開中" %>
-        <%= f.radio_button :is_active, FALSE %>
+        <%= f.radio_button :is_active, false %>
         <%= f.label :is_active, "非公開中" %>
         </td></tr>
         <tr><th></th><td>
