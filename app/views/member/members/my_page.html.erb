@@ -1,6 +1,6 @@
 <div "container">
   <div class='row'>
-    <div class='col-4 offset-4 text-center'>
+    <div class='col-xs-8 offset-xs-2 col-lg-4 offset-lg-4 text-center'>
       <h4 class="px-5 py-2 mt-5 ml-5 bg-secondary text-white"><%= current_member.nickname %>のマイページ</h4>
       <h5>現在の登録情報</h5>
       <table class="table table-borderless my-3">
@@ -17,7 +17,7 @@
           <td><%= current_member.email %></td>
         </tr>
       </table>
-      <%= link_to "編集する",edit_member_path(current_member),class: 'btn btn-outline-dark'%>
+      <%= link_to "編集する",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
     </div>
   </div>
 </div>

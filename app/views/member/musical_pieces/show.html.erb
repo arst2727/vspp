@@ -76,7 +76,7 @@
             <tr>
               <div class='text-nowrap'>
                 <%= link_to member_path(mc.member) do %>
-                  <%= attachment_image_tag(mc.member, :profile_image, fallback: "no_image.jpg", size: "50x50") %>
+                  <%= attachment_image_tag(mc.member, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle") %>
                   <%= mc.member.nickname %>
                 <% end %>
               </div>

@@ -20,7 +20,7 @@ class Member::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
-      redirect_to my_page_members_path(current_member)
+      redirect_to my_page_members_path
     else
       render :edit
     end

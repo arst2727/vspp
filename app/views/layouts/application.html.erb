@@ -8,13 +8,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <header class="shadow-sm">
       <!-- コピーした kit code -->
       <script src="https://kit.fontawesome.com/c4ee658136.js" crossorigin="anonymous"></script>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <a class="navbar-brand" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,32 +43,32 @@
                 </li>
               <% elsif member_signed_in? %>
                 <ul class="navbar-nav">
-                  <li class="nav-item text-nowrap">
+                  <li class="nav-item px-2 pt-2 text-nowrap">
                     <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
                   </li>
-                  <li class="nav-item text-nowrap">
+                  <li class="nav-item px-2 pt-2 text-nowrap">
                     <%= link_to " マイリスト", lists_path, method: :get, class: 'fas fa-list btn btn-outline-dark' %>
                   </li>
-                  <li class="nav-item text-nowrap">
+                  <li class="nav-item px-2 pt-2 text-nowrap">
                     <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                   </li>
-                  <li class="nav-item text-nowrap">
+                  <li class="nav-item px-2 pt-2 text-nowrap">
                     <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                   </li>
-                  <li class="nav-item text-nowrap">
+                  <li class="nav-item px-2 pt-2 text-nowrap">
                     <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt btn btn-outline-dark' %>
                   </li>
                 </ul>
-                <li class="nav-item pr-5 text-nowrap">
-                  <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50'%>
+                <li class="nav-item px-2 text-nowrap">
                   <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
+                    <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50', class: "rounded-circle" %>
                     <%= current_member.nickname %>
                   <% end %>
                 </li>
-                <!--<form class="form-inline">-->
-                <!--  <input class="form-control mr-sm-2" type="search" aria-label="Search">-->
-                <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search </button>-->
-                <!--</form>-->
+                <!--検索窓部分テンプレート-->
+                <li class="nav-item px-2 pt-2 text-nowrap">
+                  <%= render 'member/searches/form' %>
+                </li>
               <!--管理者でも会員でもログインしていないとき-->
               <% else %>
                 <li class="nav-item px-4 text-nowrap">
@@ -89,14 +92,9 @@
         </div>
       </nav>
     </header>
-    <!--検索窓部分テンプレート-->
-    <%= %>
-    <div class='col-md-8 offset-md-4'>
-      <%= render 'member/searches/form' %>
-    </div>
     <%= yield %>
-    <footer>
-      フッター文章
+    <footer class='fixed-bottom'>
+      <p class="footer-text">Copyright © arst2727 All Rights Reserved.</p>
     </footer>
   </body>
 </html>

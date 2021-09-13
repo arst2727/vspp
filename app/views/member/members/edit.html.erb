@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-6 offset-3'>
       <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark text-center">マイページ編集画面</h4>
-      <%= form_with url: member_path, model: @member,method: :patch,local:true do |f| %>
+      <%= form_with url: member_path(current_member), model: @member, method: :patch, local:true do |f| %>
         <table class='table table-borderless'>
           <tr>
             <th><%= f.label :プロフィール画像 %></th>
