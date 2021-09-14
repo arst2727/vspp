@@ -52,9 +52,7 @@
               <%= f.text_area :comment, size: "30x10", placeholder: 'ここにコメントを200文字まで入力できます' %>
             </div>
             <p class='pt-2'>
-              星0.0〜5.0の11段階で評価できます。<br>
-              コメントのみ記入して投稿すると、<br>
-              星0.0の評価になってしまいます。
+              星0.5〜5.0の10段階で評価できます。<br>
             </p>
 
             <div class="form-group row text-nowrap" id="star">
@@ -75,7 +73,7 @@
             });
             </script>
             <div>
-              <%= f.submit "コメント投稿", class: 'btn btn-outline-dark' %>
+              <%= f.submit "レビュー投稿", class: 'btn btn-outline-dark' %>
             </div>
           <% end %>
         <% end %>

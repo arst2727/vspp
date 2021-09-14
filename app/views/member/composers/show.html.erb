@@ -26,7 +26,13 @@
                   <% end %>
                 </td>
                 <td><%= musical_piece.musical_piece_comment_ids.count %></td>
-                <td><%= l musical_piece.musical_piece_comments.last.created_at, format: :short %></td>
+                <td>
+                  <% if musical_piece.musical_piece_comment_ids.count != 0 %>
+                    <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
+                  <% else %>
+                  -
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           <% end %>
