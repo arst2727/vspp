@@ -1,12 +1,19 @@
 <div "container">
   <div class='row'>
     <div class='col-xs-8 offset-xs-2 col-lg-4 offset-lg-4 text-center'>
-      <h4 class="px-5 py-2 mt-5 ml-5 bg-secondary text-white"><%= current_member.nickname %>のマイページ</h4>
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-secondary text-white"><%= current_member.nickname %></h4>
       <h5>現在の登録情報</h5>
-      <table class="table table-borderless my-3">
+      <%= link_to "編集する",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
+      <table class="table table-bordered my-3">
         <tr>
           <th>プロフィール画像</th>
-          <td><%= attachment_image_tag current_member, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%></td>
+          <td>
+            <% if current_member.profile_image.attached? %>
+              <%= image_tag current_member.profile_image.variant(resize: '100x100'), class: "rounded-circle" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '100x100' %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th>ニックネーム</th>
@@ -17,7 +24,10 @@
           <td><%= current_member.email %></td>
         </tr>
       </table>
-      <%= link_to "編集する",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
     </div>
+    <div class='col-xs-8 offset-xs-2 col-lg-4 offset-lg-4'>
+      <%= link_to current_member.followings.count, member_followings_path(current_member) %>フォロー中
+  	  <%= link_to current_member.followers.count, member_followers_path(current_member) %>フォロワー
+	  </div>
   </div>
 </div>

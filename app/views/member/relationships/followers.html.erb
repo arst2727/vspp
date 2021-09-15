@@ -1,0 +1,27 @@
+<h2>Follower members</h2>
+<% if @members.exists? %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= image_tag member.profile_image.variant(resize: '50x50'), fallback: "no_image.jpg" %></td>
+        <td><%= member.nickname %></td>
+        <td>フォロー数: <%= member.followings.count %></td>
+        <td>フォロワー数: <%= member.followers.count %></td>
+        <td><%= link_to 'Show', member_path(member), class: "member_#{member.id}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>フォロワーはいません</p>
+<% end %>

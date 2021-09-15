@@ -7,7 +7,11 @@
     </div>
     <div class='row'>
       <div class='col-xs-6 col-lg-4'>
-        <%= attachment_image_tag(@composer, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg") %>
+        <% if @composer.image.attached? %>
+          <%= image_tag @composer.image.variant(resize: '150x200') %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: '150x200' %>
+        <% end %>
       </div>
       <div class='col-xs-6 col-lg-8'>
         参考リンク:<%= link_to "別タブへ", @composer.reference_url, target: :_blank, rel: "noopener noreferrer" %>
@@ -30,7 +34,7 @@
                   <% if musical_piece.musical_piece_comment_ids.count != 0 %>
                     <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
                   <% else %>
-                  -
+                    -
                   <% end %>
                 </td>
               </tr>

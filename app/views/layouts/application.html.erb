@@ -61,7 +61,11 @@
                 </ul>
                 <li class="nav-item px-2 text-nowrap">
                   <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
-                    <%= attachment_image_tag current_member, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50', class: "rounded-circle" %>
+                    <% if current_member.profile_image.attached? %>
+                      <%= image_tag current_member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                    <% end %>
                     <%= current_member.nickname %>
                   <% end %>
                 </li>
@@ -92,6 +96,16 @@
         </div>
       </nav>
     </header>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>
+          <%= value %>
+        </strong>
+      </div>
+    <% end %>
     <%= yield %>
     <footer class='fixed-bottom'>
       <p class="footer-text">Copyright © arst2727 All Rights Reserved.</p>

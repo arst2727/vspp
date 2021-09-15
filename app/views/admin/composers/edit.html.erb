@@ -22,9 +22,8 @@
         <%= attachment_image_tag @composer, :image, :fill, 300, 400, fallback: "no_image.jpg"%>
         <label for="inputImage">作曲家画像</label>
         </th><td>
-        <%= f.attachment_field :image, placeholder: "作曲家画像" %>
+        <%= f.file_field :image %>
         </td></tr>
-        <!--<tr><th>作曲家画像</th><td>%= f.text_field :composer_name, :placeholder => "バラード1番" %></td></tr>-->
         <tr><th>生誕年-没年</th><td><%= f.text_field :year_of_birth %>-<%= f.text_field :year_of_death %></td></tr>
         <tr><th>参考URL</th><td><%= f.text_field :reference_url %></td></tr>
         <tr><th>表示ステータス</th><td>

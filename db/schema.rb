@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_154019) do
+ActiveRecord::Schema.define(version: 2021_09_15_074203) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,11 +48,11 @@ ActiveRecord::Schema.define(version: 2021_09_08_154019) do
   create_table "composers", force: :cascade do |t|
     t.string "name_kana", null: false
     t.string "name_lang_en"
-    t.string "image_id"
     t.integer "year_of_birth"
     t.integer "year_of_death"
     t.string "reference_url"
     t.boolean "is_active", default: false, null: false
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +60,6 @@ ActiveRecord::Schema.define(version: 2021_09_08_154019) do
   create_table "lists", force: :cascade do |t|
     t.integer "member_id"
     t.string "name", null: false
-    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,7 +71,6 @@ ActiveRecord::Schema.define(version: 2021_09_08_154019) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nickname", null: false
-    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
@@ -65,6 +84,15 @@ ActiveRecord::Schema.define(version: 2021_09_08_154019) do
     t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "musical_piece_lists", force: :cascade do |t|
+    t.integer "musical_piece_id"
+    t.integer "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_musical_piece_lists_on_list_id"
+    t.index ["musical_piece_id"], name: "index_musical_piece_lists_on_musical_piece_id"
   end
 
   create_table "musical_pieces", force: :cascade do |t|

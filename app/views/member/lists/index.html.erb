@@ -1,6 +1,10 @@
 <div class='container'>
   <div class="row">
-    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark"><%= current_member.nickname %>のマイリスト: <%= @lists.count %>件</h4>
+    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark"><%= current_member.nickname %>のマイリスト:
+      <% if @lists.present? %>
+        全<%= @lists.count %>件
+      <% end %>
+    </h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-lg-8'>
@@ -9,30 +13,34 @@
           <button type="button" class="btn btn-dark rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
         <% end %>
       </div>
-      <table class='table table-hover'>
-        <tr class="thead-dark">
-          <th>リスト名</th>
-          <th>登録楽曲数</th>
-          <th>最終更新日</th>
-          <th></th>
-        </tr>
-        <% @lists.each do |list| %>
-          <tr>
-            <td>
-              <%= link_to list_path(list), class: 'text-dark' do %>
-                <%= list.name %>
-              <% end %>
-              <%= link_to "", edit_list_path(list), class: "fas fa-edit text-info text-right" %>
-            </td>
-            <td><%#= list.musical_pieces.count %></td>
-            <td>
-            </td>
-            <td>
-              <%= link_to "削除", list_path(list), method: :delete, data: {confirm: "リストごと削除しますか？"},class: "btn btn-outline-danger btn-sm" %>
-            </td>
+      <% if @lists.present? %>
+        <table class='table table-hover'>
+          <tr class="thead-dark">
+            <th>リスト名</th>
+            <th>登録楽曲数</th>
+            <th>リスト内最終更新日時</th>
+            <th></th>
           </tr>
-        <% end %>
-      </table>
+          <% @lists.each do |list| %>
+            <tr>
+              <td>
+                <%= link_to list_path(list), class: 'text-dark' do %>
+                  <%= list.name %>
+                <% end %>
+                <!--リスト名編集のFontawesome-->
+                <%= link_to "", edit_list_path(list), class: "fas fa-edit text-info text-right" %>
+              </td>
+              <td><%= list.musical_pieces.count %></td>
+              <td><%= l list.updated_at, format: :default %></td>
+              <td>
+                <%= link_to "削除", list_path(list), method: :delete, data: {confirm: "リストごと削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        まだリストを作成されておりません
+      <% end %>
     </div>
   </div>
 </div>

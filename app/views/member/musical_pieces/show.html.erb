@@ -20,11 +20,19 @@
             <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer", class: 'text-dark' %>
           </td></tr>
         </table>
-        <%= form_with model: @list, url: lists_path, local: true do |f| %>
-          <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
-          <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: true %>
-          <%= f.hidden_field :musical_piece_id, :value => @musical_piece.id %>
-          <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
+        <!------------------>
+        <!--マイリスト機能-->
+        <!------------------>
+        <% if current_member.lists.present? %>
+          <%= form_with model: MusicalPieceList.new, url: musical_piece_lists_path, method: :post, local: true do |f| %>
+            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+            <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: true %>
+
+            <%= f.hidden_field :musical_piece_id, :value => @musical_piece.id %>
+            <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
+          <% end %>
+        <% else %>
+          マイリストを作成してください<%= link_to "作成画面へ", new_list_path, class: "btn-sm btn-outline-dark" %>
         <% end %>
         <!--コメントcreate時のエラーメッセージ-->
         <% if @musical_piece_comment.errors.any? %>
@@ -87,7 +95,11 @@
             <tr>
               <div class='text-nowrap'>
                 <%= link_to member_path(mc.member) do %>
-                  <%= attachment_image_tag(mc.member, :profile_image, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle") %>
+                  <% if mc.member.profile_image.attached? %>
+                    <%= image_tag mc.member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                  <% end %>
                   <%= mc.member.nickname %>
                 <% end %>
               </div>

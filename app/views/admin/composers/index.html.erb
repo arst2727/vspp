@@ -22,7 +22,13 @@
         <% @composers.each do |composer| %>
         <tr>
           <td><%= composer.id %></td>
-          <td><%= attachment_image_tag(composer, :image, size: "30x40", format: 'jpeg', fallback: "no_image.jpg") %></td>
+          <td>
+            <% if composer.image.attached? %>
+              <%= image_tag composer.image.variant(resize: '30x40') %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '30x40' %>
+            <% end %>
+          </td>
           <td><%= composer.name_kana %> / <%= composer.name_lang_en %></td>
           <td><%= composer.year_of_birth %>-<%= composer.year_of_death %></td>
           <td><%= composer.reference_url %></td>

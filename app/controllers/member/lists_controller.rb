@@ -6,6 +6,7 @@ class Member::ListsController < ApplicationController
   end
 
   def show
+    @lists = MusicalPieceList.where(list_id: params[:id])
     @list = List.find(params[:id])
   end
 
@@ -32,7 +33,7 @@ class Member::ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to list_path(@list), notice: "You have updated list successfully."
+      redirect_to lists_path, success: "リスト名を更新しました"
     else
       render "edit"
     end
@@ -45,12 +46,10 @@ class Member::ListsController < ApplicationController
     render 'index'
   end
 
-  def all_destroy
-  end
 
   private
 
   def list_params
-    params.require(:list).permit(:musical_piece_id, :name)
+    params.require(:list).permit(:name, :member_id)
   end
 end

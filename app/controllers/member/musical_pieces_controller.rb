@@ -12,6 +12,8 @@ class Member::MusicalPiecesController < ApplicationController
 
     @musical_piece_comments = @musical_piece.musical_piece_comments
     @musical_piece_comment = MusicalPieceComment.new
+
+    @musical_piece_list = MusicalPieceList.new
   end
 
   # 楽曲新規作成

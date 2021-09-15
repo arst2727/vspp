@@ -15,7 +15,7 @@ class Member::MusicalPiecesCommentsController < ApplicationController
 
   def destroy
     MusicalPieceComment.find_by(id: params[:id], musical_piece_id: params[:musical_piece_id]).destroy
-    redirect_to musical_piece_path(params[:musical_piece_id])
+    redirect_to musical_piece_path(params[:musical_piece_id]), success: 'レビューを削除しました'
   end
 
   private

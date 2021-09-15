@@ -4,28 +4,36 @@
   </div>
   <div class='row'>
     <div class='col'>
-      <table class='table table-hover'>
-        <tr class="thead-dark">
-          <th>リスト追加日</th>
-          <th>作曲家名</th>
-          <th>楽曲名</th>
-          <th></th>
-        </tr>
-        <%# @list.musical_pieces.each do |musical_piece| %>
-          <tr>
-            <td>
-            </td>
-            <td>
-              <%#= list.musical_pieces.count %>
-            </td>
-            <td>
-            </td>
-            <td>
-              <%#= link_to "リストから削除", method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger btn-sm" %>
-            </td>
+      <% if @list.musical_pieces.present? %>
+        <table class='table table-hover'>
+          <tr class="thead-dark">
+            <th>リスト追加日時</th>
+            <th>作曲家名</th>
+            <th>楽曲名</th>
+            <th></th>
           </tr>
-        <%# end %>
-      </table>
+          <% @lists.each do |list| %>
+            <tr>
+              <td>
+                <%= l list.created_at, format: :default %>
+              </td>
+              <td>
+                <%= list.musical_piece.composer.name_kana %>
+              </td>
+              <td>
+                <%= link_to musical_piece_path(list.musical_piece), class: 'text-dark' do %>
+                  <%= list.musical_piece.musical_piece_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "リストから削除", musical_piece_list_path(list), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        このリストにはまだ楽曲データが追加されておりません
+      <% end %>
     </div>
   </div>
 </div>

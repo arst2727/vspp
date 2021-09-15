@@ -79,3 +79,5 @@ end
 gem 'rails-i18n', '~> 5.1'
 
 gem 'kaminari'
+
+gem 'image_processing', '~> 1.2'

@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     get "home/about" => "homes#about"
     get '/search', to: 'searches#search'
-    resources :musical_pieces,only: [:index,:show,:new,:create] do
+    resources :musical_pieces, only: [:index,:show,:new,:create] do
       resources :musical_pieces_comments, only: [:create, :destroy]
     end
-    resources :composers,only: [:index,:show]
+    resources :composers, only: [:index,:show]
 
-    resources :members,only: [:show,:edit,:update] do
+    resources :musical_piece_lists, only: [:create, :destroy]
+    resources :members, only: [:show,:edit,:update] do
       # フォローフォロワー機能のため追加
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: :followings
