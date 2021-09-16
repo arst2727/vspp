@@ -1,2 +1,46 @@
-<h1>Member::Members#timeline</h1>
-<p>Find me in app/views/member/members/timeline.html.erb</p>
+<div "container">
+  <div class='row justify-content-center pt-2'>
+    <div class='col-xs-6 col-md-6 col-lg-6'>
+      <% if @followings_members.present? %>
+        <table class='table table-borderless table-hover'>
+          <% @musical_piece_comments.each do |comment| %>
+            <tr>
+              <th class='col-1'>
+                <%= link_to member_path(comment.member) do %>
+                  <% if comment.member.profile_image.attached? %>
+                    <%= image_tag comment.member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                  <% end %>
+                <% end %>
+              </th>
+              <td>
+                <span class='lead'><%= comment.member.nickname %> </span>
+                <span class='text-muted'><%= l comment.created_at, format: :default %></span>
+                <br>
+                <span class='text-muted'>[<%= comment.musical_piece.composer.name_kana %>]</span>
+                <%= link_to musical_piece_path(comment.musical_piece), class: 'text-dark' do %>
+                  <%= comment.musical_piece.musical_piece_name %>
+                <% end %>
+                <div class="musical_piece-evaluation text-nowrap" data-score="<%= comment.evaluation %>"></div>
+                <div class="h5" style="word-wrap:break-word;"><%= comment.comment %></div>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <script>
+          $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
+          $('.musical_piece-evaluation').raty({
+            readOnly: true,
+            score: function() {
+              return $(this).attr('data-score');
+            },
+            path: '/assets/'
+          });
+        </script>
+      <% else %>
+        フォローしているメンバーはいません
+      <% end %>
+    </div>
+  </div>
+</div>

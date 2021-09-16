@@ -24,7 +24,7 @@
       reference_url: "https://enc.piano.or.jp/persons/#{row[5]}",
       is_active: row[6] == "TRUE" ? true : false
       )
-    composer.image.attach(io: File.open("./public/composer_images/#{row[2]}.jpeg"), filename: "#{row[5]}.jpeg")
+    composer.image.attach(io: File.open("db/public/composer_images/#{row[2]}.jpeg"), filename: "#{row[5]}.jpeg")
   end
 
   # composer = Composer.create!(name_kana: "ショパン",name_lang_en: "Chopin, Frederic",year_of_birth: 1810,year_of_death: 1849,reference_url: "https://enc.piano.or.jp/persons/135",is_active: true)

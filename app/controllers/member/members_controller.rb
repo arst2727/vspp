@@ -3,15 +3,21 @@ class Member::MembersController < ApplicationController
   # ログインしているユーザのマイページ
   def my_page
   end
-  # 他人のマイページ
+  # 他人のページ
   def show
     @member = Member.find(params[:id])
-    if @member.id==current_member.id
+    if @member.id == current_member.id
       render :my_page
     end
   end
   # 自分のタイムライン
   def timeline
+    @followings_members = current_member.followings.ids
+
+
+    @musical_piece_comments = MusicalPieceComment.where(member_id: @followings_members)
+    
+
   end
 
   def edit
