@@ -63,10 +63,20 @@ footer {
   font-size: 20px;
 }
 
+// TOP画像ActiveStorage使用
 .top-img {
   color:#FFF!important;
   background: image-url("adtDSC_2415.jpg")!important;
   background-size: contain!important;
   background-position: center!important;
   background-repeat: repeat!important;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+// flashメッセージでbootstrapを適応後、deviseのフラッシュメッセージに色がついていなかったため、適応確認済みのスタイルを継承させた
+.alert-notice {
+  @extend .alert-info;
+}
+.alert-alert {
+  @extend .alert-danger;
 }
