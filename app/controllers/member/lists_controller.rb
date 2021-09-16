@@ -19,7 +19,7 @@ class Member::ListsController < ApplicationController
 
     if @list.save
       @lists = current_member.lists.all
-      render 'index'
+      render 'index', success: "リストを新規作成しました"
     # 保存できなかった場合
     else
       render 'new'
@@ -43,7 +43,7 @@ class Member::ListsController < ApplicationController
     list = List.find(params[:id])
     list.destroy
     @lists = current_member.lists.all
-    render 'index'
+    render 'index', success: "リストを削除しました"
   end
 
 

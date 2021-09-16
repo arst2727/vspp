@@ -10,14 +10,11 @@ class Member::MembersController < ApplicationController
       render :my_page
     end
   end
-  # 自分のタイムライン
+  # 自分のタイムライン(最新100件取得)
   def timeline
+    # 自分がフォローしているメンバーのidを取得(複数)
     @followings_members = current_member.followings.ids
-
-
-    @musical_piece_comments = MusicalPieceComment.where(member_id: @followings_members)
-    
-
+    @musical_piece_comments = MusicalPieceComment.where(member_id: @followings_members).order(created_at: :desc).limit(100)
   end
 
   def edit
