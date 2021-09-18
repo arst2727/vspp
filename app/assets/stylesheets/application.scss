@@ -80,3 +80,22 @@ footer {
 .alert-alert {
   @extend .alert-danger;
 }
+
+// 表のソートマークのデザイン
+.tablesorter-headerUnSorted {
+    background: image-url('icons8-sort-16.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+.tablesorter-headerAsc {
+    background: image-url('icons8-sort-up-16.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    border-bottom: #000 2px solid;
+}
+.tablesorter-headerDesc {
+    background: image-url('icons8-sort-down-16.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    border-bottom: #000 2px solid;
+}

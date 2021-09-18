@@ -14,29 +14,33 @@
         <% end %>
       </div>
       <% if @lists.present? %>
-        <table class='table table-hover'>
-          <tr class="thead-dark">
-            <th>リスト名</th>
-            <th>登録楽曲数</th>
-            <th>リスト内最終更新日時</th>
-            <th></th>
-          </tr>
-          <% @lists.each do |list| %>
-            <tr>
-              <td>
-                <%= link_to list_path(list), class: 'text-dark' do %>
-                  <%= list.name %>
-                <% end %>
-                <!--リスト名編集のFontawesome-->
-                <%= link_to "", edit_list_path(list), class: "fas fa-edit text-info text-right" %>
-              </td>
-              <td><%= list.musical_pieces.count %></td>
-              <td><%= l list.updated_at, format: :default %></td>
-              <td>
-                <%= link_to "削除", list_path(list), method: :delete, data: {confirm: "リストごと削除しますか？"}, class: "btn-sm btn-outline-danger" %>
-              </td>
+        <table id='sort-table' class='table table-hover'>
+          <thead>
+            <tr class="thead-dark">
+              <th>リスト名</th>
+              <th>登録楽曲数</th>
+              <th>リスト内最終更新日時</th>
+              <th></th>
             </tr>
-          <% end %>
+          </thead>
+          <tbody>
+            <% @lists.each do |list| %>
+              <tr>
+                <td>
+                  <%= link_to list_path(list), class: 'text-dark' do %>
+                    <%= list.name %>
+                  <% end %>
+                  <!--リスト名編集のFontawesome-->
+                  <%= link_to "", edit_list_path(list), class: "fas fa-edit text-info text-right" %>
+                </td>
+                <td><%= list.musical_pieces.count %></td>
+                <td><%= l list.updated_at, format: :default %></td>
+                <td>
+                  <%= link_to "削除", list_path(list), method: :delete, data: {confirm: "リストごと削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
       <% else %>
         まだリストを作成されておりません

@@ -2,12 +2,15 @@
   <div class='row'>
     <div class='col'>
       <% if musical_pieces.present? %>
-        <table class='table table-sm table-hover'>
+        <table id="sort-table" class='table table-sm table-hover'>
+          <thead>
           <tr class="thead-dark">
             <th>楽曲名</th>
             <th>コメント数</th>
             <th>コメント最終更新日</th>
           </tr>
+          </thead>
+          <tbody>
           <% musical_pieces.each do |musical_piece| %>
             <% if musical_piece.is_active == true %>
             <tr>
@@ -28,6 +31,7 @@
             </tr>
             <% end %>
           <% end %>
+          </tbody>
         </table>
       <% else %>
         <span class='text-danger'>検索結果が見つかりませんでした。</span><br>
