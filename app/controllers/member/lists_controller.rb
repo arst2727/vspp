@@ -19,7 +19,7 @@ class Member::ListsController < ApplicationController
 
     if @list.save
       @lists = current_member.lists.all
-      render 'index', success: "リストを新規作成しました"
+      render 'index',  flash: {success: "リストを新規作成しました"}
     # 保存できなかった場合
     else
       render 'new'
@@ -33,7 +33,7 @@ class Member::ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
-      redirect_to lists_path, success: "リスト名を更新しました"
+      redirect_to lists_path, flash: {success: "リスト名を更新しました"}
     else
       render "edit"
     end
@@ -43,7 +43,7 @@ class Member::ListsController < ApplicationController
     list = List.find(params[:id])
     list.destroy
     @lists = current_member.lists.all
-    render 'index', success: "リストを削除しました"
+    render 'index', flash: {success: "リストを削除しました"}
   end
 
 

@@ -4,6 +4,8 @@ class Member::SearchesController < ApplicationController
     @content = params["content"]
     @method = params["method"]
     @records = search_for(@model, @content, @method)
+    # 追加
+    @musical_piece = MusicalPiece.new
   end
 
   private
