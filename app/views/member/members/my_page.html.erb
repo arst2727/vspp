@@ -1,33 +1,70 @@
 <div "container">
-  <div class='row'>
-    <div class='col-xs-8 offset-xs-2 col-lg-4 offset-lg-4 text-center'>
-      <h4 class="px-5 py-2 mt-5 ml-5 bg-secondary text-white"><%= current_member.nickname %></h4>
-      <h5>現在の登録情報</h5>
-      <%= link_to "編集する",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
-      <table class="table table-bordered my-3">
+  <div class='row justify-content-center'>
+    <div class='col-xs-10 col-md-8 col-lg-4'>
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark"><%= current_member.nickname %>さんのマイページ</h4>
+      <table class="table table-borderless my-3">
         <tr>
-          <th>プロフィール画像</th>
-          <td>
+          <th>
             <% if current_member.profile_image.attached? %>
               <%= image_tag current_member.profile_image.variant(resize: '100x100'), class: "rounded-circle" %>
             <% else %>
               <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '100x100' %>
             <% end %>
+          </th>
+          <td class='h4 pt-5'><%= current_member.nickname %></td>
+          <td class='pt-5 text-nowrap'>
+            <%= link_to "変更",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
           </td>
         </tr>
-        <tr>
-          <th>ニックネーム</th>
-          <td><%= current_member.nickname %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= current_member.email %></td>
-        </tr>
+          <td><%= link_to current_member.followings.count, member_followings_path(current_member) %>フォロー中</td>
+    	    <td><%= link_to current_member.followers.count, member_followers_path(current_member) %>フォロワー</td>
+  	    </tr>
       </table>
     </div>
-    <div class='col-xs-8 offset-xs-2 col-lg-4 offset-lg-4'>
-      <%= link_to current_member.followings.count, member_followings_path(current_member) %>フォロー中
-  	  <%= link_to current_member.followers.count, member_followers_path(current_member) %>フォロワー
-	  </div>
+    <!---------------->
+    <!--コメント一覧-->
+    <!---------------->
+    <div class='col-xs-10 col-md-10 col-lg-6'>
+      <% if current_member.musical_piece_comments.present? %>
+        <table class='table table-borderless table-hover'>
+          <% current_member.musical_piece_comments.each do |mc| %>
+            <tr>
+              <th class='col-1'>
+                <%= link_to member_path(mc.member) do %>
+                  <% if mc.member.profile_image.attached? %>
+                    <%= image_tag mc.member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                  <% end %>
+                <% end %>
+              </th>
+              <td>
+                <span class='lead'><%= mc.member.nickname %> </span>
+                <span class='text-muted'><%= l mc.created_at, format: :default %></span>
+                <br>
+                <span class='text-muted'>[<%= mc.musical_piece.composer.name_kana %>]</span>
+                <%= link_to musical_piece_path(mc.musical_piece), class: 'text-dark' do %>
+                  <%= mc.musical_piece.musical_piece_name %>
+                <% end %>
+                <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
+                <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <script>
+          $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
+          $('.musical_piece-evaluation').raty({
+            readOnly: true,
+            score: function() {
+              return $(this).attr('data-score');
+            },
+            path: '/assets/'
+          });
+        </script>
+      <% else %>
+        <h4 class='mt-3'><%= current_member.nickname %>さんはまだレビュー投稿していません</h4>
+      <% end %>
+    </div>
   </div>
 </div>

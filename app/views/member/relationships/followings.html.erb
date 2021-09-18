@@ -1,27 +1,44 @@
-<h2>Follow members</h2>
-<% if @members.exists? %>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= image_tag member.profile_image.variant(resize: '50x50'), fallback: "no_image.jpg" %></td>
-        <td><%= member.nickname %></td>
-        <td>フォロー数: <%= member.followings.count %></td>
-        <td>フォロワー数: <%= member.followers.count %></td>
-        <td><%= link_to 'Show', member_path(member), class: "member_#{member.id}" %></td>
-      </tr>
+<div class='container'>
+  <div class="row justify-content-center">
+    <h4 class="py-2 mt-5 bg-light text-dark"><%= @member.nickname %>のフォロー</h4>
+  </div>
+  <div class='row justify-content-center'>
+    <% if @members.exists? %>
+      <div class='col-xs-8 col-md-6 col-lg-4'>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @members.each do |member| %>
+              <tr>
+                <td>
+                  <%= link_to member_path(member), class: "text-dark" do %>
+                    <% if member.profile_image.attached? %>
+                      <%= image_tag member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                    <% end %>
+                    <%= member.nickname %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if current_member.following?(member) %>
+                    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark" %>
+                  <% else %>
+                    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p>フォローはいません</p>
     <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>フォロワーはいません</p>
-<% end %>
+  </div>
+</div>

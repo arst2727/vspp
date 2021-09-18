@@ -24,6 +24,7 @@ class Member::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
+      flash[:info] = 'プロフィールを更新しました'
       redirect_to my_page_members_path
     else
       render :edit

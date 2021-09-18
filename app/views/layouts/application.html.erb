@@ -13,9 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <!--表のカラムソート機能-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.default.min.css">-->
     <script>
     $(document).ready(function() {
         $('#sort-table').tablesorter();
@@ -27,14 +25,14 @@
     <header class="shadow-sm">
       <!-- コピーした kit code -->
       <script src="https://kit.fontawesome.com/c4ee658136.js" crossorigin="anonymous"></script>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
         <div class="container">
-          <a class="navbar-brand" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
+          <a class="navbar-brand mr-0 mr-md-2" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
               <% if admin_signed_in? %>
                 <li class="nav-item pr-5">
                   管理者ログイン中
@@ -69,20 +67,20 @@
                     <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt btn btn-outline-dark' %>
                   </li>
                 </ul>
-                <li class="nav-item px-2 text-nowrap">
-                  <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
-                    <% if current_member.profile_image.attached? %>
-                      <%= image_tag current_member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
-                    <% else %>
-                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                  <li class="nav-item px-2 text-nowrap">
+                    <%= link_to my_page_members_path, method: :get, class: 'text-dark' do %>
+                      <% if current_member.profile_image.attached? %>
+                        <%= image_tag current_member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                      <% else %>
+                        <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                      <% end %>
+                      <%= current_member.nickname.truncate(14) %>
                     <% end %>
-                    <%= current_member.nickname %>
-                  <% end %>
-                </li>
-                <!--検索窓部分テンプレート-->
-                <li class="nav-item px-2 pt-2 text-nowrap">
-                  <%= render 'member/searches/form' %>
-                </li>
+                  </li>
+                  <!--検索窓部分テンプレート-->
+                  <li class="nav-item px-2 pt-2 text-nowrap">
+                    <%= render 'member/searches/form' %>
+                  </li>
               <!--管理者でも会員でもログインしていないとき-->
               <% else %>
                 <li class="nav-item px-4 text-nowrap">

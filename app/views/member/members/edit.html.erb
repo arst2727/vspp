@@ -1,7 +1,7 @@
 <div "container">
-  <div class='row'>
-    <div class='col-6 offset-3'>
-      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark text-center">マイページ編集画面</h4>
+  <div class='row justify-content-center'>
+    <div class='col-6 text-center'>
+      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark text-center">マイページ変更画面</h4>
       <%= form_with url: member_path(current_member), model: @member, method: :patch, local:true do |f| %>
         <table class='table table-borderless'>
           <tr>
@@ -17,8 +17,9 @@
             <td><%= f.email_field :email, autocomplete: "email" %></td>
           </tr>
         </table>
-        <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        <%= f.submit "変更内容を保存", class: 'btn btn-outline-dark' %>
       <% end %>
+      <%= link_to 'キャンセル',my_page_members_path, class: 'btn btn-outline-dark' %>
     </div>
   </div>
 </div>
