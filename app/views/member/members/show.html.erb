@@ -19,6 +19,9 @@
             <% end %>
           </td>
         </tr>
+        <tr class='text-muted'>
+          <td colspan="3"><i class="far fa-calendar-alt"></i> <%= l @member.created_at, format: :short %>からVSPPを利用しています</td>
+        </tr>
         <tr>
           <td><%= link_to @member.followings.count, member_followings_path(@member) %>フォロー中</td>
     	    <td><%= link_to @member.followers.count, member_followers_path(@member) %>フォロワー</td>
@@ -31,7 +34,8 @@
     <div class='col-xs-10 col-md-10 col-lg-6 offset-lg-1'>
       <% if @member.musical_piece_comments.present? %>
         <table class='table table-borderless table-hover'>
-          <% @member.musical_piece_comments.each do |mc| %>
+          <% musical_piece_comments = @member.musical_piece_comments.order(created_at: :desc).limit(100) %>
+          <% musical_piece_comments.each do |mc| %>
             <tr>
               <th class='col-1'>
                 <%= link_to member_path(mc.member) do %>

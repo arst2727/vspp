@@ -1,5 +1,5 @@
 class Member::ComposersController < ApplicationController
-  before_action :authenticate_member!,except: [:index]
+  before_action :authenticate_member!,except: [:index, :chronology]
   # 作曲家一覧
   def index
     @composers = Composer.all.page(params[:page]).per(15)
@@ -8,5 +8,10 @@ class Member::ComposersController < ApplicationController
   # 作曲家詳細
   def show
     @composer = Composer.find(params[:id])
+  end
+
+  # 作曲家年表
+  def chronology
+    @composers = Composer.all
   end
 end

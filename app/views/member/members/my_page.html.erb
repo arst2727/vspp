@@ -16,6 +16,10 @@
             <%= link_to "変更",edit_member_path(current_member), class: 'btn btn-outline-dark'%>
           </td>
         </tr>
+        <tr class='text-muted'>
+          <td colspan="3"><i class="far fa-calendar-alt"></i> <%= l current_member.created_at, format: :short %>からVSPPを利用しています</td>
+        </tr>
+        <tr>
           <td><%= link_to current_member.followings.count, member_followings_path(current_member) %>フォロー中</td>
     	    <td><%= link_to current_member.followers.count, member_followers_path(current_member) %>フォロワー</td>
   	    </tr>
@@ -27,7 +31,8 @@
     <div class='col-xs-10 col-md-10 col-lg-6'>
       <% if current_member.musical_piece_comments.present? %>
         <table class='table table-borderless table-hover'>
-          <% current_member.musical_piece_comments.each do |mc| %>
+          <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).limit(100) %>
+          <% musical_piece_comments.each do |mc| %>
             <tr>
               <th class='col-1'>
                 <%= link_to member_path(mc.member) do %>
