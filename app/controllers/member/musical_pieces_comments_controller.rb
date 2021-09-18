@@ -6,6 +6,7 @@ class Member::MusicalPiecesCommentsController < ApplicationController
     @musical_piece_comment.musical_piece_id = @musical_piece.id
 
     if @musical_piece_comment.save
+      flash[:success] = 'レビュー投稿が完了しました'
       redirect_to musical_piece_path(params[:musical_piece_id])
     else
       @musical_piece_comments = @musical_piece.musical_piece_comments
@@ -15,7 +16,8 @@ class Member::MusicalPiecesCommentsController < ApplicationController
 
   def destroy
     MusicalPieceComment.find_by(id: params[:id], musical_piece_id: params[:musical_piece_id]).destroy
-    redirect_to musical_piece_path(params[:musical_piece_id]), success: 'レビューを削除しました'
+    flash[:info] = 'レビューを削除しました'
+    redirect_to musical_piece_path(params[:musical_piece_id])
   end
 
   private
