@@ -4,7 +4,6 @@ class Member::MusicalPiecesCommentsController < ApplicationController
     @musical_piece = MusicalPiece.find(params[:musical_piece_id])
     @musical_piece_comment = current_member.musical_piece_comments.new(musical_piece_comment_params)
     @musical_piece_comment.musical_piece_id = @musical_piece.id
-
     if @musical_piece_comment.save
       flash[:success] = 'レビュー投稿が完了しました'
       redirect_to musical_piece_path(params[:musical_piece_id])
@@ -23,6 +22,6 @@ class Member::MusicalPiecesCommentsController < ApplicationController
   private
 
   def musical_piece_comment_params
-    params.require(:musical_piece_comment).permit(:comment, :evaluation)
+    params.require(:musical_piece_comment).permit(:comment, :evaluation, :start_time)
   end
 end

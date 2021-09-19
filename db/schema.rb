@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_09_15_074203) do
     t.integer "musical_piece_id"
     t.string "comment"
     t.float "evaluation"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

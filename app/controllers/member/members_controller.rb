@@ -2,6 +2,7 @@ class Member::MembersController < ApplicationController
   before_action :authenticate_member!
   # ログインしているユーザのマイページ
   def my_page
+    @musical_piece_comments = MusicalPieceComment.where(member_id: current_member)
   end
   # 他人のページ
   def show
@@ -9,6 +10,7 @@ class Member::MembersController < ApplicationController
     if @member.id == current_member.id
       render :my_page
     end
+    @musical_piece_comments = MusicalPieceComment.where(member_id: @member)
   end
   # 自分のタイムライン(最新100件取得)
   def timeline

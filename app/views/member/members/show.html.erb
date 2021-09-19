@@ -1,6 +1,6 @@
 <div "container">
   <div class='row justify-content-center'>
-    <div class='col-xs-10 col-md-8 col-lg-4 offset-lg-1'>
+    <div class='col-xs-10 col-md-8 col-lg-5'>
       <table class="table table-borderless my-3">
         <tr>
           <th>
@@ -27,11 +27,27 @@
     	    <td><%= link_to @member.followers.count, member_followers_path(@member) %>フォロワー</td>
   	    </tr>
       </table>
+      <!---------------->
+      <!--カレンダー---->
+      <!---------------->
+      <%= month_calendar(events: @musical_piece_comments) do |date, musical_piece_comments| %>
+        <%= date.day %><br>
+        <% if musical_piece_comments.count != 0 %>
+          <div class='calendar-text-mini'>
+            <i class="far fa-comments"></i><%= musical_piece_comments.count %>件
+          </div>
+          <% musical_piece_comments.each do |musical_piece_comment| %>
+            <div>
+              <%#= musical_piece_comment.comment %>
+            </div>
+          <% end %>
+        <% end %>
+  		<% end %>
     </div>
     <!---------------->
     <!--コメント一覧-->
     <!---------------->
-    <div class='col-xs-10 col-md-10 col-lg-6 offset-lg-1'>
+    <div class='col-xs-10 col-md-10 col-lg-6'>
       <% if @member.musical_piece_comments.present? %>
         <table class='table table-borderless table-hover'>
           <% musical_piece_comments = @member.musical_piece_comments.order(created_at: :desc).limit(100) %>
@@ -55,7 +71,7 @@
                   <%= mc.musical_piece.musical_piece_name %>
                 <% end %>
                 <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
-                <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
+                <div class="h5 text-break"><%= mc.comment %></div>
               </td>
             </tr>
           <% end %>

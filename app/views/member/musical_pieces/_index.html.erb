@@ -34,18 +34,18 @@
           </tbody>
         </table>
       <% else %>
-        <span class='text-danger'>検索結果が見つかりませんでした。</span><br>
-        部分一致での検索を一度お試しいただきくようお願いいたします。<br>
-        それでも楽曲が見つからなかった場合は、以下のフォームにて管理者に楽曲追加の申請ができます。<br>
-        管理者側で確認でき次第、感想が投稿できるようになります。<br>
-        ぜひご協力をお願いいたします。
         <div class="text-center">
-        <% if @musical_piece.errors.any? %>
-          <%= @musical_piece.errors.count %> errors prohibited this musical_piece from being saved:<br>
-          <% @musical_piece.errors.full_messages.each do |message| %>
-            <%= message %><br>
+          <span class='text-danger'>検索結果が見つかりませんでした。</span><br>
+          部分一致での検索を一度お試しいただきくようお願いいたします。<br>
+          それでも楽曲が見つからなかった場合は、以下のフォームにて管理者に楽曲追加の申請ができます。<br>
+          管理者側で確認でき次第、感想が投稿できるようになります。<br>
+          ぜひご協力をお願いいたします。
+          <% if @musical_piece.errors.any? %>
+            <%= @musical_piece.errors.count %> errors prohibited this musical_piece from being saved:<br>
+            <% @musical_piece.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
         <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
           <table class='table table-borderless field d-flex justify-content-center'>

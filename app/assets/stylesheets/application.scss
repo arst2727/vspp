@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -98,4 +99,77 @@ footer {
     background-repeat: no-repeat;
     background-position: center right;
     border-bottom: #000 2px solid;
+}
+.display-none {
+  display: none;
+}
+//シンプルカレンダーアレンジ
+.simple-calendar .today {
+  background: #ffefd5;
+}
+.calendar-text-mini {
+  font-size: 12px;
+}
+/* line 2, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar table {
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* line 13, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar tr {
+  border-collapse: collapse;
+}
+
+/* line 17, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar th {
+  padding: 6px;
+  border-bottom: 2px solid #dddddd;
+  border-collapse: collapse;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border-top: 0px none #333333;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* line 28, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar td {
+  padding: 6px;
+  vertical-align: top;
+  width: 14%;
+  border: 1px solid #000;
+  border-top-color: #000000;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: #000000;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: #000000;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: #000000;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+
+/* line 48, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .day {
+  height: 70px;
+}
+
+/* line 69, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .prev-month {
+  background: #dcdcdc;
+}
+
+/* line 72, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .next-month {
+  background: #dcdcdc;
 }
