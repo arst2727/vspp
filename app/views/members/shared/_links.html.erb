@@ -1,13 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  すでに登録済みのかたは、<br /><%= link_to "こちらからログイン", new_session_path(resource_name) %>できます<br />
+  すでにアカウントをお持ちですか?<br /><%= link_to "サイン イン", new_session_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  登録がお済みでないかたは、<br /><%= link_to "こちらから新規登録", new_registration_path(resource_name) %>できます<br />
+  アカウントをお持ちでない場合、<br /><%= link_to "作成", new_registration_path(resource_name) %>できます<br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name) %><br />
+  <%= link_to "パスワードを忘れた場合", new_password_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

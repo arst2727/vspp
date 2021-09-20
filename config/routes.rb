@@ -18,7 +18,11 @@ Rails.application.routes.draw do
     resources :musical_pieces, only: [:index,:show,:new,:create] do
       resources :musical_pieces_comments, only: [:create, :destroy]
     end
-    resources :composers, only: [:index,:show]
+    resources :composers, only: [:index,:show] do
+      collection do
+        get "chronology", to: 'composers#chronology', as: :chronology
+      end
+    end
 
     resources :musical_piece_lists, only: [:create, :destroy]
     resources :members, only: [:show,:edit,:update] do

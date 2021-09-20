@@ -12,6 +12,6 @@ class Member::ComposersController < ApplicationController
 
   # 作曲家年表
   def chronology
-    @composers = Composer.all
+    @composers = Composer.all.order(year_of_birth: :asc)
   end
 end

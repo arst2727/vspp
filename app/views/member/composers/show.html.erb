@@ -5,41 +5,46 @@
         <%= @composer.name_kana %> <%= @composer.year_of_birth %>-<%= @composer.year_of_death %> <%= @composer.name_lang_en %>
       </h4>
     </div>
-    <div class='row'>
-      <div class='col-xs-6 col-lg-4'>
+    <div class='row justify-content-center'>
+      <div class='col-xs-6 col-lg-3'>
         <% if @composer.image.attached? %>
           <%= image_tag @composer.image.variant(resize: '150x200') %>
         <% else %>
           <%= image_tag 'no_image.jpg', size: '150x200' %>
-        <% end %>
-      </div>
-      <div class='col-xs-6 col-lg-8'>
+        <% end %><br>
         参考リンク:<%= link_to "別タブへ", @composer.reference_url, target: :_blank, rel: "noopener noreferrer" %>
-        <table class='table table-bordered border-dark'>
-          <tr class='table-secondary'>
-            <th>楽曲名</th>
-            <th>コメント数</th>
-            <th>最終更新日</th>
-          </tr>
-          <% @composer.musical_pieces.each do |musical_piece| %>
-            <% if musical_piece.is_active == true %>
-              <tr>
-                <td>
-                  <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
-                    <%= musical_piece.musical_piece_name %>
-                  <% end %>
-                </td>
-                <td><%= musical_piece.musical_piece_comment_ids.count %></td>
-                <td>
-                  <% if musical_piece.musical_piece_comment_ids.count != 0 %>
-                    <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
-                  <% else %>
-                    -
-                  <% end %>
-                </td>
-              </tr>
+      </div>
+      <div class='col-xs-6 col-lg-6'>
+
+        <table id="sort-table" class='table table-sm table-hover'>
+          <thead class="thead-dark">
+            <tr>
+              <th>楽曲名</th>
+              <th>コメント数</th>
+              <th>最終更新日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @composer.musical_pieces.each do |musical_piece| %>
+              <% if musical_piece.is_active == true %>
+                <tr>
+                  <td>
+                    <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
+                      <%= musical_piece.musical_piece_name %>
+                    <% end %>
+                  </td>
+                  <td><%= musical_piece.musical_piece_comment_ids.count %></td>
+                  <td>
+                    <% if musical_piece.musical_piece_comment_ids.count != 0 %>
+                      <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
+                    <% else %>
+                      -
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
-          <% end %>
+          </tbody>
         </table>
       </div>
     </div>

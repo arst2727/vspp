@@ -15,6 +15,9 @@
  *= require_self
  */
 @import "bootstrap";
+#wrap {
+  padding-top: 76px!important;
+}
 // ページネーションアレンジ(ベースはkaminari+bootstrap)
 .pagination {
   justify-content: center;
@@ -55,13 +58,14 @@ footer {
   color: black;
 }
 .mv-title {
-  padding-top: 120px;
+  padding-top: 100px;
   font-family: 'Poiret One', cursive;
   font-size: 100px;
 }
 .mv-text {
   padding-top: 10px;
-  font-size: 20px;
+  padding-bottom: 20px;
+  font-size: 25px;
 }
 
 // TOP画像ActiveStorage使用
@@ -71,7 +75,40 @@ footer {
   background-size: contain!important;
   background-position: center!important;
   background-repeat: repeat!important;
+  border-radius: 0!important; // for jumbotrom
 }
+// TOP画面下部
+#merit {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba( 255, 232, 209, 0.75 );
+  color: black;
+}
+
+.merit-group {
+  display: flex;
+  width: 980px;
+  padding: 30px 0 90px 0;
+  margin: 0 auto;
+}
+.merit {
+  width: 320px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 60px;
+}
+.merit:last-child {
+  margin-right: 0;
+}
+.merit-title {
+  padding: 10px 0;
+  font-size: 20px;
+}
+.merit-text {
+  text-align: left;
+  font-size: 16px;
+}
+
 
 // 「ログインしました」などのフラッシュ用スタイル
 // flashメッセージでbootstrapを適応後、deviseのフラッシュメッセージに色がついていなかったため、適応確認済みのスタイルを継承させた
@@ -105,7 +142,7 @@ footer {
 }
 //シンプルカレンダーアレンジ
 .simple-calendar .today {
-  background: #ffefd5;
+  background: #e6e6fa;
 }
 .calendar-text-mini {
   font-size: 12px;
@@ -121,12 +158,10 @@ footer {
   max-width: 100%;
   width: 100%;
 }
-
 /* line 13, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar tr {
   border-collapse: collapse;
 }
-
 /* line 17, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar th {
   padding: 6px;
@@ -138,7 +173,6 @@ footer {
   box-sizing: border-box;
   text-align: left;
 }
-
 /* line 28, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar td {
   padding: 6px;
@@ -158,18 +192,41 @@ footer {
   border-left-style: solid;
   border-left-width: 1px;
 }
-
 /* line 48, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .day {
   height: 70px;
 }
-
 /* line 69, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .prev-month {
   background: #dcdcdc;
 }
-
 /* line 72, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .next-month {
   background: #dcdcdc;
+}
+// シンプルカレンダー内背景色独自クラス
+.bg-kusa1 {
+  background: #c6e48b;
+}
+.bg-kusa2 {
+  background: #7bc96f;
+}
+.bg-kusa3 {
+  background: #239a3b;
+}
+// グラフ凡例背景色独自クラス
+.bg-season1 {
+  background: #ffbf7f;
+}
+.bg-season2 {
+  background: #ff7fbf;
+}
+.bg-season3 {
+  background: #bf7fff;
+}
+.bg-season4 {
+  background: #7fbfff;
+}
+.bg-season5 {
+  background: #7fffbf;
 }

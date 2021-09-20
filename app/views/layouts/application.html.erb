@@ -16,17 +16,31 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#sort-table').tablesorter();
+      $('#sort-table').tablesorter();
     });
     </script>
+    <!--画像スライダー-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $('.slider').slick({
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      });
+    });
+    </script>
+    <!--作曲家年表-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
   <body>
     <header class="shadow-sm">
       <!-- コピーした kit code -->
       <script src="https://kit.fontawesome.com/c4ee658136.js" crossorigin="anonymous"></script>
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
-        <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container-fluid">
           <a class="navbar-brand mr-0 mr-md-2" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -96,7 +110,7 @@
                   <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item pl-4 text-nowrap">
-                  <%= link_to " ログイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
+                  <%= link_to " サインイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
                 </li>
               <% end %>
             </ul>
@@ -104,7 +118,8 @@
         </div>
       </nav>
     </header>
-    <% flash.each do |key, value| %>
+    <div id="wrap">
+      <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
           <span aria-hidden="true">&times;</span>
@@ -115,6 +130,7 @@
       </div>
     <% end %>
     <%= yield %>
+    </div>
     <footer class='fixed-bottom'>
       <p class="footer-text">Copyright © arst2727 All Rights Reserved.</p>
     </footer>

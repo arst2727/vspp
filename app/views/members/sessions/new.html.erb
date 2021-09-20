@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 col-lg-4">
     <%= image_tag 'vspp.png',:size =>"70x50", :class =>'my-4' %>
-    <h1 class='h3 mb-3 fw-normal'>VSPPにログイン</h1>
+    <h1 class='h3 mb-3 fw-normal'>VSPPにサインインする</h1>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -20,7 +20,7 @@
       <% end %>
 
       <div class="actions mb-3">
-        <%= f.submit "ログイン", class: 'w-75 btn btn-lg btn-outline-dark' %>
+        <%= f.submit "サインイン", class: 'w-75 btn btn-lg btn-outline-dark' %>
       </div>
     <% end %>
 
