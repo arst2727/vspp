@@ -49,7 +49,7 @@
         </div>
         <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
           <table class='table table-borderless field d-flex justify-content-center'>
-            <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all, :id, :name_kana %></td></tr>
+            <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana %></td></tr>
             <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード1番" %></td></tr>
             <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831" %></td></tr>
             <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8" %></td></tr>

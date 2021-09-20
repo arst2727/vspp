@@ -2,5 +2,5 @@
   <%= text_field_tag 'content', nil, placeholder: '検索ワード' %>
   <%= select_tag 'model', options_for_select({ "作曲家" => "composers", "楽曲" => "musical_pieces" }), class: "btn-sm btn-outline-dark" %>
   <%= select_tag 'method', options_for_select({ "完全一致" => "perfect_match", "前方一致"=>"forward_match", "後方一致"=>"backward_match","部分一致" => "partial_match" }), class: "btn-sm btn-outline-dark" %>
-  <%= submit_tag '検索', class: 'btn-sm btn-dark' %>
+  <%= submit_tag '検索', class: 'btn-sm btn-outline-dark' %>
 <% end %>

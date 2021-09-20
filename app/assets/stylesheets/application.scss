@@ -49,6 +49,10 @@ footer {
 .footer-text {
   color: black;
 }
+
+/* =====================
+  TOP画面アレンジ
+===================== */
 // TOP画面メインビジュアル
 #mv {
   width: 100%;
@@ -67,7 +71,6 @@ footer {
   padding-bottom: 20px;
   font-size: 25px;
 }
-
 // TOP画像ActiveStorage使用
 .top-img {
   color:#FFF!important;
@@ -140,7 +143,9 @@ footer {
 .display-none {
   display: none;
 }
-//シンプルカレンダーアレンジ
+/* ==========================
+  シンプルカレンダーアレンジ
+========================== */
 .simple-calendar .today {
   background: #e6e6fa;
 }
@@ -204,6 +209,9 @@ footer {
 .simple-calendar .next-month {
   background: #dcdcdc;
 }
+/* =====================
+  背景色アレンジ
+===================== */
 // シンプルカレンダー内背景色独自クラス
 .bg-kusa1 {
   background: #c6e48b;
@@ -229,4 +237,8 @@ footer {
 }
 .bg-season5 {
   background: #7fffbf;
+}
+// header背景色独自クラス
+.bg-header {
+  background: #fff7ef;
 }

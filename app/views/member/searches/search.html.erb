@@ -1,7 +1,7 @@
 <% if @model == 'composers' %>
-  <h3 class='text-center'>"<%= @content %>"で作曲家検索結果</h3>
+  <h3 class='text-center pt-5'>"<%= @content %>"で作曲家検索結果</h3>
   <%= render 'member/composers/index', composers: @records %>
 <% else @model == 'musical_pieces' %>
-  <h3 class='text-center'>"<%= @content %>"で楽曲検索結果</h3>
+  <h3 class='text-center pt-5'>"<%= @content %>"で楽曲検索結果</h3>
   <%= render 'member/musical_pieces/index', musical_pieces: @records, musical_piece: @musical_piece %>
 <% end %>
