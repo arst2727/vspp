@@ -27,9 +27,9 @@
             <td><%= composer.id %></td>
             <td>
               <% if composer.image.attached? %>
-                <%= image_tag composer.image.variant(resize: '30x40') %>
+                OK
               <% else %>
-                <%= image_tag 'no_image.jpg', size: '30x40' %>
+                NG
               <% end %>
             </td>
             <td><%= composer.name_kana %> / <%= composer.name_lang_en %></td>
