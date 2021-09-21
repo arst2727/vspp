@@ -19,9 +19,14 @@ ja:
     models:
       musical_piece: 楽曲
       musical_piece_comment: 楽曲コメント
+      member: 会員情報
     attributes:
       musical_piece:
         musical_piece_name: 楽曲名
       musical_piece_comment:
         comment: コメント
         evaluation: 評価
+      member:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
