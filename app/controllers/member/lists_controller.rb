@@ -1,13 +1,17 @@
 class Member::ListsController < ApplicationController
   before_action :authenticate_member!
+  before_action :confirm_member, except: [:index,:new]
 
+  # マイリスト一覧表示
   def index
     @lists = current_member.lists.all
   end
 
   def show
+    # どのマイリストを選択したのか取得
+    @list = current_member.lists.find(params[:id])
+    # 中間テーブルから該当するlist_idの楽曲データをlistsに入れる
     @lists = MusicalPieceList.where(list_id: params[:id])
-    @list = List.find(params[:id])
   end
 
   def new
@@ -28,11 +32,11 @@ class Member::ListsController < ApplicationController
   end
 
   def edit
-    @list = List.find(params[:id])
+    @list = current_member.lists.find(params[:id])
   end
 
   def update
-    @list = List.find(params[:id])
+    @list = current_member.lists.find(params[:id])
     if @list.update(list_params)
       flash[:info] = "リスト名を更新しました"
       redirect_to lists_path
@@ -42,7 +46,7 @@ class Member::ListsController < ApplicationController
   end
 
   def destroy
-    list = List.find(params[:id])
+    list = current_member.lists.find(params[:id])
     list.destroy
     @lists = current_member.lists.all
     flash[:info] = "リストを削除しました"
@@ -54,5 +58,10 @@ class Member::ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :member_id)
+  end
+
+  def confirm_member
+    @list = List.find_by(params[:id])
+    redirect_to lists_path if current_member.id != @list.member_id
   end
 end
