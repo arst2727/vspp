@@ -4,64 +4,68 @@
       <% if musical_pieces.present? %>
         <table id="sort-table" class='table table-sm table-hover'>
           <thead>
-          <tr class="thead-dark">
-            <th>楽曲名</th>
-            <th>コメント数</th>
-            <th>コメント最終更新日</th>
-          </tr>
+            <tr class="thead-dark">
+              <th>楽曲名</th>
+              <th>コメント数</th>
+              <th>コメント最終更新日</th>
+            </tr>
           </thead>
           <tbody>
           <% musical_pieces.each do |musical_piece| %>
             <% if musical_piece.is_active == true %>
-            <tr>
-              <td>
-                [<%= musical_piece.composer.name_kana %>]
-                <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
-                  <%= musical_piece.musical_piece_name %>
-                <% end %>
-              </td>
-              <td><%= musical_piece.musical_piece_comment_ids.count %></td>
-              <td>
-                <% if musical_piece.musical_piece_comment_ids.count != 0 %>
-                  <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
-                <% else %>
-                -
-                <% end %>
-              </td>
-            </tr>
+              <tr>
+                <td>
+                  [<%= musical_piece.composer.name_kana %>]
+                  <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
+                    <%= musical_piece.musical_piece_name %>
+                  <% end %>
+                </td>
+                <td><%= musical_piece.musical_piece_comment_ids.count %></td>
+                <td>
+                  <% if musical_piece.musical_piece_comment_ids.count != 0 %>
+                    <%= l musical_piece.musical_piece_comments.last.created_at, format: :short %>
+                  <% else %>
+                  -
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
           <% end %>
           </tbody>
         </table>
       <% else %>
-        <div class="text-center">
-          <span class='text-danger'>検索結果が見つかりませんでした。</span><br>
-          部分一致での検索を一度お試しいただきくようお願いいたします。<br>
-          それでも楽曲が見つからなかった場合は、以下のフォームにて管理者に楽曲追加の申請ができます。<br>
-          管理者側で確認でき次第、感想が投稿できるようになります。<br>
-          ぜひご協力をお願いいたします。
+        <div class="text-center pt-5">
+          <span class='text-white bg-danger h4 px-3'><i class="fas fa-exclamation-circle"></i> 検索結果が見つかりません</span><br>
+          <span class='text-white bg-info px-3'><i class="fas fa-question-circle"></i> 作曲家検索、楽曲検索の指定は正しいですか?</span><br>
+          <span class='text-white bg-info px-3'><i class="fas fa-question-circle"></i> "部分一致"での検索を試しましたか?</span><br>
+          <p>
+          それでも楽曲が見つからなかった場合は、<br>
+          以下のフォームにて楽曲追加の申請ができます。<br>
+          管理者側で楽曲を確認でき次第、<br>
+          感想が投稿できるようにいたします。<br>
+          楽曲数を増やすためにも、<br>
+          ぜひご協力をお願いいたします。<br>
+          </p>
           <% if @musical_piece.errors.any? %>
-            <%= @musical_piece.errors.count %> errors prohibited this musical_piece from being saved:<br>
+            <p class='w-100 pt-3'></p>
+            <%= @musical_piece.errors.count %>件のエラーが発生しました<br>
             <% @musical_piece.errors.full_messages.each do |message| %>
               <%= message %><br>
             <% end %>
           <% end %>
+          <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
+            <table class='table table-borderless field d-flex justify-content-center'>
+              <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana %></td></tr>
+              <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード1番" %></td></tr>
+              <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831" %></td></tr>
+              <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8" %></td></tr>
+              <tr><th>参考リンク</th><td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
+              <tr><td colspan="2"><button type="submit" class="btn btn-outline-dark">
+                <% f.submit %>楽曲追加申請
+              </button></td></tr>
+            </table>
+          <% end %>
         </div>
-        <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
-          <table class='table table-borderless field d-flex justify-content-center'>
-            <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana %></td></tr>
-            <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード1番" %></td></tr>
-            <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831" %></td></tr>
-            <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8" %></td></tr>
-            <tr><th>参考リンク</th><td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
-            <tr><th></th><td>
-            <button type="submit" class="btn btn-outline-dark">
-              <% f.submit %>楽曲追加申請
-            </button>
-            </td></tr>
-          </table>
-        <% end %>
-
       <% end %>
     </div>
   </div>

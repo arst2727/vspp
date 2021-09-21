@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     get '/search', to: 'searches#search'
     resources :musical_pieces, only: [:index,:show,:new,:create] do
       resources :musical_pieces_comments, only: [:create, :destroy]
+      collection do
+        get "request", to: 'musical_pieces#request', as: :request
+      end
     end
     resources :composers, only: [:index,:show] do
       collection do

@@ -8,6 +8,7 @@ class Member::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     if @member.id == current_member.id
+      @musical_piece_comments = MusicalPieceComment.where(member_id: current_member)
       render :my_page
     end
     @musical_piece_comments = MusicalPieceComment.where(member_id: @member)
