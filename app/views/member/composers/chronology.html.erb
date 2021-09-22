@@ -5,24 +5,30 @@
     var container = document.getElementById('timeline');
     var chart = new google.visualization.Timeline(container);
     var dataTable = new google.visualization.DataTable();
-
-    dataTable.addColumn({ type: 'string', id: 'Composer' });
+    // dataTable.addColumn({ type: 'string', id: 'Term' });
+    dataTable.addColumn({ type: 'string', id: 'Name' });
     dataTable.addColumn({ type: 'string', id: 'dummy bar label' });
     dataTable.addColumn({ type: 'string', role: 'tooltip', 'p': {html: true} });
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
     dataTable.addRows([
+      <% i = 1 %>
       <% @composers.each do |composer| %>
         <% if composer.is_active == true %>
-        [ '<%=composer.name_kana %>',
+        [ //'<%#= i %>',
+          '<%= composer.name_kana %>',
           null,
           '<span class="text-nowrap p-3"><%= "#{composer.year_of_birth} - #{composer.year_of_death}" %></span>',
           new Date(<%= composer.year_of_birth %>, 1, 1),
           new Date(<%= composer.year_of_death %>, 12, 31) ],
         <% end %>
+        <% i = i + 1 %>
       <% end %>
     ]);
     var options = {
+      // timeline: { showRowLabels: false },
+      // avoidOverlappingGridLines: false,
+      // backgroundColor: '#ffd',
       colors: [
         <% @composers.each do |composer| %>
           <% case composer.year_of_birth %>
@@ -47,11 +53,13 @@
 </script>
 <div class="container">
   <div class='row'>
-    <div class='col-lg-4 col-md-12'>
-      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">作曲家年表</h4>
-    </div>
-    <div class='col-lg-8 col-md-12 col-xs-12 text-right'>
-      <h5 class="px-5 py-2 mt-5 mr-5">
+    <div class='col-lg-4 col-md-12 col-xs-12'>
+    <h4 class="px-5 py-2 mt-5 ml-5" >作曲家年表</h4>
+  </div>
+  <!--凡例のスクロール固定表示-->
+  <div class='row sticky-top' id='wrap'>
+    <div class='col-lg-8 offset-lg-4 col-md-12 col-xs-12'>
+      <h5 class="text-nowrap text-right">
         <span class="bg-season1 px-2">バロック</span>
         <span class="bg-season2 px-2">古典派</span>
         <span class="bg-season3 px-2">初期ロマン派</span>
@@ -60,5 +68,6 @@
       </h5>
     </div>
   </div>
+  <!--グラフ描画-->
   <div id="timeline" style="height: 3000px; width: 100%;"></div>
 </div>

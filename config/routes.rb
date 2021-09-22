@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     get "home/about" => "homes#about"
     get '/search', to: 'searches#search'
+
     resources :musical_pieces, only: [:index,:show,:new,:create] do
       resources :musical_pieces_comments, only: [:create, :destroy]
     end
@@ -36,11 +37,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :lists do
-      collection do
-        delete "destroy_all"
-      end
-    end
+    resources :lists
   end
 
   # 管理者側のルーティング設定

@@ -1,50 +1,16 @@
 <div class="jumbotron h-100 top-img">
   <div class='container'>
     <div class='row justify-content-center'>
-      <div class='col-lg-6 col-md-10 col-xs-10'>
+      <div class='col-lg-12 col-md-10 col-xs-10'>
         <section id="mv">
+          当サイトVSPPは、ピアノ独奏曲のコメント投稿サイトです<br>
           <h1 class="mv-title">VSPP</h1>
           <p class="mv-text">
           感性を言語化しよう
           </p>
+        <span class="pr-4"><%= link_to " About", home_about_path, method: :get, class: 'fas fa-question btn btn-lg btn-outline-dark' %></span>
+        <span class="pl-4"><%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-lg btn-outline-dark' %></span>
         </section>
-      </div>
-      <div class='col-lg-12 col-md-10 col-xs-10'>
-        <section id="merit">
-          <div class="container">
-            <!--<h2 class="heading text-center">-->
-            <!--  会員登録してみよう-->
-            <!--</h2>-->
-            <p class="heading-text text-center">
-              当サイトVSPPは、ピアノ独奏曲のコメント投稿サイトです<br>
-              会員登録をすると、次のような機能が使えます
-            </p>
-            <div class="merit-group">
-              <div class="merit">
-                <i class="far fa-comments" aria-hidden="true"></i>
-                <h3 class="merit-title">コメント機能</h3>
-                <p class="merit-text">
-                  コメントの閲覧および投稿ができます。楽曲ごとのコメントだけではなく、自分がフォローしているメンバーのコメントが見られるタイムライン機能があります。
-                </p>
-              </div>
-              <div class="merit">
-                <i class="fas fa-list" aria-hidden="true"></i>
-                <h3 class="merit-title">マイリスト機能</h3>
-                <p class="merit-text">
-                  楽曲をリスト管理できます。リストは「いつか弾いてみたい」リスト、「あとで聴きたい」リストというように複数作成できます。
-                </p>
-              </div>
-              <div class="merit">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <h3 class="merit-title">検索機能</h3>
-                <p class="merit-text">
-                  楽曲や作曲家検索ができます。楽曲検索結果でヒットしなかった場合には、楽曲名を申請できます。承認されるとコメントの投稿ができるようになります。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        </div>
       </div>
     </div>
   </div>

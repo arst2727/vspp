@@ -1,6 +1,6 @@
 class Member::ListsController < ApplicationController
   before_action :authenticate_member!
-  before_action :confirm_member, except: [:index,:new]
+  before_action :confirm_member, only: [:show]
 
   # マイリスト一覧表示
   def index
@@ -19,7 +19,7 @@ class Member::ListsController < ApplicationController
   end
 
   def create
-    @list = current_member.lists.new(list_params)
+    @list = List.new(list_params)
 
     if @list.save
       @lists = current_member.lists.all

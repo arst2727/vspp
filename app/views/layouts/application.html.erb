@@ -14,10 +14,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
+
     <!--表のカラムソート機能-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
     <script>
-    $(document).ready(function() {
+    document.addEventListener("turbolinks:load", function() {
       $('#sort-table').tablesorter();
     });
     </script>
@@ -35,6 +36,32 @@
     </script>
     <!--作曲家年表-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--// インクリメンタル検索-->
+    <script>
+    $(document).on('turbolinks:load', function () {
+      $('.js-text_field').on('change', function () {
+        search();
+      });
+      $("#model").change(function() {
+        search();
+      });
+    });
+    function search() {
+      let content = $('.js-text_field').val();
+      let target = $('#model option:selected').val();
+      $.ajax({
+        type: 'GET', // リクエストのタイプ
+        url: '/search', // リクエストを送信するURL
+        data:  { content: content, model: target }, // サーバーに送信するデータ
+        dataType: 'json' // サーバーから返却される型
+      })
+      .done(function (data) {
+        // 表示する文字列を作る
+        let search_result_data = data.join("<br>")
+        $(".search-result").html(search_result_data);
+      })
+    };
+    </script>
   </head>
 
   <body>
@@ -44,13 +71,12 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-header fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand mr-0 mr-md-2" href="/"><%= image_tag 'vspp.png',:size =>"70x50" %></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <ul class="navbar-nav bd-navbar-nav flex-row">
-              <% if admin_signed_in? %>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <% if admin_signed_in? %>
+              <ul class="navbar-nav mr-auto">
                 <li class="nav-item pr-5">
                   管理者ログイン中
                 </li>
@@ -66,15 +92,22 @@
                 <li class="nav-item pl-4 text-nowrap">
                   <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>
                 </li>
-              <% elsif member_signed_in? %>
-                <li class="nav-item pr-2 my-auto">
+              </ul>
+            <% elsif member_signed_in? %>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
                 </li>
-                <li class="nav-item px-2 my-auto">
+                <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-2 my-auto">
+                <li class="nav-item my-auto text-nowrap">
                   <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                </li>
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item pr-0 my-auto">
+                  <%= render 'member/searches/form' %>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,33 +125,36 @@
                     <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt dropdown-item' %>
                   </div>
                 </li>
-                <li class="nav-item pr-0 my-auto text-nowrap">
-                  <%= render 'member/searches/form' %>
-                </li>
-              <!--管理者でも会員でもログインしていないとき-->
-              <% else %>
-                <li class="nav-item px-4 text-nowrap">
+              </ul>
+            <!--管理者でも会員でもログインしていないとき-->
+            <% else %>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item px-2 text-nowrap">
                   <%= link_to " About", home_about_path, method: :get, class: 'fas fa-question btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4 text-nowrap">
+                <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4 text-nowrap">
+                <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item px-4 text-nowrap">
+                <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item pl-4 text-nowrap">
+              </ul>
+              <ul class="navbar-nav">
+                <li class="nav-item pl-2 text-nowrap">
                   <%= link_to " サインイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
                 </li>
-              <% end %>
-            </ul>
+              </ul>
+            <% end %>
           </div>
         </div>
       </nav>
     </header>
     <div id="wrap">
+      <div class="search-result pr-6 text-right bg-header text-dark js-searchable">
+      </div>
       <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">

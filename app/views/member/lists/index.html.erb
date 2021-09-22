@@ -1,16 +1,18 @@
 <div class='container'>
-  <div class="row">
-    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark"><%= current_member.nickname %>のマイリスト:
-      <% if @lists.present? %>
-        全<%= @lists.count %>件
-      <% end %>
-    </h4>
+  <div class="row justify-content-center">
+    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark"><%= current_member.nickname %>のマイリスト</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-lg-8'>
-      <div class="text-right mb-4">
+      <div class="mb-4 mt-2">
+        <% if @lists.present? %>
+          全<%= @lists.count %>件
+        <% else %>
+          リスト新規作成
+        <% end %>
+        <!--リスト新規作成ボタン-->
         <%= link_to new_list_path do %>
-          <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+          <button type="button" class="btn btn-dark rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
         <% end %>
       </div>
       <% if @lists.present? %>
@@ -35,7 +37,7 @@
                 </td>
                 <td><%= list.musical_pieces.count %></td>
                 <td><%= l list.updated_at, format: :default %></td>
-                <td>
+                <td class="text-nowrap">
                   <%= link_to "削除", list_path(list), method: :delete, data: {confirm: "リストごと削除しますか？"}, class: "btn-sm btn-outline-danger" %>
                 </td>
               </tr>
@@ -43,7 +45,7 @@
           </tbody>
         </table>
       <% else %>
-        まだリストを作成されておりません
+        <span class='text-center'>まだリストを作成されておりません</span>
       <% end %>
     </div>
   </div>
