@@ -1,6 +1,6 @@
 class Member::ListsController < ApplicationController
   before_action :authenticate_member!
-  before_action :confirm_member, only: [:show]
+  # before_action :confirm_member, except: [:index]
 
   # マイリスト一覧表示
   def index
@@ -59,8 +59,8 @@ class Member::ListsController < ApplicationController
     params.require(:list).permit(:name, :member_id)
   end
 
-  def confirm_member
-    @list = List.find_by(params[:id])
-    redirect_to lists_path if current_member.id != @list.member_id
-  end
+  # def confirm_member
+  #   @list = List.find_by(params[:id])
+  #   redirect_to lists_path if current_member.id != @list.member_id
+  # end
 end

@@ -5,9 +5,9 @@
         <table id="sort-table" class='table table-sm table-hover'>
           <thead>
             <tr class="thead-dark">
-              <th>楽曲名</th>
-              <th>コメント数</th>
-              <th>コメント最終更新日</th>
+              <th class="text-nowrap">楽曲名</th>
+              <th class="text-nowrap">コメント<span class="br"></span>数</th>
+              <th>コメント<span class="br"></span>最終<span class="br"></span>更新日</th>
             </tr>
           </thead>
           <tbody>
@@ -35,11 +35,11 @@
         </table>
       <% else %>
         <div class="text-center pt-5">
-          <span class='text-white bg-danger h4 px-3'><i class="fas fa-exclamation-circle"></i> 検索結果が見つかりません</span><br>
+          <span class='text-white bg-danger h4 px-3'><i class="fas fa-exclamation-circle"></i> 検索結果はありません</span><br>
           <span class='text-white bg-info h4 px-3'><i class="fas fa-question-circle"></i> "楽曲"検索、"作曲家"検索の指定は正しいですか?</span><br>
           <p>
           楽曲が見つからなかった場合は、<br>
-          以下のフォームにて楽曲追加の申請ができます。<br>
+          以下のフォームにて<br>楽曲追加の申請ができます。<br>
           管理者側で楽曲を確認でき次第、<br>
           感想が投稿できるようにいたします。<br>
           楽曲数を増やすためにも、<br>
@@ -55,10 +55,10 @@
           <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
             <table class='table table-borderless field d-flex justify-content-center'>
               <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana %></td></tr>
-              <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード1番" %></td></tr>
-              <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831" %></td></tr>
-              <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8" %></td></tr>
-              <tr><th>参考リンク</th><td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
+              <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード第1番", autocomplete: "off" %></td></tr>
+              <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831", autocomplete: "off" %></td></tr>
+              <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8", autocomplete: "off" %></td></tr>
+              <tr><th>参考リンク</th><td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135", autocomplete: "off" %></td></tr>
               <tr><td colspan="2"><button type="submit" class="btn btn-outline-dark">
                 <% f.submit %>楽曲追加申請
               </button></td></tr>

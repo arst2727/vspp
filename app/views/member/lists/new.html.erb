@@ -15,7 +15,7 @@
         <% end %>
         <%= form_with model: @list, url: lists_path, method: :post, local: true do |f| %>
           <table class='table table-borderless field d-flex justify-content-center'>
-            <tr><th>リスト名(10文字以内)</th><td><%= f.text_field :name, :placeholder => "あとで聴きたい" %></td></tr>
+            <tr><th>リスト名<span class='br'></span>(10文字以内)</th><td><%= f.text_field :name, :placeholder => "あとで聴きたい" %></td></tr>
           </table>
           <%= f.hidden_field :member_id, :value => current_member.id %>
           <button type="submit" class="btn btn-outline-dark">

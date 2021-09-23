@@ -20,3 +20,13 @@
 //= require_tree .
 //
 //= require jquery.raty.js
+
+$(document).on('turbolinks:load', function () {
+  $('.navbar-toggler').click(function() {
+    if ($('.navbar-collapse').hasClass('show')) {
+      $('#wrap').css('padding-top', '80px')
+    } else {
+      $('#wrap').css('padding-top', '282px')
+    }
+  })
+});

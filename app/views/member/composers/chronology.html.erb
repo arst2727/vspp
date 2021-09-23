@@ -12,17 +12,15 @@
     dataTable.addColumn({ type: 'date', id: 'Start' });
     dataTable.addColumn({ type: 'date', id: 'End' });
     dataTable.addRows([
-      <% i = 1 %>
       <% @composers.each do |composer| %>
         <% if composer.is_active == true %>
-        [ //'<%#= i %>',
+        [
           '<%= composer.name_kana %>',
           null,
           '<span class="text-nowrap p-3"><%= "#{composer.year_of_birth} - #{composer.year_of_death}" %></span>',
           new Date(<%= composer.year_of_birth %>, 1, 1),
           new Date(<%= composer.year_of_death %>, 12, 31) ],
         <% end %>
-        <% i = i + 1 %>
       <% end %>
     ]);
     var options = {
@@ -57,17 +55,17 @@
     <h4 class="px-5 py-2 mt-5 ml-5" >作曲家年表</h4>
   </div>
   <!--凡例のスクロール固定表示-->
-  <div class='row sticky-top' id='wrap'>
+  <div class='row fixed-top mt-2' id='legend'>
     <div class='col-lg-8 offset-lg-4 col-md-12 col-xs-12'>
-      <h5 class="text-nowrap text-right">
+      <h6 class="text-md-nowrap text-right mr-3">
         <span class="bg-season1 px-2">バロック</span>
-        <span class="bg-season2 px-2">古典派</span>
+        <span class="bg-season2 px-2 br">古典派</span>
         <span class="bg-season3 px-2">初期ロマン派</span>
         <span class="bg-season4 px-2">後期ロマン派</span>
         <span class="bg-season5 px-2">近現代</span>
-      </h5>
+      </h6>
     </div>
   </div>
-  <!--グラフ描画-->
-  <div id="timeline" style="height: 3000px; width: 100%;"></div>
 </div>
+<!--グラフ描画-->
+<div id="timeline" style="height: 3000px; width: 1000px;"></div>

@@ -1,7 +1,7 @@
 <% if @musical_piece.is_active == true %>
   <div class='container'>
     <div class="row">
-      <h4 class="px-5 py-2 mt-5 ml-5 text-dark">
+      <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">
         <%= link_to composer_path(@musical_piece.composer), class: 'text-dark' do %>
           <%= @musical_piece.composer.name_kana %>
         <% end %>
@@ -57,7 +57,7 @@
           <!---------------->
           <%= form_with model: @musical_piece_comment, url: musical_piece_musical_pieces_comments_path(musical_piece_id: @musical_piece.id), local:true, method: :post do |f| %>
             <div class='pt-3'>
-              <%= f.text_area :comment, size: "30x10", placeholder: 'ここにコメントを200文字まで入力できます' %>
+              <%= f.text_area :comment, size: "40x10", placeholder: 'ここにコメントを200文字まで入力できます' %>
             </div>
             <div class="display-none">
               <%= f.datetime_select :start_time %>
@@ -66,7 +66,7 @@
               星0.5〜5.0の10段階で評価できます。<br>
             </p>
 
-            <div class="form-group row text-nowrap" id="star">
+            <div class="form-group row text-nowrap pl-3" id="star">
               <%= f.hidden_field :evaluation, id: :evaluation_star %>
             </div>
              <!--評価javascript-->
@@ -83,7 +83,7 @@
               half: true
             });
             </script>
-            <div>
+            <div class="text-center">
               <%= f.submit "レビュー投稿", class: 'btn btn-outline-dark' %>
             </div>
           <% end %>

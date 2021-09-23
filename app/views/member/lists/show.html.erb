@@ -1,6 +1,6 @@
 <div class='container'>
-  <div class="row">
-    <h4 class="px-5 py-2 mt-5 ml-5 text-dark"><%= @list.name %></h4>
+  <div class="row justify-content-center">
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark"><%= @list.name %></h4>
   </div>
   <div class='row'>
     <div class='col'>
@@ -8,9 +8,9 @@
         <table id='sort-table' class='table table-hover'>
           <thead class="thead-dark">
             <tr>
-              <th>リスト追加日時</th>
-              <th>作曲家名</th>
-              <th>楽曲名</th>
+              <th>リスト<span class='br'></span>追加日時</th>
+              <th class="text-nowrap">作曲家名</th>
+              <th class='text-nowrap'>楽曲名</th>
               <th></th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to "リストから削除", musical_piece_list_path(list), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger" %>
+                  <%= link_to "削除", musical_piece_list_path(list), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger text-nowrap" %>
                 </td>
               </tr>
             <% end %>

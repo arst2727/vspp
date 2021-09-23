@@ -4,7 +4,7 @@
     <title>VSPP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -39,8 +39,14 @@
     <!--// インクリメンタル検索-->
     <script>
     $(document).on('turbolinks:load', function () {
-      $('.js-text_field').on('change', function () {
+      $('.js-text_field').on('keyup', function () {
         search();
+        console.log($('.js-text_field').val())
+        if ($('.js-text_field').val() === '') {
+          $('.search-result').fadeOut(500)
+        } else {
+          $('.search-result').show()
+        }
       });
       $("#model").change(function() {
         search();
@@ -153,7 +159,7 @@
       </nav>
     </header>
     <div id="wrap">
-      <div class="search-result pr-6 text-right bg-header text-dark js-searchable">
+      <div class="search-result text-center bg-header text-dark js-searchable">
       </div>
       <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
@@ -167,7 +173,7 @@
     <% end %>
     <%= yield %>
     </div>
-    <footer class='fixed-bottom'>
+    <footer class='fixed-bottom' id='footer-wrap'>
       <p class="footer-text">Copyright © arst2727 All Rights Reserved.</p>
     </footer>
   </body>

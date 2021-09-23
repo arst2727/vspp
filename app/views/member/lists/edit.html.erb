@@ -15,7 +15,7 @@
         <% end %>
         <%= form_with model: @list, url: list_path, method: :patch, local: true do |f| %>
           <table class='table table-borderless field d-flex justify-content-center'>
-            <tr><th>リスト名(10文字以内)</th><td><%= f.text_field :name %></td></tr>
+            <tr><th>リスト名<span class='br'></span>(10文字以内)</th><td><%= f.text_field :name %></td></tr>
           </table>
           <button type="submit" class="btn btn-outline-dark">
             <% f.submit %>編集を保存

@@ -48,11 +48,10 @@ h4:after {
 }
 // headerの76px分下げる
 #wrap {
-  padding-top: 80px!important;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
-.pr-6, .px-6 {
-  padding-right: 21rem !important;
-}
+
 // ページネーションアレンジ(ベースはkaminari+bootstrap)
 .pagination {
   justify-content: center;
@@ -104,7 +103,7 @@ footer {
 .mv-text {
   padding-top: 10px;
   padding-bottom: 20px;
-  font-size: 25px;
+  font-size: 16px;
 }
 // TOP画像ActiveStorage使用
 .top-img {
@@ -287,4 +286,15 @@ footer {
 // header背景色独自クラス
 .bg-header {
   background: #fff7ef;
+}
+@media screen and (max-width: 767.98px) {
+.br::after {
+	content: "\A";
+	white-space: pre;
+}
+}
+
+#legend {
+  top: 80px;
+  z-index: 1;
 }

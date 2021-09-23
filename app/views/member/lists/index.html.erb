@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 ml-5 text-dark"><%= current_member.nickname %>のマイリスト</h4>
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark"><%= current_member.nickname %>のマイリスト</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-lg-8'>
@@ -19,9 +19,9 @@
         <table id='sort-table' class='table table-hover'>
           <thead class="thead-dark">
             <tr>
-              <th>リスト名</th>
-              <th>登録楽曲数</th>
-              <th>リスト内最終更新日時</th>
+              <th class="text-nowrap">リスト名</th>
+              <th class="text-nowrap">登録楽曲数</th>
+              <th>リスト内<span class='br'></span>更新日時</th>
               <th></th>
             </tr>
           </thead>
