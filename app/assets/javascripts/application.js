@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function () {
     if ($('.navbar-collapse').hasClass('show')) {
       $('#wrap').css('padding-top', '80px')
     } else {
-      $('#wrap').css('padding-top', '290px')
+      $('#wrap').css('padding-top', '300px')
     }
   })
 });
