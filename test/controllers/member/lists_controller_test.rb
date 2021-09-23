@@ -20,5 +20,4 @@ class Member::ListsControllerTest < ActionDispatch::IntegrationTest
     get member_lists_edit_url
     assert_response :success
   end
-
 end

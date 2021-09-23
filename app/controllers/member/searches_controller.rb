@@ -28,9 +28,10 @@ class Member::SearchesController < ApplicationController
   def search_for(model, content)
     # 部分一致検索
     if model == 'composers'
-      Composer.where('name_kana LIKE ? or name_lang_en LIKE?', '%'+content+'%', '%'+content+'%')
+      Composer.where('name_kana LIKE ? or name_lang_en LIKE?',
+      '%' + content + '%', '%' + content + '%')
     elsif model == 'musical_pieces'
-      MusicalPiece.where('musical_piece_name LIKE ?', '%'+content+'%')
+      MusicalPiece.where('musical_piece_name LIKE ?', '%' + content + '%')
     else
     end
   end

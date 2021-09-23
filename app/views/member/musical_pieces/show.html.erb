@@ -1,7 +1,7 @@
 <% if @musical_piece.is_active == true %>
   <div class='container'>
     <div class="row">
-      <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">
+      <h4 class="px-5 py-2 mt-5 ml-5 text-dark">
         <%= link_to composer_path(@musical_piece.composer), class: 'text-dark' do %>
           <%= @musical_piece.composer.name_kana %>
         <% end %>

@@ -46,6 +46,7 @@ class Admin::MusicalPiecesController < ApplicationController
   private
 
   def musical_piece_params
-    params.require(:musical_piece).permit(:composer_id, :musical_piece_name, :year_of_composition, :performance_time, :reference_URL, :is_active)
+    params.require(:musical_piece).permit(:composer_id, :musical_piece_name, :year_of_composition,
+                                    :performance_time, :reference_URL, :is_active)
   end
 end

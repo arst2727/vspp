@@ -4,6 +4,7 @@ class Member::MembersController < ApplicationController
   def my_page
     @musical_piece_comments = MusicalPieceComment.where(member_id: current_member)
   end
+
   # 他人のページ
   def show
     @member = Member.find(params[:id])
@@ -13,6 +14,7 @@ class Member::MembersController < ApplicationController
     end
     @musical_piece_comments = MusicalPieceComment.where(member_id: @member)
   end
+
   # 自分のタイムライン(最新100件取得)
   def timeline
     # 自分がフォローしているメンバーのidを取得(複数)

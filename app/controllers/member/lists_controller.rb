@@ -53,7 +53,6 @@ class Member::ListsController < ApplicationController
     render 'index'
   end
 
-
   private
 
   def list_params

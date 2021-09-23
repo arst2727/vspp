@@ -1,5 +1,5 @@
 class Member::ComposersController < ApplicationController
-  before_action :authenticate_member!,except: [:index, :chronology]
+  before_action :authenticate_member!, except: [:index, :chronology]
   # 作曲家一覧
   def index
     @composers = Composer.all.page(params[:page]).per(15)

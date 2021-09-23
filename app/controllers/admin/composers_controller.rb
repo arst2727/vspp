@@ -46,6 +46,7 @@ class Admin::ComposersController < ApplicationController
   private
 
   def composer_params
-    params.require(:composer).permit(:name_kana, :name_lang_en,:image, :year_of_birth, :year_of_death, :reference_url, :is_active)
+    params.require(:composer).permit(:name_kana, :name_lang_en, :image, :year_of_birth,
+                                      :year_of_death, :reference_url, :is_active)
   end
 end

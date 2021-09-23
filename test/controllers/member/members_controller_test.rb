@@ -15,5 +15,4 @@ class Member::MembersControllerTest < ActionDispatch::IntegrationTest
     get member_members_timeline_url
     assert_response :success
   end
-
 end
