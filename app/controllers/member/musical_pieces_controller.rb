@@ -3,7 +3,7 @@ class Member::MusicalPiecesController < ApplicationController
 
   # 楽曲一覧
   def index
-    @musical_pieces = MusicalPiece.all.page(params[:page]).per(15)
+    @musical_pieces = MusicalPiece.all.order(musical_piece_name: :asc).page(params[:page]).per(15)
     @musical_piece = MusicalPiece.new
   end
 
