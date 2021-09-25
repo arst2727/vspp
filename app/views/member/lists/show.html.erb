@@ -29,7 +29,9 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to "削除", musical_piece_list_path(list), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger text-nowrap" %>
+                  <% if @list.member_id == current_member.id %>
+                    <%= link_to "削除", musical_piece_list_path(list), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-sm btn-outline-danger text-nowrap" %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
