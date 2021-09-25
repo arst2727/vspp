@@ -1,5 +1,5 @@
 <%= form_tag(search_path, method: :get) do %>
-  <%= text_field_tag 'content', nil, placeholder: '検索ワード', class: 'js-text_field', autocomplete: "off" %>
+  <%= text_field_tag 'content', nil, placeholder: '楽曲・作曲家の名前', class: 'js-text_field', autocomplete: "off" %>
   <%= select_tag 'model', options_for_select({ "楽曲" => "musical_pieces", "作曲家" => "composers" }), class: "btn-sm btn-outline-dark" %>
   <%= submit_tag '検索', class: 'btn-sm btn-outline-dark' %>
 <% end %>

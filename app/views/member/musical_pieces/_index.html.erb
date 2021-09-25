@@ -6,8 +6,8 @@
           <thead>
             <tr class="thead-dark">
               <th class="text-nowrap">楽曲名</th>
-              <th class="text-nowrap">コメント<span class="br"></span>数</th>
-              <th>コメント<span class="br"></span>最終<span class="br"></span>更新日</th>
+              <th class="text-nowrap">コメント数</th>
+              <th class="text-nowrap">コメント<span class="br"></span>最終更新日</th>
             </tr>
           </thead>
           <tbody>
@@ -15,7 +15,7 @@
             <% if musical_piece.is_active == true %>
               <tr>
                 <td>
-                  [<%= musical_piece.composer.name_kana %>]
+                  <span class="text-nowrap br">[<%= musical_piece.composer.name_kana %>]</span>
                   <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
                     <%= musical_piece.musical_piece_name %>
                   <% end %>
