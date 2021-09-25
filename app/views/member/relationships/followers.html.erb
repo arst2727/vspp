@@ -4,7 +4,7 @@
   </div>
   <div class='row justify-content-center'>
     <% if @members.exists? %>
-      <div class='col-xs-8 col-md-8 col-lg-8'>
+      <div class='col-xs-12 col-md-8 col-lg-6'>
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -14,22 +14,22 @@
           </thead>
           <tbody>
             <% @members.each do |member| %>
-              <tr>
-                <td>
+              <tr class="text-center">
+                <td class="col-xs-6 col-md-4 col-lg-3 text-left text-nowrap">
                   <%= link_to member_path(member), class: "text-dark" do %>
                     <% if member.profile_image.attached? %>
                       <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                     <% else %>
                       <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
                     <% end %>
-                    <%= member.nickname.truncate(18) %>
+                    <%= member.nickname.truncate(15) %>
                   <% end %>
                 </td>
-                <td>
+                <td class="col-xs-6 col-md-4 col-lg-3 text-nowrap">
                   <% if current_member.following?(member) %>
-                    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark" %>
+                    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
                   <% else %>
-                    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap" %>
+                    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
                   <% end %>
                 </td>
               </tr>
@@ -38,7 +38,7 @@
         </table>
       </div>
     <% else %>
-      <p>フォロワーはいません</p>
+      <p>まだフォロワーはいません</p>
     <% end %>
   </div>
 </div>
