@@ -118,15 +118,8 @@
         </table>
         <script>
           $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
-          // $('.musical_piece-evaluation').raty({
-          //   readOnly: true,
-          //   score: function() {
-          //     return $(this).attr('data-score');
-          //   },
-          //   path: '/assets/'
-          // });
           $('.musical_piece-evaluation').raty({
-              size     : 36,
+              size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
