@@ -59,26 +59,30 @@
           <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).limit(100) %>
           <% musical_piece_comments.each do |mc| %>
             <tr>
-              <th class='col-xs-1 col-md-2 col-lg-1 text-right'>
-                <%= link_to member_path(mc.member) do %>
-                  <% if mc.member.profile_image.attached? %>
-                    <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+              <div class='col-xs-1 col-md-2 col-lg-1 text-right'>
+                <th>
+                  <%= link_to member_path(mc.member) do %>
+                    <% if mc.member.profile_image.attached? %>
+                      <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </th>
-              <td class='col-xs-11 col-md-8 col-lg-5'>
-                <span class='lead'><%= mc.member.nickname %> </span>
-                <span class='text-muted'><%= l mc.created_at, format: :default %></span>
-                <br>
-                <span class='text-muted'>[<%= mc.musical_piece.composer.name_kana %>]</span>
-                <%= link_to musical_piece_path(mc.musical_piece), class: 'text-dark' do %>
-                  <%= mc.musical_piece.musical_piece_name %>
-                <% end %>
-                <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
-                <div class="h5 text-break"><%= mc.comment %></div>
-              </td>
+                </th>
+              </div>
+              <div class='col-xs-11 col-md-8 col-lg-5'>
+                <td>
+                  <span class='lead'><%= mc.member.nickname %> </span>
+                  <span class='text-muted'><%= l mc.created_at, format: :default %></span>
+                  <br>
+                  <span class='text-muted'>[<%= mc.musical_piece.composer.name_kana %>]</span>
+                  <%= link_to musical_piece_path(mc.musical_piece), class: 'text-dark' do %>
+                    <%= mc.musical_piece.musical_piece_name %>
+                  <% end %>
+                  <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
+                  <div class="h5 text-break"><%= mc.comment %></div>
+                </td>
+              </div>
             </tr>
           <% end %>
         </table>
