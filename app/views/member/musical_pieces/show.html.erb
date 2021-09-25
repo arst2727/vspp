@@ -32,7 +32,7 @@
             <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
           <% end %>
         <% else %>
-          マイリストを作成してください<%= link_to "作成画面へ", new_list_path, class: "btn-sm btn-outline-dark" %>
+          マイリストを作成してください<br><%= link_to "作成画面へ", new_list_path, class: "btn-sm btn-dark" %>
         <% end %>
         <!--コメントcreate時のエラーメッセージ-->
         <% if @musical_piece_comment.errors.any? %>
@@ -98,7 +98,7 @@
               <div class='text-nowrap'>
                 <%= link_to member_path(mc.member) do %>
                   <% if mc.member.profile_image.attached? %>
-                    <%= image_tag mc.member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                    <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                   <% else %>
                     <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
                   <% end %>

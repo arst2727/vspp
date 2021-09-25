@@ -18,7 +18,7 @@
                 <td>
                   <%= link_to member_path(member), class: "text-dark" do %>
                     <% if member.profile_image.attached? %>
-                      <%= image_tag member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                      <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                     <% else %>
                       <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
                     <% end %>

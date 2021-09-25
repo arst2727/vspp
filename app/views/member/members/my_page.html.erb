@@ -5,7 +5,7 @@
         <tr>
           <th>
             <% if current_member.profile_image.attached? %>
-              <%= image_tag current_member.profile_image.variant(resize: '100x100'), class: "rounded-circle" %>
+              <%= image_tag current_member.profile_image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed, class: "rounded-circle" %>
             <% else %>
               <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '100x100' %>
             <% end %>
@@ -62,7 +62,7 @@
               <th class='col-1'>
                 <%= link_to member_path(mc.member) do %>
                   <% if mc.member.profile_image.attached? %>
-                    <%= image_tag mc.member.profile_image.variant(resize: '50x50'), class: "rounded-circle" %>
+                    <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                   <% else %>
                     <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
                   <% end %>

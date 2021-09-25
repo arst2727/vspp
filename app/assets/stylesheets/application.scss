@@ -287,13 +287,14 @@ footer {
 .bg-header {
   background: #fff7ef;
 }
+// レスポンシブ対応の改行用
 @media screen and (max-width: 767.98px) {
 .br::after {
 	content: "\A";
 	white-space: pre;
 }
 }
-
+// 作曲家年表凡例表示順
 #legend {
   top: 80px;
   z-index: 1;
