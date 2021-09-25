@@ -17,7 +17,7 @@
           <tr><th class="table-secondary text-nowrap">作曲年</th><td><%= @musical_piece.year_of_composition %></td></tr>
           <tr><th class="table-secondary text-nowrap">総演奏時間[min]</th><td><%= @musical_piece.performance_time %></td></tr>
           <tr><th class="table-secondary text-nowrap">参考リンク</th><td>
-            <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer", class: 'text-dark' %>
+            <%= link_to "別タブへ", @musical_piece.reference_URL, target: :_blank, rel: "noopener noreferrer" %>
           </td></tr>
         </table>
         <!------------------>
@@ -123,7 +123,7 @@
             score: function() {
               return $(this).attr('data-score');
             },
-            path: '/public/images/'
+            path: '/'
           });
         </script>
       </div>
