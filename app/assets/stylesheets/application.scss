@@ -299,3 +299,40 @@ footer {
   top: 80px;
   z-index: 1;
 }
+// ハンバーガーメニューアレンジ
+.navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image:none; /* この行で背景画像を無効化 */
+  background-color: #000;
+  width: 30px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  transition: ease .5s;
+}
+
+/* 3本のバーそれぞれの座標を設定 */
+.navbar-toggler-icon:nth-of-type(1) {top:7px;}
+.navbar-toggler-icon:nth-of-type(2) {top:14px;}
+.navbar-toggler-icon:nth-of-type(3) {top:21px;}
+
+/* メニューが開いている時の　3本のバーそれぞれの座標および角度を設定 */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:nth-of-type(1) {
+top:13px;
+transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:nth-of-type(2) {
+opacity: 0;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:nth-of-type(3) {
+top:13px;
+transform: rotate(-45deg);
+}
