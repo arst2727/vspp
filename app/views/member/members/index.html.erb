@@ -23,7 +23,7 @@
           <tbody>
             <% @members.each do |member| %>
               <tr class="text-center">
-                <td class="col-xs-4 col-md-4 col-lg-2 text-left fixed02">
+                <th class="col-xs-4 col-md-4 col-lg-2 text-left fixed02">
                   <%= link_to member_path(member), class: "text-dark" do %>
                     <% if member.profile_image.attached? %>
                       <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
@@ -33,7 +33,7 @@
                     <span class="br"></span>
                     <%= member.nickname.truncate(15) %>
                   <% end %>
-                </td>
+                </th>
                 <td class="col-xs-1 col-md-1 col-lg-1 text-nowrap">
                   <% if member.musical_piece_comments.present? %>
                     <%= member.musical_piece_comments.count %>

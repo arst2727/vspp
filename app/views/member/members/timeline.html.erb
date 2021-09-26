@@ -1,11 +1,11 @@
 <div "container">
   <div class='row justify-content-center pt-2'>
-    <div class='col-md-8 col-lg-8'>
+    <div class='col'>
       <% if @followings_members.present? %>
-        <table class='table table-borderless table-hover'>
+        <table class='table table-borderless table-hover col-xs-10 offset-xs-1 col-md-8 offset-md-2 col-lg-8 offset-md-2'>
           <% @musical_piece_comments.each do |comment| %>
             <tr>
-              <th class='col-1'>
+              <th class="text-right">
                 <%= link_to member_path(comment.member) do %>
                   <% if comment.member.profile_image.attached? %>
                     <%= image_tag comment.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
