@@ -1,0 +1,61 @@
+<div class='container'>
+  <div class="row justify-content-center">
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">利用者一覧</h4>
+  </div>
+  <div class='row justify-content-center'>
+    <div class='col-xs-12 col-md-12 col-lg-9'>
+      <div class="mb-4 mt-2">
+        <% if @members.present? %>
+          現在の利用者数: <span class="text-danger"><%= Member.all.count %></span>人
+        <% end %>
+      </div>
+      <% if @members.present? %>
+        <span class='pagecolor'><%= paginate @members %></span>
+        <table id='sort-table' class='table table-hover'>
+          <thead>
+            <tr class="thead-dark text-center">
+              <th class="text-nowrap fixed01">ニックネーム</th>
+              <th class="text-nowrap fixed02">投稿数</th>
+              <th class="text-nowrap fixed02">サイト登録日</th>
+              <th class="text-nowrap fixed02">フォロー<span class="br"></span>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @members.each do |member| %>
+              <tr class="text-center">
+                <td class="col-xs-4 col-md-4 col-lg-2 text-left fixed02">
+                  <%= link_to member_path(member), class: "text-dark" do %>
+                    <% if member.profile_image.attached? %>
+                      <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                    <% end %>
+                    <span class="br"></span>
+                    <%= member.nickname.truncate(15) %>
+                  <% end %>
+                </td>
+                <td class="col-xs-1 col-md-1 col-lg-1 text-nowrap">
+                  <% if member.musical_piece_comments.present? %>
+                    <%= member.musical_piece_comments.count %>
+                  <% else %>
+                    -
+                  <% end %>
+                </td>
+                <td class="col-xs-3 col-md-3 col-lg-3"><%= l member.created_at, format: :short %></td>
+                <td class="col-xs-4 col-md-4 col-lg-3 text-nowrap">
+                  <% if current_member.following?(member) %>
+                    <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
+                  <% else %>
+                    <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <span class='text-center'>まだ利用者はいません</span>
+      <% end %>
+    </div>
+  </div>
+</div>

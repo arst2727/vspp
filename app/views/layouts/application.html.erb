@@ -104,7 +104,10 @@
             <% elsif member_signed_in? %>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item pr-2 my-auto text-nowrap">
-                  <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
+                  <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-clock btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item pr-2 my-auto text-nowrap">
+                  <%= link_to " 利用者一覧", members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>

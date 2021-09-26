@@ -1,5 +1,9 @@
 class Member::MembersController < ApplicationController
   before_action :authenticate_member!
+  def index
+    @members = Member.all.page(params[:page]).per(100)
+  end
+
   # ログインしているユーザのマイページ
   def my_page
     @musical_piece_comments = MusicalPieceComment.where(member_id: current_member)

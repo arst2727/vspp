@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
 
     resources :musical_piece_lists, only: [:create, :destroy]
-    resources :members, only: [:show, :edit, :update] do
+    resources :members, only: [:index, :show, :edit, :update] do
       # フォローフォロワー機能のため追加
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: :followings
