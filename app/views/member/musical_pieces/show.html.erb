@@ -90,33 +90,29 @@
       <!--コメント一覧-->
       <!---------------->
       <div class='col-xs-6 col-md-6 col-lg-7 offset-lg-1'>
-        <table class='table table-striped'>
-          <% musical_piece_comments = @musical_piece.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(5) %>
-          <span class='pagecolor'><%= paginate musical_piece_comments %></span>
-          <% musical_piece_comments.each do |mc| %>
-            <tr>
-              <div class='text-nowrap'>
-                <%= link_to member_path(mc.member) do %>
-                  <% if mc.member.profile_image.attached? %>
-                    <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
-                  <% end %>
-                  <%= mc.member.nickname %>
-                <% end %>
-              </div>
-              <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
-              <div><%= l mc.created_at, format: :default %>にレビュー済み</div>
-              <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
-              <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
-              <% if mc.member == current_member %>
-                <div>
-                  <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>
-                </div>
+        <% musical_piece_comments = @musical_piece.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(5) %>
+        <span class='pagecolor'><%= paginate musical_piece_comments %></span>
+        <% musical_piece_comments.each do |mc| %>
+          <div class='text-nowrap'>
+            <%= link_to member_path(mc.member) do %>
+              <% if mc.member.profile_image.attached? %>
+                <%= image_tag mc.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
               <% end %>
-            </tr>
+              <%= mc.member.nickname %>
+            <% end %>
+          </div>
+          <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
+          <div><%= l mc.created_at, format: :default %>にレビュー済み</div>
+          <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
+          <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
+          <% if mc.member == current_member %>
+            <div>
+              <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>
+            </div>
           <% end %>
-        </table>
+        <% end %>
         <script>
           $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
           $('.musical_piece-evaluation').raty({
