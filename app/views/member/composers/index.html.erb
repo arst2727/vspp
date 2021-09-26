@@ -4,11 +4,22 @@
     <div class='col-lg-6 mt-lg-5 col-xs-12 px-5 py-2 mr-1 text-right'>
       <%= link_to " 作曲家年表", chronology_composers_path, class: 'fas fa-chart-bar btn btn-outline-info btn-lg' %>
     </div>
+    <div class="px-5 py-2 mt-lg-5">
+      <% if params[:composers_all] == 'true' %>
+        <%= link_to "ページナビゲーション表示", composers_path, class: 'btn btn-outline-dark btn-sm' %>
+      <% else %>
+        <%= link_to "全件表示", composers_path(composers_all: true), class: 'btn btn-outline-dark btn-sm' %>
+      <% end %>
+    </div>
   </div>
   <div class='row'>
     <div class='col'>
-      <span class='pagecolor'><%= paginate @composers %></span>
-      <%= render partial: "index", :locals => { composers: @composers } %>
+      <% if params[:composers_all] == 'true' %>
+        <%= render partial: "index", :locals => { composers: Composer.all.order(name_kana: :asc) } %>
+      <% else %>
+        <span class='pagecolor'><%= paginate @composers %></span>
+        <%= render partial: "index", :locals => { composers: @composers } %>
+      <% end %>
     </div>
   </div>
 </div>
