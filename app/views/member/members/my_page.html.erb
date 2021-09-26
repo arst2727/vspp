@@ -18,9 +18,17 @@
         <tr class='text-muted'>
           <td colspan="3"><i class="far fa-calendar-alt"></i> <%= l current_member.created_at, format: :short %>からVSPPを利用しています</td>
         </tr>
-        <tr>
-          <td><%= link_to current_member.followings.count, member_followings_path(current_member) %>フォロー中</td>
-    	    <td><%= link_to current_member.followers.count, member_followers_path(current_member) %>フォロワー</td>
+        <tr class="text-center">
+          <td><%= link_to current_member.followings.count, member_followings_path(current_member) %><br>フォロー中</td>
+    	    <td><%= link_to current_member.followers.count, member_followers_path(current_member) %><br>フォロワー</td>
+    	    <td>
+              <% if current_member.musical_piece_comments.present? %>
+                <%= current_member.musical_piece_comments.count %><br>
+              <% else %>
+                0<br>
+              <% end %>
+              投稿数
+  	      </td>
   	    </tr>
       </table>
       <!---------------->

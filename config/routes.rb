@@ -17,8 +17,11 @@ Rails.application.routes.draw do
     get '/search', to: 'searches#search'
 
     resources :musical_pieces, only: [:index, :show, :new, :create] do
-      resources :musical_pieces_comments, only: [:create, :destroy]
+      resources :musical_pieces_comments, only: [:create, :destroy] do
+        resource :favorites, only: [:create, :destroy]
+      end
     end
+
     resources :composers, only: [:index, :show] do
       collection do
         get "chronology", to: 'composers#chronology', as: :chronology

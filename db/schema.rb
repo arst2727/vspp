@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_074203) do
+ActiveRecord::Schema.define(version: 2021_09_26_015438) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2021_09_15_074203) do
     t.string "reference_url"
     t.boolean "is_active", default: false, null: false
     t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "musical_piece_comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

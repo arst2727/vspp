@@ -32,7 +32,7 @@
             <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
           <% end %>
         <% else %>
-          マイリストを作成してください<br><%= link_to "作成画面へ", new_list_path, class: "btn-sm btn-dark" %>
+          マイリストを作成してください<br><%= link_to " 作成画面へ", new_list_path, class: "far fa-plus-square btn-sm btn-dark" %>
         <% end %>
         <!--コメントcreate時のエラーメッセージ-->
         <% if @musical_piece_comment.errors.any? %>
@@ -108,6 +108,7 @@
               <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
               <div><%= l mc.created_at, format: :default %>にレビュー済み</div>
               <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
+              <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
               <% if mc.member == current_member %>
                 <div>
                   <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>

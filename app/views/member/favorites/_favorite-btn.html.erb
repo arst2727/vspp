@@ -1,0 +1,5 @@
+<% if musical_piece_comment.favorited_by?(current_member) %>
+  <%= link_to musical_piece_comment.favorites.count, musical_piece_musical_pieces_comment_favorites_path(musical_piece_comment.musical_piece.id, musical_piece_comment.id), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
+<% else %>
+  <%= link_to musical_piece_comment.favorites.count, musical_piece_musical_pieces_comment_favorites_path(musical_piece_comment.musical_piece.id, musical_piece_comment.id), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
+<% end %>

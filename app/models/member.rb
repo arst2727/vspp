@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   has_many :musical_piece_comments, dependent: :destroy
   # ActiveStorageを利用したプロフィール画像用
   has_one_attached :profile_image
+  has_many :favorites, dependent: :destroy
 
   # ##########フォローフォロワー機能Start###########
   # 自分がフォローされる（被フォロー）側の関係性
