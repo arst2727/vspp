@@ -28,7 +28,7 @@
                 <td class="col-xs-6 col-md-4 col-lg-3 text-nowrap">
                   <% if current_member.following?(member) %>
                     <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
-                  <% else %>
+                  <% elsif current_member != member %>
                     <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
                   <% end %>
                 </td>
