@@ -5,7 +5,7 @@
       <div class='w-100'></div>
       <div class="px-5 py-2 mt-xs-5">
         <% if params[:musical_pieces_all] == 'true' %>
-          <%= link_to "ページナビゲーション表示", musical_pieces_path, class: 'btn btn-outline-dark btn-sm' %>
+          <%= link_to "15件ずつ表示", musical_pieces_path, class: 'btn btn-outline-dark btn-sm' %>
         <% else %>
           <%= link_to "全件表示", musical_pieces_path(musical_pieces_all: true), class: 'btn btn-outline-dark btn-sm' %>
         <% end %>
@@ -19,7 +19,7 @@
           <span class='pagecolor'><%= paginate @musical_pieces %></span>
           <%= render partial: "index", :locals => { musical_pieces: @musical_pieces } %>
         <% end %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>

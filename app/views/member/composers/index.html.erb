@@ -6,7 +6,7 @@
     </div>
     <div class="px-5 py-2 mt-lg-5">
       <% if params[:composers_all] == 'true' %>
-        <%= link_to "ページナビゲーション表示", composers_path, class: 'btn btn-outline-dark btn-sm' %>
+        <%= link_to "15件ずつ表示", composers_path, class: 'btn btn-outline-dark btn-sm' %>
       <% else %>
         <%= link_to "全件表示", composers_path(composers_all: true), class: 'btn btn-outline-dark btn-sm' %>
       <% end %>

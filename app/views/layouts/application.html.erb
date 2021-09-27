@@ -107,13 +107,13 @@
                   <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-clock btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item pr-2 my-auto text-nowrap">
-                  <%= link_to " 利用者一覧", members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
+                  <%= link_to " 利用者", members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item pr-2 my-auto text-nowrap">
-                  <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
+                  <%= link_to " 楽曲", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item my-auto text-nowrap">
-                  <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                  <%= link_to " 作曲家", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
               </ul>
               <ul class="navbar-nav">
@@ -144,18 +144,18 @@
                   <%= link_to " About", home_about_path, method: :get, class: 'fas fa-question btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item px-2 text-nowrap">
-                  <%= link_to " 楽曲一覧", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
+                  <%= link_to " 楽曲", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item px-2 text-nowrap">
-                  <%= link_to " 作曲家一覧", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                  <%= link_to " 作曲家", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item px-2 text-nowrap">
-                  <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-outline-dark' %>
+                  <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-danger' %>
                 </li>
               </ul>
               <ul class="navbar-nav">
                 <li class="nav-item pl-2 text-nowrap">
-                  <%= link_to " サインイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-outline-dark' %>
+                  <%= link_to " サインイン", new_member_session_path, class: 'fas fa-sign-in-alt btn btn-info' %>
                 </li>
               </ul>
             <% end %>
