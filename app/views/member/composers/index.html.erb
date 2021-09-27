@@ -2,13 +2,13 @@
   <div class="row justify-content-center">
     <h4 class="px-5 py-2 mt-5">作曲家一覧</h4>
     <div class='col-lg-6 mt-lg-5 col-xs-12 px-5 py-2 mr-1 text-right'>
-      <%= link_to " 作曲家年表", chronology_composers_path, class: 'fas fa-chart-bar btn btn-outline-info btn-lg' %>
+      <%= link_to " 作曲家年表", chronology_composers_path, class: 'fas fa-chart-bar btn btn-outline-info' %>
     </div>
     <div class="px-5 py-2 mt-lg-5">
       <% if params[:composers_all] == 'true' %>
-        <%= link_to "15件ずつ表示", composers_path, class: 'btn btn-outline-dark btn-sm' %>
+        <%= link_to " 15件ずつ表示", composers_path, class: 'btn btn-outline-dark fas fa-book' %>
       <% else %>
-        <%= link_to "全件表示", composers_path(composers_all: true), class: 'btn btn-outline-dark btn-sm' %>
+        <%= link_to " 全件表示", composers_path(composers_all: true), class: 'btn btn-outline-dark fas fa-book' %>
       <% end %>
     </div>
   </div>
