@@ -48,6 +48,6 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :musical_pieces, :except => [:show]
     resources :composers, :except => [:show]
-    resources :members, :except => [:new, :create, :destroy]
+    resources :members, :except => [:new, :create, :show]
   end
 end

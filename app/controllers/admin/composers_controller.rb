@@ -31,9 +31,10 @@ class Admin::ComposersController < ApplicationController
   def update
     @composer = Composer.find(params[:id])
     if @composer.update(composer_params)
-      redirect_to admin_composers_path, notice: "You have updated composer successfully."
+      redirect_to admin_composers_path, notice: "作曲家の情報を更新しました"
     else
-      render "index"
+      flash[:alert] = "作曲家データを更新できませんでした"
+      render "edit"
     end
   end
 

@@ -5,6 +5,4 @@ class Composer < ApplicationRecord
   validates :name_kana, :name_lang_en, uniqueness: true
   # 作曲家画像用
   has_one_attached :image
-
-  # mount_uploader :image, ImageUploader
 end

@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row">
-    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">楽曲一覧(管理者用)</h4>
+    <h4 class="px-5 py-2 mt-5 ml-5 text-dark">楽曲一覧(管理者用)</h4>
   </div>
   <div class='row'>
     <div class='col'>
@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <table id='sort-table' class='table table-striped text-nowrap'>
-        <thead>
+        <thead class="thead-dark text-center">
           <tr>
             <th>楽曲ID</th>
             <th>作曲家名</th>
@@ -33,9 +33,9 @@
             <td><%= musical_piece.reference_URL %></td>
             <td>
             <% if musical_piece.is_active == true %>
-            <%= "公開中" %>
+              <%= "公開中" %>
             <% else %>
-            <%= "非公開中" %>
+              <%= "非公開中" %>
             <% end %>
             </td>
             <td>

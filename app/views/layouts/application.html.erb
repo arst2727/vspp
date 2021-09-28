@@ -85,7 +85,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <% if admin_signed_in? %>
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item pr-5">
+                <li class="nav-item pr-5 text-danger">
                   管理者ログイン中
                 </li>
                 <li class="nav-item px-4 text-nowrap">
@@ -96,6 +96,9 @@
                 </li>
                 <li class="nav-item px-4 text-nowrap">
                   <%= link_to " 作曲家一覧", admin_composers_path, method: :get, class: 'btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-4 text-nowrap">
+                  <%= link_to " 会員一覧", admin_members_path, method: :get, class: 'btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item pl-4 text-nowrap">
                   <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark' %>

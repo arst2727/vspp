@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row">
-    <h4 class="px-5 py-2 mt-5 ml-5 bg-light text-dark">新規楽曲申請データ一覧
+    <h4 class="px-5 py-2 mt-5 ml-5 text-dark">楽曲追加申請データ一覧
     <% if @musical_pieces.present? %>
       (全<%= @musical_pieces.count %>件)
     <% end %>
@@ -8,45 +8,49 @@
   </div>
   <div class='row'>
     <div class='col'>
-      <table id='sort-table' class='table table-striped text-nowrap'>
-        <thead>
-          <tr>
-            <th>申請日時</th>
-            <th>楽曲ID</th>
-            <th>作曲家名</th>
-            <th>楽曲名</th>
-            <th>作曲年</th>
-            <th>総演奏時間[min]</th>
-            <th>参考URL</th>
-            <th>ステータス</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @musical_pieces.each do |musical_piece| %>
-          <tr>
-            <td><%= l musical_piece.created_at, format: :default %></td>
-            <td><%= musical_piece.id %></td>
-            <td><%= musical_piece.composer.name_kana %></td>
-            <td><%= musical_piece.musical_piece_name %></td>
-            <td><%= musical_piece.year_of_composition %></td>
-            <td><%= musical_piece.performance_time %></td>
-            <td><%= musical_piece.reference_URL %></td>
-            <td>
-            <% if musical_piece.is_active == true %>
-            <%= "公開中" %>
-            <% else %>
-            <%= "非公開中" %>
+      <% if @musical_pieces.present? %>
+        <table id='sort-table' class='table table-striped text-nowrap'>
+          <thead>
+            <tr>
+              <th>申請日時</th>
+              <th>楽曲ID</th>
+              <th>作曲家名</th>
+              <th>楽曲名</th>
+              <th>作曲年</th>
+              <th>総演奏時間[min]</th>
+              <th>参考URL</th>
+              <th>ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @musical_pieces.each do |musical_piece| %>
+            <tr>
+              <td><%= l musical_piece.created_at, format: :default %></td>
+              <td><%= musical_piece.id %></td>
+              <td><%= musical_piece.composer.name_kana %></td>
+              <td><%= musical_piece.musical_piece_name %></td>
+              <td><%= musical_piece.year_of_composition %></td>
+              <td><%= musical_piece.performance_time %></td>
+              <td><%= musical_piece.reference_URL %></td>
+              <td>
+              <% if musical_piece.is_active == true %>
+                <%= "公開中" %>
+              <% else %>
+                <%= "非公開中" %>
+              <% end %>
+              </td>
+              <td>
+                <%= link_to "編集", edit_admin_musical_piece_path(musical_piece), class: "btn btn-success btn-sm" %>
+                <%= link_to "削除", admin_musical_piece_path(musical_piece), method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
             <% end %>
-            </td>
-            <td>
-              <%= link_to "編集", edit_admin_musical_piece_path(musical_piece), class: "btn btn-success btn-sm" %>
-              <%= link_to "削除", admin_musical_piece_path(musical_piece), method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger btn-sm" %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      <% else %>
+        現在、楽曲追加の申請データはありません。
+      <% end %>
     </div>
   </div>
 </div>
