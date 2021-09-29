@@ -1,8 +1,11 @@
 <div class='container'>
   <div class="row justify-content-center">
     <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark"><%= @list.name %></h4>
-  </div>
-  <div class='row'>
+    <div class='w-100'></div>
+      <div class="px-5 py-2 mt-xs-5">
+        <%= link_to "マイリストに戻る", lists_path, class: "btn btn-outline-dark" %>
+      </div>
+    </div>
     <div class='col'>
       <% if @list.musical_pieces.present? %>
         <table id='sort-table' class='table table-hover'>
