@@ -35,13 +35,13 @@
 当サイトでは感想の投稿と共有によって、より深く楽曲を理解することができます。<br>
 また、Youtubeにはコメント機能があり、その楽曲や演奏自体に対するコメントを見られますが、<br>
 これも共有という点で楽曲名をあらかじめ知っている必要があります。<br>
-当サイトでは楽曲名を知らなくてもコメントから判断して楽曲を聴いてみることができます。<br>
+当サイトでは、楽曲名を知らなくてもコメントから判断して楽曲を聴いてみることができます。<br>
 音楽は、同じ楽曲であっても自分の体調などの状態や置かれた環境によって感じ方が異なることがあります。<br>
 そのため、「この音楽、好きだな」と思った時に、感想を記録しておくことで、<br>
 自分の感性を磨くことができます。そして「この音楽、少し苦手だな」、<br>
 「この音楽の良さ、よくわからないな」という時にも感想を記録しておくことで、<br>
 時間を空けて聴いた際には新たな発見ができるかもしれません。<br>
-感想を投稿することで自分の感性を言語化し、さらには相手への伝達力を鍛えることができると考えます。<br>
+感想を投稿することで自分の感性を言語化し、さらには他者への伝達力を鍛えることができると考えます。<br>
 単に「素晴らしい」「カッコいい」という言葉で終わらせることなく、より深く言語化しようと心がけることで、<br>
 それに伴いピアノ楽曲を意識的に聴くようになると思います。<br>
 受動的に聴く音楽も良いですが、自分の気分にあった楽曲を探し出したり、<br>
@@ -57,9 +57,9 @@ Youtube などの動画サイトを開いている時、コンサートの帰り
 
 ## 設計書
 
-- ER図 https://drive.google.com/file/d/1EcFePYQG6L8x_ej3t3X50wr-7_VrKkMz/view?usp=sharing
-- テーブル定義書 https://docs.google.com/spreadsheets/d/1tO6rPUBzRXsSehbQQyPcf9UZIbw1wu8d/edit?usp=sharing&ouid=103388074726618191148&rtpof=true&sd=true
-- 詳細設計 https://docs.google.com/spreadsheets/d/1tSfLS1Sec7otGuofKNP1S5AsCltlh2LE/edit?usp=sharing&ouid=103388074726618191148&rtpof=true&sd=true
+- ER図<br> https://drive.google.com/file/d/1EcFePYQG6L8x_ej3t3X50wr-7_VrKkMz/view?usp=sharing
+- テーブル定義書<br> https://docs.google.com/spreadsheets/d/1tO6rPUBzRXsSehbQQyPcf9UZIbw1wu8d/edit?usp=sharing&ouid=103388074726618191148&rtpof=true&sd=true
+- 詳細設計<br> https://docs.google.com/spreadsheets/d/1tSfLS1Sec7otGuofKNP1S5AsCltlh2LE/edit?usp=sharing&ouid=103388074726618191148&rtpof=true&sd=true
 
 ## チャレンジ要素一覧
 
@@ -76,6 +76,7 @@ https://docs.google.com/spreadsheets/d/1uk67rfj0-ULzekToHeB3ON51Rvz0uR48GA_oiSGO
 ## 使用素材
 
 - 2.400万点以上の高品質なフリー画像素材 - Pixabay https://pixabay.com/ja/
+- かわいいフリー素材集 いらすとや https://www.irasutoya.com/
 - ピアノ曲事典 | ピティナ・ピアノホームページ - ピティナ・ピアノ曲事典 https://enc.piano.or.jp/
 
 
