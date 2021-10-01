@@ -1,10 +1,19 @@
 crumb :root do
-  link "Home", root_path
+  link "TOP", root_path
 end
 
 crumb :about do
   link "About", home_about_path
   parent :root
+end
+
+crumb :composer_index do
+  link "作曲家一覧", composers_path
+end
+
+crumb :chronology do
+  link "作曲家年表", chronology_composers_path
+  parent :composer_index
 end
 # crumb :projects do
 #   link "Projects", projects_path
