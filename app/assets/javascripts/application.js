@@ -26,7 +26,8 @@ $(document).on('turbolinks:load', function () {
     if ($('.navbar-collapse').hasClass('show')) {
       $('#wrap').css('padding-top', '80px')
     } else {
-      $('#wrap').css('padding-top', '300px')
+      // ハンバーガーメニュー開いている時
+      $('#wrap').css('padding-top', '330px')
     }
   })
 });
