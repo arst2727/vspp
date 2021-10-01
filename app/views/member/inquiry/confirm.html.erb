@@ -30,7 +30,7 @@
         </table>
         <div class="text-center">
           <%= f.submit '送信する', :class => 'btn btn-primary' %>
-          <a href="#" onclick="if(document.referrer) {window.open(document.referrer,'_self');} else {history.go(-1);} return false;" class="btn btn-outline-dark">入力画面に戻る</a>
+          <a href="#" onclick="javascript:history.go(-1); event.preventDefault();" class="btn btn-outline-dark">入力画面に戻る</a>
         </div>
       <% end %>
     </div>
