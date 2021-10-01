@@ -174,23 +174,26 @@
         </div>
       </nav>
     </header>
-    <div id="wrap">
-      <div class="search-result text-center bg-header text-dark js-searchable">
+    <div class="wrapper">
+      <div id="wrap">
+        <div class="search-result text-center bg-header text-dark js-searchable">
+        </div>
+        <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong>
+            <%= value %>
+          </strong>
+        </div>
+        <% end %>
+        <p><%= breadcrumbs separator: "&rsaquo;"%></p>
+        <%= yield %>
       </div>
-      <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>
-          <%= value %>
-        </strong>
-      </div>
-    <% end %>
-    <%= yield %>
+      <footer>
+        <span class="footer-text">© 2021 TAIKI YANAGISAWA</span>
+      </footer>
     </div>
-    <footer class='fixed-bottom' id='footer-wrap'>
-      <p class="footer-text">© 2021 TAIKI YANAGISAWA</p>
-    </footer>
   </body>
 </html>
