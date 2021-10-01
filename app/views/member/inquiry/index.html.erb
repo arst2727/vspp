@@ -23,10 +23,10 @@
           </tr>
           <tr>
             <th>メールアドレス <span class="badge badge-danger">必須</span></th>
-            <td><%= f.text_field :email, class: "form-control" %></td>
+            <td><%= f.text_field :email, class: "form-control", type: "email" %></td>
           </tr>
           <tr>
-            <th>お問い合わせ内容</th>
+            <th>お問い合わせ<span class="br"></span>内容</th>
             <td><%= f.text_area :message, class: "form-control", rows: "5" %></td>
           </tr>
         </table>
