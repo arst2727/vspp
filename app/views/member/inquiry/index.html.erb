@@ -1,0 +1,40 @@
+<div class='container'>
+  <div class="row justify-content-center">
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">お問い合わせ</h4>
+  </div>
+  <div class='row justify-content-center'>
+    <div class='col-lg-8'>
+      <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+        <% if @inquiry.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <strong>入力内容にエラーがあります</strong>
+            <ul>
+              <% @inquiry.errors.each do |attr, msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <table class="table">
+          <tr>
+            <th>お名前 <span class="badge badge-danger">必須</span></th>
+            <td><%= f.text_field :name, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス <span class="badge badge-danger">必須</span></th>
+            <td><%= f.text_field :email, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ内容</th>
+            <td><%= f.text_area :message, class: "form-control", rows: "5" %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <%= f.submit '確認', class: 'btn btn-primary' %>
+          <%= link_to "キャンセル", root_path, data: {confirm: "入力内容をキャンセルしてTOPに戻りますか？"}, class: "btn btn-outline-dark" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

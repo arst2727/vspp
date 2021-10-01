@@ -115,8 +115,11 @@
                 <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 楽曲", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item my-auto text-nowrap">
+                <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 作曲家", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item my-auto text-nowrap">
+                  <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
                 </li>
               </ul>
               <ul class="navbar-nav">
@@ -151,6 +154,9 @@
                 </li>
                 <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 作曲家", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
+                </li>
+                <li class="nav-item px-2 text-nowrap">
+                  <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
                 </li>
                 <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-danger' %>
