@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function () {
     if ($('.navbar-collapse').hasClass('show')) {
       $('#wrap').css('padding-top', '80px')
     } else {
-      // ハンバーガーメニュー開いている時
+      // ハンバーガーメニュー開いている時→アイコン増えたらheight調整
       $('#wrap').css('padding-top', '330px')
     }
   })
