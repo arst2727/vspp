@@ -26,7 +26,7 @@
         <% if current_member.lists.present? %>
           <%= form_with model: MusicalPieceList.new, url: musical_piece_lists_path, method: :post, local: true do |f| %>
             <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
-            <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: true %>
+            <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: "リストを選択" %>
 
             <%= f.hidden_field :musical_piece_id, :value => @musical_piece.id %>
             <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
@@ -105,8 +105,8 @@
           </div>
           <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>
           <div><%= l mc.created_at, format: :default %>にレビュー済み</div>
-          <div class="h5" style="word-wrap:break-word;"><%= mc.comment %></div>
-          <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
+          <div class="h6" style="word-wrap:break-word;"><%= mc.comment %></div>
+          <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn pb-3"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
           <% if mc.member == current_member %>
             <div>
               <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>
