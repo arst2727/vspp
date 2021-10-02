@@ -1,7 +1,7 @@
 class Member::InquiryController < ApplicationController
   def index
     # 入力画面を表示
-    @inquiry = Inquiry.new
+    @inquiry = Inquiry.new(params[:inquiry].present? ? inquiry_params : {})
     render :action => 'index'
   end
 
@@ -24,5 +24,11 @@ class Member::InquiryController < ApplicationController
 
     # 完了画面を表示
     render :action => 'thanks'
+  end
+
+  private
+
+  def inquiry_params
+    params.require(:inquiry).permit(:name, :email, :message)
   end
 end

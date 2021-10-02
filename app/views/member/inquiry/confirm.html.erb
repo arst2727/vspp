@@ -30,7 +30,7 @@
         </table>
         <div class="text-center">
           <%= f.submit '送信する', :class => 'btn btn-primary' %>
-          <a href="#" onclick="javascript:history.go(-1); event.preventDefault();" class="btn btn-outline-dark">入力画面に戻る</a>
+          <%= link_to "入力画面に戻る", inquiry_path(inquiry: params[:inquiry].permit!), class: "btn btn-outline-dark" %>
         </div>
       <% end %>
     </div>
