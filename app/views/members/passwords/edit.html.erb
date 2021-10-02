@@ -1,26 +1,27 @@
 <div class="container text-center">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 col-lg-4">
-      <h1>Change your password</h1>
+      <%= image_tag 'vspp.png',:size =>"70x50", :class =>'my-4' %>
+      <h1>パスワード変更</h1>
       <%= form_for(resource, as: resource_name, url: member_password_path(), html: { method: :put }) do |f| %>
         <%= render "members/shared/error_messages", resource: resource %>
         <%= f.hidden_field :reset_password_token %>
 
         <div class="field">
-          <%= f.label :password, "New password" %><br />
+          <%= f.label :password, "新しいパスワード" %><br />
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <em>(<%= @minimum_password_length %> 文字以上)</em><br />
           <% end %>
           <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Change my password" %>
+          <%= f.submit "パスワード変更する", class: "btn btn-info" %>
         </div>
       <% end %>
 
