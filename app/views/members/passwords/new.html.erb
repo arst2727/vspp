@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6 col-lg-4">
       <%= image_tag 'vspp.png',:size =>"70x50", :class =>'my-4' %>
       <h1 class='h3 mb-3 fw-normal'>パスワード再設定</h1>
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: member_password_path(), html: { method: :post }) do |f| %>
         <%= render "members/shared/error_messages", resource: resource %>
 
         <div class="field">
@@ -13,7 +13,7 @@
 
 
         <div class="actions my-3">
-          <%= f.submit "入力したメールアドレスにパスワード再設定メールを送る", class: "btn btn-primary" %>
+          <%= f.submit "入力したメールアドレスにパスワード再設定メールを送る", class: "btn btn-info" %>
         </div>
       <% end %>
       <%= render "members/shared/links" %>

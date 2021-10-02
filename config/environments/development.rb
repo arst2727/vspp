@@ -62,7 +62,7 @@ Rails.application.configure do
   # パスワード再設定
   # お問い合わせ
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: '9f9ca844da6b4224959bbb2894500770.vfs.cloud9.ap-northeast-1.amazonaws.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',

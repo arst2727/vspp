@@ -371,3 +371,8 @@ transform: rotate(-45deg);
 .heart_red {
   color:#ff7f7f;
 }
+// bootstrapボタン内文字折り返し
+.btn {
+  // ソース中の連続する半角スペース、タブ、改行を一つの半角スペースにまとめ、自動的に折り返しをして表示
+  white-space: normal;
+}
