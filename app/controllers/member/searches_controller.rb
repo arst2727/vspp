@@ -1,9 +1,8 @@
 class Member::SearchesController < ApplicationController
   def search
     @musical_piece = MusicalPiece.new
-    return nil if params["content"] == ""
-    # params['content'] == nil ? '' : params['content']
     @model = params["model"]
+    return nil if params["content"] == ""
     @content = params["content"]
     @records = search_for(@model, @content)
     # インクリメンタル検索結果用文字列を用意
