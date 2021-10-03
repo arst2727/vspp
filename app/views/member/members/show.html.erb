@@ -10,8 +10,7 @@
               <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '100x100' %>
             <% end %>
           </th>
-          <td class='h4 pt-5'><%= @member.nickname %></td>
-          <td class='pt-5 text-nowrap'>
+          <td class='pt-5 text-nowrap' colspan="2">
             <% if current_member.following?(@member) %>
               <%= link_to "フォロー中", member_relationships_path(@member.id), method: :delete, class: "btn btn-outline-dark" %>
             <% else %>
@@ -19,21 +18,24 @@
             <% end %>
           </td>
         </tr>
-        <tr class='text-muted'>
-          <td colspan="3"><i class="far fa-calendar-alt"></i> <%= l @member.created_at, format: :short %>からVSPPを利用しています</td>
+        <tr>
+          <td class='h4' colspan="3"><%= @member.nickname %></td>
         </tr>
         <tr class="text-center">
           <td><%= link_to @member.followings.count, member_followings_path(@member) %><br>フォロー中</td>
     	    <td><%= link_to @member.followers.count, member_followers_path(@member) %><br>フォロワー</td>
     	    <td>
-              <% if @member.musical_piece_comments.present? %>
-                <%= @member.musical_piece_comments.count %><br>
-              <% else %>
-                0<br>
-              <% end %>
-              投稿数
+            <% if @member.musical_piece_comments.present? %>
+              <%= @member.musical_piece_comments.count %><br>
+            <% else %>
+              0<br>
+            <% end %>
+            投稿数
   	      </td>
   	    </tr>
+        <tr class='text-muted'>
+          <td colspan="3"><i class="far fa-calendar-alt"></i> <%= l @member.created_at, format: :short %>からVSPPを利用しています</td>
+        </tr>
       </table>
       <!---------------->
       <!--カレンダー---->
