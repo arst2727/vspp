@@ -19,8 +19,8 @@
           <tbody>
             <% @members.each do |member| %>
               <tr class="text-center">
-                <div class="col-xs-6 col-md-4 col-lg-3 text-left text-nowrap">
-                  <td>
+                <div class="col-xs-6 col-md-4 col-lg-3 text-nowrap">
+                  <td class="text-left">
                     <%= link_to member_path(member), class: "text-dark" do %>
                       <% if member.profile_image.attached? %>
                         <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>

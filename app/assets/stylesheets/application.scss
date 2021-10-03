@@ -376,3 +376,10 @@ transform: rotate(-45deg);
   // ソース中の連続する半角スペース、タブ、改行を一つの半角スペースにまとめ、自動的に折り返しをして表示
   white-space: normal;
 }
+// マイページ変更画面のフォーム
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}

@@ -1,26 +1,32 @@
 <div "container">
   <div class='row justify-content-center'>
-    <div class='col-lg-6 col-xs-8 text-center'>
-      <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark text-center">マイページ変更画面</h4>
+    <div class='col-lg-4 col-xs-8 text-center'>
+      <h4 class="px-5 py-2 mt-5 text-dark text-center">マイページ変更画面</h4>
       <%= form_with url: member_path(current_member), model: @member, method: :patch, local:true do |f| %>
-      <p class="text-danger">※画像は見せたいものが中心にあると<span class='br'></span>綺麗にトリミングされます。</p>
-        <table class='table table-borderless'>
-          <tr>
-            <th class="text-nowrap"><%= f.label :プロフィール画像 %></th>
-            <td><%= f.file_field :profile_image, class: "form-control-file user_image" %></td>
-          </tr>
-          <tr>
-            <th class="text-nowrap"><%= f.label :ニックネーム %></th>
-            <td><%= f.text_field :nickname, autofocus: true %></td>
-          </tr>
-          <tr>
-            <th class="text-nowrap"><%= f.label :メールアドレス %></th>
-            <td><%= f.email_field :email, autocomplete: "email" %></td>
-          </tr>
-        </table>
-        <%= f.submit "変更内容を保存", class: 'btn btn-outline-dark' %>
+        <p class="text-danger">※画像は見せたいものが中心にあると<br>綺麗にトリミングされます。</p>
+        <div class="text-nowrap"><%= f.label :プロフィール画像 %></div>
+        <div class="input-group">
+          <div class="custom-file">
+            <%= f.file_field :profile_image, class: "custom-file-input" %>
+            <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <%= f.label :ニックネーム %>
+          <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+        </div>
+        <%= f.submit "変更内容を保存", class: 'btn btn-primary' %>
+        <%= link_to 'キャンセル', my_page_members_path, class: 'btn btn-outline-dark' %>
       <% end %>
-      <%= link_to 'キャンセル', my_page_members_path, class: 'btn btn-outline-dark' %>
     </div>
   </div>
 </div>
+<script>
+  $('.custom-file-input').on('change',function(){
+  $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+})
+</script>
