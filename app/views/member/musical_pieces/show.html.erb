@@ -1,3 +1,9 @@
+<style>
+  .rating-star{
+    width: 10px;
+    height: 10px;
+  }
+</style>
 <% if @musical_piece.is_active == true %>
   <div class='container'>
     <div class="row">
@@ -114,9 +120,9 @@
           <% end %>
         <% end %>
         <script>
+        $(document).on('turbolinks:load', function () {
           $('.musical_piece-evaluation').empty();//これを入れないとブラウザバックする度に空の星が5つ増えてしまう
           $('.musical_piece-evaluation').raty({
-              size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
@@ -124,6 +130,7 @@
               // ★の半分の入力を行う
               half: true
           });
+        });
         </script>
       </div>
     </div>
