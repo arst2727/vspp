@@ -334,6 +334,10 @@ footer {
   top: 80px;
   z-index: 1;
 }
+// ドロップダウン逆三角非表示
+.dropdown-toggle::after {
+  font-size: 0px; // 0pxで強制非表示
+}
 // ハンバーガーメニューアレンジ
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0);
