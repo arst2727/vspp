@@ -247,6 +247,13 @@ footer {
   box-sizing: border-box;
   text-align: center;
 }
+.simple-calendar th:nth-child(6) {
+  color: #7f7fff;
+}
+.simple-calendar th:last-child {
+  color: #ff7f7f;
+}
+
 /* line 28, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar td {
   padding: 6px;
