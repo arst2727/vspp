@@ -213,7 +213,7 @@ footer {
   display: none;
 }
 /* ==========================
-  シンプルカレンダーアレンジ
+  シンプルカレンダーアレンジ（上書き）
 ========================== */
 .simple-calendar .today {
   background: #e6e6fa;
@@ -245,7 +245,7 @@ footer {
   border-right: 1px solid #dddddd;
   border-top: 0px none #333333;
   box-sizing: border-box;
-  text-align: left;
+  text-align: center;
 }
 /* line 28, ../../.rvm/gems/ruby-2.6.3/gems/simple_calendar-2.4.3/app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar td {

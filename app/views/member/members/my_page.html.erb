@@ -39,21 +39,21 @@
         <% if musical_piece_comments.count != 0 %>
           <% if musical_piece_comments.count == 1 %>
             <div class='calendar-text-mini bg-kusa1 pl-1'>
-              <i class="far fa-comment"></i> レビュー <%= musical_piece_comments.count %> 件
+              <i class="far fa-comment"></i> <%= musical_piece_comments.count %>件
             </div>
           <% elsif musical_piece_comments.count == 2 %>
             <div class='calendar-text-mini bg-kusa2 pl-1'>
-              <i class="far fa-comments"></i> レビュー <%= musical_piece_comments.count %> 件
+              <i class="far fa-comments"></i> <%= musical_piece_comments.count %>件
             </div>
           <% else %>
             <div class='calendar-text-mini bg-kusa3 text-white pl-1'>
-              <i class="far fa-comments"></i> レビュー <%= musical_piece_comments.count %> 件
+              <i class="far fa-comments"></i> <%= musical_piece_comments.count %>件
             </div>
           <% end %>
           <% musical_piece_comments.each do |musical_piece_comment| %>
-            <div>
+            <!--<div>-->
               <%#= musical_piece_comment.comment %>
-            </div>
+            <!--</div>-->
           <% end %>
         <% end %>
   		<% end %>
