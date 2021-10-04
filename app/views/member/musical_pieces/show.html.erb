@@ -90,6 +90,9 @@
       <!--コメント一覧-->
       <!---------------->
       <div class='col-xs-6 col-md-6 col-lg-7 offset-lg-1'>
+        <% if @musical_piece.musical_piece_comments.count == 0 %>
+          この楽曲には、まだレビューはありません。
+        <% end %>
         <% musical_piece_comments = @musical_piece.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(5) %>
         <span class='pagecolor'><%= paginate musical_piece_comments %></span>
         <% musical_piece_comments.each do |mc| %>
