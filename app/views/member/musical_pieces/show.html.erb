@@ -108,8 +108,8 @@
           <div class="h6" style="word-wrap:break-word;"><%= mc.comment %></div>
           <div  id="musical_piece_comment_<%= mc.id %>" class="favorite-btn pb-3"><%= render "member/favorites/favorite-btn", musical_piece_comment: mc %></div>
           <% if mc.member == current_member %>
-            <div>
-              <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-outline-danger" %>
+            <div class='pb-3'>
+              <%= link_to "削除する", musical_piece_musical_pieces_comment_path(mc.musical_piece, mc), method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "btn btn-sm btn-outline-danger" %>
             </div>
           <% end %>
         <% end %>
