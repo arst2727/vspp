@@ -64,7 +64,23 @@
     <div class='col-xs-12 col-md-10 col-lg-6'>
       <% if current_member.musical_piece_comments.present? %>
         <table class='table table-borderless table-hover'>
-          <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).limit(100) %>
+          <% if params[:comments_all] == 'true' %>
+            <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).all %>
+            <div class="pt-3 pl-3">
+              <%= link_to " 3件ずつ表示", my_page_members_path, class: 'btn btn-outline-dark fas fa-book' %>
+            </div>
+          <% elsif current_member.musical_piece_comments.count > 4 %>
+            <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(3) %>
+            <div class="pt-4">
+              <span class='pagecolor'><%= paginate musical_piece_comments %></span>
+            </div>
+            <div class="pl-3">
+              <%= link_to " 全件表示", my_page_members_path(comments_all: true), class: 'btn btn-outline-dark fas fa-book' %>
+            </div>
+          <% else %>
+          <!--投稿数が4未満の時-->
+            <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).all %>
+          <% end %>
           <% musical_piece_comments.each do |mc| %>
             <tr>
               <div class='col-xs-1 col-md-2 col-lg-1 text-right'>
