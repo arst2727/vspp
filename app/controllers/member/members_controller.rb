@@ -1,7 +1,9 @@
 class Member::MembersController < ApplicationController
   before_action :authenticate_member!
   def index
-    @members = Member.all.page(params[:page]).per(100)
+    # @members = Member.all.page(params[:page]).per(100)
+    @search_params = member_search_params
+    @members = Member.search(@search_params)
   end
 
   # ログインしているユーザのマイページ
@@ -39,10 +41,14 @@ class Member::MembersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def member_params
     params.require(:member).permit(:nickname, :email, :profile_image)
+  end
+
+  def member_search_params
+    params.fetch(:search, {}).permit(:nickname)
   end
 end

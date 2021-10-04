@@ -6,11 +6,21 @@
     <div class='col-xs-12 col-md-12 col-lg-9'>
       <div class="mb-4 mt-2">
         <% if @members.present? %>
-          現在の利用者数: <span class="text-danger"><%= Member.all.count %></span>人
+          現在の利用者数: <span class="text-info"><%= Member.all.count %></span>人
         <% end %>
       </div>
       <% if @members.present? %>
-        <span class='pagecolor'><%= paginate @members %></span>
+        <div class="search-form pb-3">
+          <%= form_with(scope: :search, url: members_path, method: :get, local: true) do |f| %>
+            <div class="col-xs-6 col-md-6 col-lg-4">
+              <i class="fas fa-search"></i> 利用者を見つける
+              <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力' %>
+              <div class="pl-2">
+                <%= f.submit("検索", class: 'btn btn-sm btn-outline-dark') %>
+              </div>
+            </div>
+          <% end %>
+        </div>
         <table id='sort-table' class='table table-hover'>
           <thead>
             <tr class="thead-dark text-center">

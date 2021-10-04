@@ -32,4 +32,11 @@ class Member < ApplicationRecord
     followings.include?(member)
   end
   # ##########フォローフォロワー機能End###########
+
+  scope :search, -> (search_params) do
+    return if search_params.blank?
+
+    nickname_like(search_params[:nickname])
+  end
+  scope :nickname_like, -> (nickname) { where('nickname LIKE ?', "%#{nickname}%") if nickname.present? }
 end
