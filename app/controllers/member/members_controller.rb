@@ -38,6 +38,7 @@ class Member::MembersController < ApplicationController
       flash[:info] = 'プロフィールを更新しました'
       redirect_to my_page_members_path
     else
+      flash[:alert] = 'プロフィールを更新できませんでした'
       render :edit
     end
   end

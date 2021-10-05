@@ -39,4 +39,21 @@ class Member < ApplicationRecord
     nickname_like(search_params[:nickname])
   end
   scope :nickname_like, -> (nickname) { where('nickname LIKE ?', "%#{nickname}%") if nickname.present? }
+
+  validate :validate_profile_image
+
+  def validate_profile_image
+    return unless profile_image.attached?
+    if profile_image.blob.byte_size > 4.megabytes
+      profile_image.purge
+      errors.add(:プロフィール画像, 'ファイルのサイズが大きすぎます。4MB未満にしてください。')
+    elsif !image?
+      profile_image.purge
+      errors.add(:プロフィール画像, 'はjpg, jpeg, gif, pngのファイル以外には対応しておりません')
+    end
+  end
+
+  def image?
+    %w[image/jpg image/jpeg image/gif image/png].include?(profile_image.blob.content_type)
+  end
 end

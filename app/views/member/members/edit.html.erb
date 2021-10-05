@@ -2,6 +2,16 @@
   <div class='row justify-content-center'>
     <div class='col-lg-4 col-xs-8 text-center'>
       <h4 class="px-5 py-2 mt-5 text-dark text-center">マイページ変更画面</h4>
+      <!--バリデーション(画像更新失敗or31文字以上のニックネーム入力時)エラーメッセージ-->
+        <% if @member.errors.any? %>
+          <div class = "alert">
+            <ul>
+              <% @member.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <%= form_with url: member_path(current_member), model: @member, method: :patch, local:true do |f| %>
         <p class="text-danger">※画像は見せたいものが中心にあると<br>綺麗にトリミングされます。</p>
         <div class="text-nowrap"><%= f.label :プロフィール画像 %></div>
