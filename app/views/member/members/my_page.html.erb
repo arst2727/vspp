@@ -69,7 +69,7 @@
             <div class="pt-3 pl-3">
               <%= link_to " 3件ずつ表示", my_page_members_path, class: 'btn btn-outline-dark fas fa-book' %>
             </div>
-          <% elsif current_member.musical_piece_comments.count > 4 %>
+          <% elsif current_member.musical_piece_comments.count > 3 %>
             <% musical_piece_comments = current_member.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(3) %>
             <div class="pt-4">
               <span class='pagecolor'><%= paginate musical_piece_comments %></span>
