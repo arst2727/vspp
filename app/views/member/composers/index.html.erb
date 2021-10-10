@@ -1,10 +1,22 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5">作曲家一覧</h4>
-    <div class='col-lg-6 mt-lg-5 col-xs-12 px-5 py-2 mr-1 text-right'>
+    <div class="col-lg-3">
+      <h4 class="px-5 py-2 mt-5 text-center">作曲家一覧</h4>
+    </div>
+    <div class='col-lg-3 mt-lg-5 px-5 py-2 mr-1 text-right'>
       <%= link_to " 作曲家年表", chronology_composers_path, class: 'fas fa-chart-bar btn btn-outline-info' %>
     </div>
-    <div class="px-5 py-2 mt-lg-5">
+
+    <div class="col-lg-4 mt-lg-5 form-inline">
+      <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+        <i class="fas fa-search"></i>
+        <%= f.text_field :content, value: nil, placeholder: '作曲家名', class: "form-control", autocomplete: "off" %>
+        <%= f.hidden_field :model, value: "composers" %>
+        <%= f.submit('検索', class: 'btn-sm btn-dark') %>
+      <% end %>
+    </div>
+    <div class="w-100"></div>
+    <div class="py-2">
       <% if params[:composers_all] == 'true' %>
         <%= link_to " 15件ずつ表示", composers_path, class: 'btn btn-outline-dark fas fa-book' %>
       <% else %>

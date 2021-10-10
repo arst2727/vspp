@@ -1,9 +1,19 @@
 <% if @musical_pieces.present? %>
   <div class='container'>
     <div class="row justify-content-center">
-      <h4 class="px-5 py-2 mt-5 text-dark">楽曲一覧</h4>
-      <div class='w-100'></div>
-      <div class="px-5 py-2 mt-xs-5">
+      <div class="col-lg-3">
+        <h4 class="py-2 mt-5 text-center">楽曲一覧</h4>
+      </div>
+      <div class="col-lg-4 offset-lg-3 mt-lg-5 form-inline">
+        <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+          <i class="fas fa-search"></i>
+          <%= f.text_field :content, value: nil, placeholder: '楽曲名', class: "form-control", autocomplete: "off" %>
+          <%= f.hidden_field :model, value: "musical_pieces" %>
+          <%= f.submit('検索', class: 'btn-sm btn-dark') %>
+        <% end %>
+      </div>
+      <div class="w-100"></div>
+      <div class="py-2">
         <% if params[:musical_pieces_all] == 'true' %>
           <%= link_to " 15件ずつ表示", musical_pieces_path, class: 'btn btn-outline-dark fas fa-book' %>
         <% else %>
