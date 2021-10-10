@@ -1,9 +1,12 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">お問い合わせ</h4>
+    <h4 class="px-5 py-2 mt-5 text-dark">お問い合わせ</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-lg-8'>
+      <div class="my-2">
+        お名前、連絡先メールアドレスとお問い合わせ内容をご記入の上、確認ボタンを押してください。
+      </div>
       <%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
         <% if @inquiry.errors.any? %>
           <div class="alert alert-danger" role="alert">
@@ -27,7 +30,7 @@
           </tr>
           <tr>
             <th>お問い合わせ<span class="br"></span>内容</th>
-            <td><%= f.text_area :message, class: "form-control", rows: "5" %></td>
+            <td><%= f.text_area :message, class: "form-control", rows: "5", placeholder: "データ追加して欲しい作曲家名・ログインできなくなった場合など" %></td>
           </tr>
         </table>
         <div class="text-center">
