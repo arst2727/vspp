@@ -121,8 +121,27 @@
               half: true
           });
         </script>
-      <% else %>
-        <h5 class='mt-3'><%= current_member.nickname %>さんはまだレビュー投稿していません</h4>
+      <% else %><!--レビュー記録が一件も無い場合-->
+        <h5 class="mt-5">こちらは、<%= current_member.nickname %>さんのマイページです。</h5>
+        <i class="fas fa-check-square"></i> このマイページは、メニューバーにある自分のニックネーム名(<%= current_member.nickname %>)
+        を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-user"></i> マイページ ]</span>からチェックできます。<br>
+        <i class="fas fa-check-square"></i> レビューを投稿すると、自分の投稿だけがここに表示されていきます。<br>
+        <i class="fas fa-check-square"></i> レビューを投稿すると、自分のカレンダーにその日の投稿数が記録されます。
+        <div class="mt-3">
+          <% if current_member.profile_image.attached? %>
+            プロフィール画像の更新、ありがとうございました！
+          <% else %><!--レビュー記録が一件も無い上にプロフィール画像をデフォルトのままにしている場合-->
+            <span class="bg-infomation h5">まずはプロフィール画像を更新してみましょう！</span><br>
+            ニックネームの右にある<i class="fas fa-user-cog"></i>のマークがついているボタンからいつでも変更できます！
+          <% end %>
+        </div>
+        <div class="mt-3">
+          <span class="bg-infomation h5">楽曲レビューを投稿してみましょう！</span>
+          <i class="far fa-hand-point-right"></i><%= link_to " check", musical_piece_path(MusicalPiece.find(1)), class: "btn btn-info" %><br>
+          <span class="text-danger">補足</span>: 楽曲を知らなくても、実際に聴いてみてからレビュー投稿してみましょう。
+          動画等は、楽曲ページの参考リンク先にてチェックできます。
+          参考リンク先に動画が無い場合は、検索エンジンにて楽曲名を入力してみてください。
+        </div>
       <% end %>
     </div>
   </div>

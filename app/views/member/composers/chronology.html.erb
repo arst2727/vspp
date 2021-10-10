@@ -52,7 +52,10 @@
 <div class="container">
   <div class='row'>
     <div class='col-lg-4 col-md-12 col-xs-12'>
-    <h4 class="px-5 py-2 mt-5 ml-5" >作曲家年表</h4>
+      <h4 class="px-5 py-2 mt-5 ml-5 text-center">作曲家年表</h4>
+    </div>
+    <!--グラフ描画-->
+    <div id="timeline" style="height: 3000px; width: 1000px;"></div>
   </div>
   <!--凡例のスクロール固定表示-->
   <div class='row fixed-top mt-2' id='legend'>
@@ -67,6 +70,4 @@
     </div>
   </div>
 </div>
-<!--グラフ描画-->
-<div id="timeline" style="height: 3000px; width: 1000px;"></div>
 <% breadcrumb :chronology %>
