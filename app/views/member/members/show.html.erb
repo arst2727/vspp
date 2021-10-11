@@ -13,6 +13,24 @@
           <td class='pt-5 text-nowrap' colspan="2">
             <% if current_member.following?(@member) %>
               <%= link_to "フォロー中", member_relationships_path(@member.id), method: :delete, class: "btn btn-outline-dark" %>
+              <% if current_member.followed?(@member) %>
+              <!--相互フォロー限定ダイレクトメッセージ-->
+                <% if @haveRoom == true %>
+                  <a href="/rooms/<%= @roomId %>" class="btn btn-outline-info">
+                    <i class="far fa-envelope"></i>
+                  </a>
+                <% else %>
+                <!--チャットルーム未作成の場合-->
+                  <%= form_for @room do |f| %>
+                    <%= fields_for @message_room do |mr| %>
+                      <%= mr.hidden_field :member_id, value: @member.id %>
+                    <% end %>
+                    <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+                      <i class="far fa-envelope"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
             <% else %>
               <%= link_to "フォローする", member_relationships_path(@member.id), method: :post, class: "btn btn-dark" %>
             <% end %>

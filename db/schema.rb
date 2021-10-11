@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_015438) do
+ActiveRecord::Schema.define(version: 2021_10_10_144730) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,11 +64,13 @@ ActiveRecord::Schema.define(version: 2021_09_26_015438) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lists", force: :cascade do |t|
+  create_table "member_rooms", force: :cascade do |t|
     t.integer "member_id"
-    t.string "name", null: false
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_member_rooms_on_member_id"
+    t.index ["room_id"], name: "index_member_rooms_on_room_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -82,6 +84,16 @@ ActiveRecord::Schema.define(version: 2021_09_26_015438) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.integer "member_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_messages_on_member_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "musical_piece_comments", force: :cascade do |t|
@@ -129,6 +141,13 @@ ActiveRecord::Schema.define(version: 2021_09_26_015438) do
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_rooms_on_member_id"
   end
 
 end

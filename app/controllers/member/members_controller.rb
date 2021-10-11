@@ -19,6 +19,26 @@ class Member::MembersController < ApplicationController
       render :my_page
     end
     @musical_piece_comments = MusicalPieceComment.where(member_id: @member)
+    # ダイレクトメッセージ機能
+    @currentMemberRoom = MemberRoom.where(member_id: current_member.id)
+    @receiveMember = MemberRoom.where(member_id: @member.id)
+    # 上記2行でMemberとRoomの中間テーブルのデータそれぞれ割り出す
+
+    unless @member.id == current_member.id
+      @currentMemberRoom.each do |cm|
+        @receiveMember.each do |m|
+          if cm.room_id == m.room_id
+            @haveRoom = true
+            @roomId = cm.room_id
+          end
+        end
+      end
+      # roomが作成されていない場合は作る
+      unless @haveRoom
+        @room = Room.new
+        @member_room = MemberRoom.new
+      end
+    end
   end
 
   # 自分のタイムライン(最新100件取得)

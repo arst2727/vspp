@@ -334,6 +334,78 @@ footer {
   top: 80px;
   z-index: 1;
 }
+/* =====================
+  DM関連
+===================== */
+// DMトップ
+#dm-title {
+  top: 78px;
+  background: #ffffff;
+  z-index: 1;
+}
+// DMのメッセージフォーム
+#dm-form {
+  text-align: center;
+  display: inline-block;
+  // bottom: 32px;
+  background: #ffffff;
+  z-index: 1;
+}
+// メッセージのふきだし
+.balloon-right {
+  position: relative;
+  display: inline-block;
+  margin: 10px 15px 0 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  // color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  // border-radius: 15px;
+}
+.balloon-right:before {
+  content: "";
+  position: absolute;
+  // topとleftで吹き出す位置指定
+  top: 50%;
+  left: 100%;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-left: 10px solid #e0edff;
+}
+.balloon-right p {
+  margin: 0;
+  padding: 0;
+}
+.balloon-left {
+  position: relative;
+  display: inline-block;
+  margin: 10px 0 0 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  // color: #555;
+  font-size: 16px;
+  background: #fff7ef;
+  // border-radius: 15px;
+}
+
+.balloon-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-right: 10px solid #fff7ef;
+}
+
+.balloon-left p {
+  margin: 0;
+  padding: 0;
+}
+
 // ドロップダウン逆三角非表示
 .dropdown-toggle::after {
   font-size: 0px; // 0pxで強制非表示

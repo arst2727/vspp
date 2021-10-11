@@ -4,8 +4,14 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true, length: { maximum: 30 }
+  # マイリスト機能
   has_many :lists, dependent: :destroy
+  # 楽曲のレビュー
   has_many :musical_piece_comments, dependent: :destroy
+  # DM機能
+  has_many :messages, dependent: :destroy
+  has_many :member_rooms, dependent: :destroy
+  has_many :rooms, through: :member_rooms
   # ActiveStorageを利用したプロフィール画像用
   has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
@@ -31,15 +37,22 @@ class Member < ApplicationRecord
   def following?(member)
     followings.include?(member)
   end
+
+  def followed?(member)
+    followers.include?(member)
+  end
   # ##########フォローフォロワー機能End###########
 
+  # ##########ニックネーム検索機能Start###########
   scope :search, -> (search_params) do
     return if search_params.blank?
 
     nickname_like(search_params[:nickname])
   end
   scope :nickname_like, -> (nickname) { where('nickname LIKE ?', "%#{nickname}%") if nickname.present? }
+  # ##########ニックネーム検索機能End###########
 
+  # プロフィール画像更新バリデーション
   validate :validate_profile_image
 
   def validate_profile_image

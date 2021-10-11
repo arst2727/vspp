@@ -2,6 +2,7 @@ ja:
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M:%S"
+      middle: "%Y年%m月%d日 %H:%M"
       short: "%Y年%m月%d日"
   views:
     pagination:

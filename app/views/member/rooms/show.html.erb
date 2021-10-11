@@ -1,0 +1,58 @@
+<div class='container'>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <% @member_rooms.each do |mr| %>
+        <% unless mr.member == current_member %>
+          <!--<h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark"><%#= mr.member.nickname %>とあなたのDM</h4>-->
+          <div class="text-center pt-3 fixed-top" id='dm-title'>
+          <%= link_to member_path(mr.member), class: "text-dark" do %>
+            <% if mr.member.profile_image.attached? %>
+              <%= image_tag mr.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+            <% end %>
+            <strong><%= mr.member.nickname.truncate(15) %></strong>
+          <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <hr>
+      <div class="chat py-5">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+            <% if m.member == current_member %>
+            <div class="chat-box text-right">
+              <div class="balloon-right"><%= m.message %></div>
+              <div id="chat-hukidashi">
+                <%= l m.created_at, format: :middle %>
+              </div>
+            </div>
+            <% else %>
+            <div class="chat-box text-left">
+              <% if m.member.profile_image.attached? %>
+                <%= image_tag m.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+              <% end %>
+              <div class="balloon-left"><%= m.message %></div>
+              <div id="chat-hukidashi">
+                <%= l m.created_at, format: :middle %>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="py-xs-5"></div>
+      <div class="posts fixed-bottom form-inline pb-4" id="dm-form">
+      <hr>
+        <%= form_with model: @message, local: :true do |f| %>
+          <%= f.text_field :message, placeholder: "メッセージを作成" , size: 30, class: "form-control", autocomplete: "off" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+            <i class = 'far fa-paper-plane'></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
