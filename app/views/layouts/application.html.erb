@@ -98,7 +98,7 @@
                   <%= link_to " タイムライン", timeline_members_path, method: :get, class: "fas fa-clock btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item pr-2 my-auto text-nowrap">
-                  <%= link_to " 利用者", members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
+                  <%= link_to " ユーザ", members_path, method: :get, class: "fas fa-users btn btn-outline-dark" %>
                 </li>
                 <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 楽曲", musical_pieces_path, method: :get, class: 'fas fa-music btn btn-outline-dark' %>
@@ -108,6 +108,10 @@
                 </li>
                 <li class="nav-item my-auto text-nowrap">
                   <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
+                  <!--ヘルプボタン-->
+                  <%= link_to home_help_path do %>
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:2rem;height:2rem;"><i class="fas fa-question"></i></button>
+                  <% end %>
                 </li>
               </ul>
               <ul class="navbar-nav">

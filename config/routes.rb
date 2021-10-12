@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   scope module: :member do
     root :to => "homes#top"
     get "home/about" => "homes#about"
+    get "home/help" => "homes#help"
     get '/search', to: 'searches#search'
 
     resources :musical_pieces, only: [:index, :show, :new, :create] do

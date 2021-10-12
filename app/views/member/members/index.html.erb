@@ -1,19 +1,19 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">利用者一覧</h4>
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">ユーザ一覧</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-xs-12 col-md-12 col-lg-9'>
       <div class="mb-4 mt-2">
         <% if @members.present? %>
-          現在の利用者数: <span class="text-info"><%= Member.all.count %></span>人
+          現在の登録者数: <span class="text-info"><%= Member.all.count %></span>人
         <% end %>
       </div>
       <% if @members.present? %>
         <div class="search-form pb-3">
           <%= form_with(scope: :search, url: members_path, method: :get, local: true) do |f| %>
             <div class="col-xs-7 col-md-7 col-lg-6">
-              <i class="fas fa-search"></i> 利用者を見つける
+              <i class="fas fa-search"></i> ユーザを見つける
               <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力', autocomplete: :off %>
               <div class="pl-2">
                 <%= f.submit("検索", class: 'btn btn-sm btn-outline-dark') %>
@@ -55,6 +55,10 @@
                 <td class="col-xs-4 col-md-4 col-lg-3 text-nowrap">
                   <% if current_member.following?(member) %>
                     <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
+                    <% if current_member.followed?(member) %>
+                    <!--相互フォロー-->
+                      <i class="fas fa-hands-helping ml-2"></i>
+                    <% end %>
                   <% elsif current_member != member %>
                     <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
                   <% else %>

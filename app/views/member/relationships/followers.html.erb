@@ -35,8 +35,8 @@
                     <% if current_member.following?(member) %>
                       <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
                       <% if current_member.followed?(member) %>
-                      <!--相互フォロー限定ダイレクトメッセージ-->
-                        <i class="far fa-envelope ml-5 mr-2"></i>DM可
+                      <!--相互フォロー-->
+                        <i class="fas fa-hands-helping ml-2"></i>
                       <% end %>
                     <% elsif current_member != member %>
                       <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
