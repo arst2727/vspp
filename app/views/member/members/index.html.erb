@@ -12,18 +12,18 @@
       <% if @members.present? %>
         <div class="search-form pb-3">
           <%= form_with(scope: :search, url: members_path, method: :get, local: true) do |f| %>
-            <div class="col-xs-6 col-md-6 col-lg-4">
+            <div class="col-xs-7 col-md-7 col-lg-6">
               <i class="fas fa-search"></i> 利用者を見つける
-              <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力' %>
+              <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力', autocomplete: :off %>
               <div class="pl-2">
                 <%= f.submit("検索", class: 'btn btn-sm btn-outline-dark') %>
               </div>
             </div>
           <% end %>
         </div>
-        <table id='sort-table' class='table table-hover'>
+        <table id='sort-table' class='table table-bordered table-hover'>
           <thead>
-            <tr class="thead-dark text-center">
+            <tr class="thead-light text-center">
               <th class="text-nowrap fixed01">ニックネーム</th>
               <th class="text-nowrap fixed02">投稿数</th>
               <th class="text-nowrap fixed02">サイト登録日</th>
@@ -33,7 +33,7 @@
           <tbody>
             <% @members.each do |member| %>
               <tr class="text-center">
-                <th class="col-xs-4 col-md-4 col-lg-2 text-left fixed02">
+                <th class="col-xs-4 col-md-4 col-lg-3 text-left fixed02">
                   <%= link_to member_path(member), class: "text-dark" do %>
                     <% if member.profile_image.attached? %>
                       <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
@@ -44,11 +44,11 @@
                     <%= member.nickname.truncate(15) %>
                   <% end %>
                 </th>
-                <td class="col-xs-1 col-md-1 col-lg-1 text-nowrap">
+                <td class="col-xs-2 col-md-2 col-lg-2 text-nowrap">
                   <% if member.musical_piece_comments.present? %>
                     <%= member.musical_piece_comments.count %>
                   <% else %>
-                    -
+                    0
                   <% end %>
                 </td>
                 <td class="col-xs-3 col-md-3 col-lg-3"><%= l member.created_at, format: :short %></td>
