@@ -20,7 +20,7 @@
                     <i class="far fa-envelope"></i>
                   </a>
                 <% else %>
-                <!--チャットルーム未作成の場合-->
+                <!--チャットルーム未作成の場合は作成する-->
                   <%= form_for @room do |f| %>
                     <%= fields_for @message_room do |mr| %>
                       <%= mr.hidden_field :member_id, value: @member.id %>

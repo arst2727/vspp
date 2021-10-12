@@ -110,7 +110,7 @@
                   <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
                   <!--ヘルプボタン-->
                   <%= link_to home_help_path do %>
-                    <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:2rem;height:2rem;"><i class="fas fa-question"></i></button>
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:30px;height:30px;"><i class="fas fa-question"></i></button>
                   <% end %>
                 </li>
               </ul>
@@ -149,6 +149,10 @@
                 </li>
                 <li class="nav-item px-2 text-nowrap">
                   <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
+                  <!--ヘルプボタン-->
+                  <%= link_to home_help_path do %>
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:30px;height:30px;"><i class="fas fa-question"></i></button>
+                  <% end %>
                 </li>
                 <li class="nav-item px-2 text-nowrap">
                   <%= link_to " 新規登録", new_member_registration_path, class: 'fas fa-user-plus btn btn-danger' %>

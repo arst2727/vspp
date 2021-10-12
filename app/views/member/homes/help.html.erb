@@ -1,32 +1,81 @@
 <div class='container'>
   <div class='row justify-content-center'>
-    <div class="col-lg-12 col-md-10 col-xs-10 text-dark bg-infomation">
-      <h3>ヘルプページ</h3>
-      このページで問題が解決されない場合は、お問い合わせください<span class="br"></span>
+    <div class="col-lg-12 col-md-10 col-xs-10 text-dark">
+      <h3 class="pt-3 text-center">ヘルプページ</h3>
+      このページで問題が解決されない場合、お手数お掛けしますが、こちらにてお問い合わせください<span class="br"></span>
       <i class="far fa-hand-point-right"></i><%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'btn btn-outline-dark' %>
       <div>目次</div>
       <ul>
-        <li>よくある質問</li>
-        <li>相互フォローについて</li>
-        <li>ダイレクトメッセージについて</li>
+        <li><a href="#faq">よくある質問集</a></li>
+        <li><a href="#follow">相互フォローについて</a></li>
+        <li><a href="#dm">ダイレクトメッセージについて</a></li>
+        <li><a href="#mylist">マイリストについて</a></li>
       </ul>
-
-      <div>
-        Q. 誰かをフォローすることで、何か良いことはありますか？<br>
-        A. あります。タイムラインでは自分がフォローしているユーザのコメントだけが見られます。そして、相互フォローになるとダイレクトメッセージ機能が使えるようになります。
-      </div>
-      <div>
-        自分がフォローしている利用者が自分をフォローしている状態を、相互フォローと定義します。
-        相互フォローになると、ユーザ一覧、自分のフォロー、自分のフォロワー画面に
-        相手のフォローステータスの横に<i class="fas fa-hands-helping"></i>のマークが付きます。
-      </div>
-      <div>
-        他のユーザのページを見に行った際に、そのユーザが相互フォローの場合に、ダイレクトメッセージ機能(以下、DMとする)が使えます。
-        そのユーザのフォロー中というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。
-        このマークが無い場合は、そのユーザが自分をフォローしてもらわない限りマークは出てきません。
-        あくまでも相互フォロー限定の機能となります。
-        ダイレクトメッセージは、自分とそのユーザの2人だけのチャットルームが作られます。
-      </div>
+      <hr>
+      <hr>
+      <section id="faq" class="anchor">
+        <h5>よくある質問集</h5>
+        Q. <span class="bg-infomation">ログインをすると、どんな機能が使えますか？</span><br>
+        Q. <span class="bg-infomation">VSPPって何ですか？</span><br>
+        A. 詳しくは、<%= link_to "こちら", home_about_path %>のページをご覧ください。
+        <hr>
+        Q. <span class="bg-infomation">誰かをフォローすることで、何か良いことはありますか？</span><br>
+        A. あります。タイムラインでは自分がフォローしているユーザのコメントだけが見られます。
+        そして、<a href="#follow">相互フォロー</a>になると<a href="#dm">ダイレクトメッセージ</a>機能が使えるようになります。<br>
+        <hr>
+        Q. <span class="bg-infomation">レビューしたい楽曲名が見つからないのですが...</span><br>
+        A. 検索フォームで入力したキーワードは、部分一致での検索に対応しております。
+        検索ワードを変えて再び検索してみてください。なお、ヒットしなかった場合には、楽曲申請フォームが表示されます。
+        今後レビューを書きたい楽曲である場合には、ぜひ楽曲申請フォームにご記入いただき、申請のご協力をお願いいたします。
+        <hr>
+        Q. <span class="bg-infomation">作曲家が見つからないのですが...</span><br>
+        A. 検索フォームで入力したキーワードは、部分一致での検索に対応しております。作曲家名は、英語表記でも検索できます。
+        検索ワードを変えて再び検索してみてください。なお、ヒットしなかった場合には、お問い合わせフォームにて
+        作曲家名をご記入いただき、申請のご協力をお願いいたします。当サイトはピアノ独奏曲に限定しているため、
+        ピアノ独奏曲が存在しない作曲家のデータの追加には対応しておりません。ご了承いただきますよう、お願いいたします。
+        <hr>
+        Q. <span class="bg-infomation">登録時のニックネームを変えたいのですが...</span><br>
+        Q. <span class="bg-infomation">プロフィール画像はどこで変更できますか？</span><br>
+        A. まず、上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-user"></i> マイページ ]</span>からマイページに入ります。
+        自分のニックネームの上にある<i class="fas fa-user-cog"></i>のマークのボタンからいつでも変更できます
+        <hr>
+      </section>
+      <hr>
+      <hr>
+      <section id="follow" class="anchor">
+        <h5>相互フォローについて</h5>
+        当サイトでは<span class="bg-infomation">自分と相手がお互いにフォローしている状態</span>を、相互フォローと定義します。
+        相互フォローになると、ユーザ一覧、自分のフォロー、自分のフォロワー画面で
+        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。<br>
+        <div class="help-images ff">
+          <div><%= image_tag 'member.png',:size =>"322x300" %></div>
+          <div><%= image_tag 'follow.png',:size =>"350x290" %></div>
+          <div><%= image_tag 'follower.png',:size =>"350x262" %></div>
+        </div>
+      </section>
+      <hr>
+      <hr>
+      <section id="dm" class="anchor">
+        <h5>ダイレクトメッセージについて</h5>
+        <a href="#follow">相互フォロー</a>の場合、その相手とダイレクトメッセージ(以下「DM」とする)機能が使えます。
+        その相手のページで[ フォロー中 ]というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。
+        自分だけフォローしていても、その相手に自分をフォローしてもらわない限りこのマークは出てきません。
+        あくまでも<a href="#follow">相互フォロー</a>限定の機能となります。<br>
+        <span class="font-weight-bold pl-3">相互フォローしている相手ユーザのページ <i class="fas fa-arrow-down"></i></span>
+        <div><%= image_tag 'dm.png', :class =>"w-100" %></div>
+        <i class="far fa-envelope"></i>のマークを押すと、自分とそのユーザの2人だけのチャットルームが作られます。
+        ここでDMを送ることができます(140文字以内)。<br>
+        <span class="font-weight-bold pl-3">DMを送るチャットルーム <i class="fas fa-arrow-down"></i></span>
+        <div><%= image_tag 'dm2.png', :size =>"350x382" %></div>
+      </section>
+      <hr>
+      <hr>
+      <section id="mylist" class="anchor">
+        <h5>マイリストについて</h5>
+        上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-list"></i> マイリスト ]</span>から入れます。
+        リストは複数作成できます。複数作成した場合、とあるリストで追加していた楽曲と同じ楽曲であっても
+        別のリストには追加できます。そして、当然のことではありますが、リスト内で同じ楽曲データは追加できないようになっております。
+      </section>
     </div>
   </div>
 </div>

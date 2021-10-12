@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2021_10_10_144730) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.integer "member_id"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "member_rooms", force: :cascade do |t|
     t.integer "member_id"
     t.integer "room_id"
@@ -130,15 +137,6 @@ ActiveRecord::Schema.define(version: 2021_10_10_144730) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "requested_musical_pieces", force: :cascade do |t|
-    t.string "composer_name"
-    t.string "musical_piece_name"
-    t.string "reference_url"
-    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

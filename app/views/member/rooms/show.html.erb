@@ -29,12 +29,14 @@
             </div>
             <% else %>
             <div class="chat-box text-left">
-              <% if m.member.profile_image.attached? %>
-                <%= image_tag m.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
-              <% end %>
-              <div class="balloon-left"><%= m.message %></div>
+              <div class="text-nowrap">
+                <% if m.member.profile_image.attached? %>
+                  <%= image_tag m.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                <% end %>
+                <span class="balloon-left text-wrap"><%= m.message %></span>
+              </div>
               <div id="chat-hukidashi">
                 <%= l m.created_at, format: :middle %>
               </div>

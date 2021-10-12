@@ -25,7 +25,7 @@
         <!------------------>
         <% if current_member.lists.present? %>
           <%= form_with model: MusicalPieceList.new, url: musical_piece_lists_path, method: :post, local: true do |f| %>
-            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+             <!--f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい"-->
             <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: "--リストを選択--" %>
 
             <%= f.hidden_field :musical_piece_id, :value => @musical_piece.id %>
