@@ -21,9 +21,9 @@
             </div>
           <% end %>
         </div>
-        <table id='sort-table' class='table table-bordered table-hover'>
+        <table id='sort-table' class='table table-hover'>
           <thead>
-            <tr class="thead-light text-center">
+            <tr class="thead-dark text-center">
               <th class="text-nowrap fixed01">ニックネーム</th>
               <th class="text-nowrap fixed02">投稿数</th>
               <th class="text-nowrap fixed02">サイト登録日</th>
@@ -57,6 +57,8 @@
                     <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, class: "btn btn-outline-dark mt-1" %>
                   <% elsif current_member != member %>
                     <%= link_to "フォローする", member_relationships_path(member.id), method: :post, class: "btn btn-dark text-nowrap mt-1" %>
+                  <% else %>
+                    -
                   <% end %>
                 </td>
               </tr>
