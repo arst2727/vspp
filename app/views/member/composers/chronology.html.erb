@@ -27,7 +27,6 @@
       // timeline: { showRowLabels: false },
       // avoidOverlappingGridLines: false,
       // backgroundColor: '#ffd',
-      title: "作曲家",
       colors: [
         <% @composers.each do |composer| %>
           <% case composer.year_of_birth %>
@@ -68,7 +67,9 @@
       </h6>
     </div>
   </div>
-<!--グラフ描画-->
-<div id="timeline" style="height: 1000px; width: 1000px;"></div>
+  <!--グラフ描画スマホ-->
+  <!--<div id="timeline" style="height: 500px; width: 700px;"></div>-->
+  <!--グラフ描画PC-->
+  <div id="timeline" style="height: 700px; width: 1200px;"></div>
 </div>
 <% breadcrumb :chronology %>
