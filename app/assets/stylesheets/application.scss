@@ -375,16 +375,21 @@ section.anchor {
 }
 // DMのメッセージフォーム
 #dm-form {
-  // text-align: center;
+  text-align: center;
   display: inline-block;
   bottom: 32px;
   // background: #ffffff;
   // z-index: 1;
 }
 .messages-area {
-  // overflow-y: scroll;//要素の縦横を固定し、スクロールバーが表示
-  //height: calc(100% - 850px);
+  overflow-y: auto;//要素の縦横を固定し、スクロールバーが表示
   background-color: rgba( 255, 232, 209, 0.25 );
+  @media screen and (max-width: 767.98px) {
+    max-height: calc(100% - 1100px);
+  }
+  @media screen and (min-width: 768px) {
+    max-height: calc(100% - 800px);
+  }
 }
 // メッセージのふきだし自分側
 .balloon-right {

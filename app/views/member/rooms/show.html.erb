@@ -16,7 +16,7 @@
         <% end %>
       <% end %>
       <br>
-      <div class="overflow-auto w-100 messages-area pt-2 mt-5">
+      <div class="w-100 messages-area mt-5 js-auto-scroll">
         <% if @messages.present? %>
           <% @messages.each do |m| %>
             <% if m.member == current_member %>
@@ -58,3 +58,14 @@
       </div>
     </div>
   </div>
+</div>
+<script>
+  //自動スクロール
+  //メッセージエリアのDOMを変数に格納
+  var $scrollAuto = $('.js-auto-scroll');
+  //animate関数で利用できるプロパティは数値を扱うプロパティの値を簡単に変化させることができる関数
+  //scrollTop()」は、ブラウザの画面をスクロールした時の位置（スクロール量）を取得できるメソッド。引数を設定することで任意のスクロール位置まで移動させることが可能
+  //scrollHeightは、あふれた(overflowした)画面上に表示されていないコンテンツを含む要素の内容の高さ
+  //scrollTopの要素をscrollHeightに徐々に変化させている
+  $scrollAuto.animate({scrollTop: $scrollAuto[0].scrollHeight}, 'slow');
+</script>
