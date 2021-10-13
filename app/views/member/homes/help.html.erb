@@ -6,15 +6,14 @@
       <i class="far fa-hand-point-right"></i><%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'btn btn-outline-dark' %>
       <div>目次</div>
       <ul>
-        <li><a href="#faq">よくある質問集</a></li>
-        <li><a href="#follow">相互フォローについて</a></li>
-        <li><a href="#dm">ダイレクトメッセージについて</a></li>
-        <li><a href="#mylist">マイリストについて</a></li>
+        <li><a href="#faq">よくある質問集</a> <i class="far fa-question-circle"></i></li>
+        <li><a href="#follow">相互フォローについて</a> <i class="fas fa-hands-helping"></i></li>
+        <li><a href="#dm">ダイレクトメッセージについて</a> <i class="far fa-envelope"></i></li>
+        <li><a href="#mylist">マイリストについて</a> <i class="fas fa-list"></i></li>
       </ul>
       <hr>
-      <hr>
       <section id="faq" class="anchor">
-        <h5>よくある質問集</h5>
+        <h5 class="bg-cool">よくある質問集</h5>
         Q. <span class="bg-infomation">ログインをすると、どんな機能が使えますか？</span><br>
         Q. <span class="bg-infomation">VSPPって何ですか？</span><br>
         A. 詳しくは、<%= link_to "こちら", home_about_path %>のページをご覧ください。
@@ -39,31 +38,34 @@
         A. まず、上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-user"></i> マイページ ]</span>からマイページに入ります。
         自分のニックネームの上にある<i class="fas fa-user-cog"></i>のマークのボタンからいつでも変更できます
         <hr>
+        Q. <span class="bg-infomation">マイリストの作成と追加の方法がわかりません</span><br>
+        A. まず、上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-list"></i> マイリスト ]</span>からマイリストに入ります。
+        その先に関しましては、"<a href="#mylist">マイリストについて</a>"を参考に作成と追加を行ってみてください。
       </section>
       <hr>
-      <hr>
       <section id="follow" class="anchor">
-        <h5>相互フォローについて</h5>
-        当サイトでは<span class="bg-infomation">自分と相手がお互いにフォローしている状態</span>を、相互フォローと定義します。
+        <h5 class="bg-cool">相互フォローについて</h5>
+        当サイトでは<span class="bg-infomation">自分と相手がお互いにフォローしている状態</span>を、相互フォローと定義します。<br>
         相互フォローになると、<span class="font-weight-bold">ユーザ一覧、自分のフォロー、自分のフォロワー画面</span>で
-        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。
+        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。<br>
         <span class="font-weight-bold">ユーザ一覧</span>、または<span class="font-weight-bold">自分のフォロー画面</span>では、
         下図の丸で示すように[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが
-        付いていない場合があります。これは相互フォローではないことを意味しています。
+        付いていない場合があります。<br>これは相互フォローではないことを意味しています。
         <br>
         <div class="help-images ff">
           <div><%= image_tag 'member.png',:size =>"322x300" %></div>
           <div><%= image_tag 'follow.png',:size =>"350x290" %></div>
           <div><%= image_tag 'follower.png',:size =>"350x262" %></div>
         </div>
+        上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-hands-helping"></i> 相互フォロー ]</span>
+        から相互フォローのユーザを確認できます。<br><a href="#dm">ダイレクトメッセージ</a>を送りたい場合はここから入ると便利です。
       </section>
       <hr>
-      <hr>
       <section id="dm" class="anchor">
-        <h5>ダイレクトメッセージについて</h5>
-        <a href="#follow">相互フォロー</a>の場合、その相手とダイレクトメッセージ(以下「DM」とする)機能が使えます。
-        その相手のページで[ フォロー中 ]というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。
-        自分がフォローをしていても、その相手から自分をフォローしてもらわない限りこのマークは出てきません。
+        <h5 class="bg-cool">ダイレクトメッセージについて</h5>
+        <a href="#follow">相互フォロー</a>の場合、その相手とダイレクトメッセージ(以下「DM」とする)機能が使えます。<br>
+        その相手のページで[ フォロー中 ]というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。<br>
+        自分がフォローをしていても、その相手から自分をフォローしてもらわない限りこのマークは出てきません。<br>
         あくまでも<a href="#follow">相互フォロー</a>限定の機能となります。<br>
         <span class="font-weight-bold pl-3">相互フォローしている相手ユーザのページ <i class="fas fa-arrow-down"></i></span>
         <div><%= image_tag 'dm.png', :class =>"w-100" %></div>
@@ -73,12 +75,24 @@
         <div><%= image_tag 'dm2.png', :size =>"350x382" %></div>
       </section>
       <hr>
-      <hr>
       <section id="mylist" class="anchor">
-        <h5>マイリストについて</h5>
-        上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-list"></i> マイリスト ]</span>から入れます。
-        リストは複数作成できます。複数作成した場合、とあるリストで追加していた楽曲と同じ楽曲であっても
-        別のリストには追加できます。そして、当然のことではありますが、リスト内で同じ楽曲データは追加できないようになっております。
+        <h5 class="bg-cool">マイリストについて</h5>
+        上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-list"></i> マイリスト ]</span>から入れます。<br>
+        <span class="bg-cool font-weight-bold"><i class="fas fa-bullseye"></i> マイリスト作成</span><br>
+        リストは複数作成できます。リストの作成は+、リスト名の編集は<i class="fas fa-edit"></i>のマークからできます。<br>
+        <div class="help-images list">
+          <div><%= image_tag 'mylistplus.png', :size =>"350x140" %></div>
+          <div><%= image_tag 'mylistedit.png', :size =>"350x140" %></div>
+        </div>
+        例えば、「あとで聴きたい」リストと「いつか弾いてみたい」リストの２つを作成したとします。<br>
+        この場合、同じ楽曲をそれぞれのリストに追加することができます。<br>
+        もちろんですが、リスト内にすでに入っている楽曲を同じリスト内に追加しようとしても「追加済みです」というエラーメッセージが出ます。<br>
+        つまり、リスト間での楽曲の重複を可とし、リスト内での楽曲の重複は不可という仕様です。<br>
+        <span class="bg-cool font-weight-bold"><i class="fas fa-bullseye"></i> リスト内に楽曲の追加</span><br>
+        まずは、[ 楽曲一覧 ]→[ 楽曲ページ ]へと移動します。<br>
+        マイリストでリストを作成済みならば、楽曲の情報の表の下にリストに追加するボタンがあります。<br>
+        下の図で示すように、追加したい対象のリストを選んでから追加ボタンを押します。
+        <div><%= image_tag 'musiclist.png', :size =>"350x300" %></div>
       </section>
     </div>
   </div>

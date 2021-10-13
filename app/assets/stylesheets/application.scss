@@ -193,6 +193,15 @@ footer {
   height: 300px;
   background-color: #fff;
 }
+.help-images.list > div {
+  width: 350px;
+  height: 140px;
+  @media screen and (max-width: 767.98px) {
+    width: 100%;
+    height: 100%;
+  }
+  background-color: #fff;
+}
 section.anchor {
   padding-top: 90px;
   margin-top: -90px;
@@ -305,9 +314,13 @@ section.anchor {
 /* =====================
   背景色アレンジ
 ===================== */
-// TOPのInfomation背景
+// TOPのInfomation背景、ヘルプページ
 .bg-infomation {
   background-color: rgba( 255, 232, 209, 0.75 );
+}
+// ヘルプページ(DMの自分側のふきだしと同じ色)
+.bg-cool {
+  background: #e0edff;
 }
 // シンプルカレンダー内背景色独自クラス
 .bg-kusa1 {
