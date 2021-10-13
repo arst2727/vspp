@@ -1,4 +1,4 @@
-<div "container">
+<div class="container">
   <div class='row justify-content-center pt-2'>
     <div class='col'>
       <% if @followings_members.present? %>
@@ -28,7 +28,7 @@
             </tr>
           <% end %>
           <% unless @musical_piece_comments.present? %>
-            <div class="text-center h5">
+            <div class="text-center h5 pt-5">
               <%= current_member.nickname %>(あなた)がフォローしている人の中では、まだ誰もレビューをしていないようです。<br>
               <span class="bg-infomation h5">まずは私(管理人)のページにて<span class="br"></span>[フォローする]を押してみてください</span>
               <span class="text-nowrap"><i class="far fa-hand-point-right"></i><%= link_to " check", member_path(Member.find(1)), class: "btn btn-info" %></span><br>
