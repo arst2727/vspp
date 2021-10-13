@@ -1,7 +1,7 @@
 # VSPP(Verbalizing sensibilities about piano pieces)
-![vspp](https://user-images.githubusercontent.com/86127316/137171300-24c5036a-bc1c-4d12-af79-d6ff1072af86.png)
+<img width="200" alt="vspp-logo" src="https://user-images.githubusercontent.com/86127316/137171300-24c5036a-bc1c-4d12-af79-d6ff1072af86.png">
 
-## URL
+## サイトURL
 
 https://vspp.xyz
 
@@ -82,7 +82,7 @@ Youtube などの動画サイトを開いている時、コンサートの帰り
 
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1uk67rfj0-ULzekToHeB3ON51Rvz0uR48GA_oiSGOjuQ/edit?usp=sharing
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1uk67rfj0-ULzekToHeB3ON51Rvz0uR48GA_oiSGOjuQ/edit?usp=sharing)
 
 ## 開発環境
 
@@ -94,8 +94,7 @@ https://docs.google.com/spreadsheets/d/1uk67rfj0-ULzekToHeB3ON51Rvz0uR48GA_oiSGO
 
 ## 使用素材
 
-- 2.400万点以上の高品質なフリー画像素材 - Pixabay https://pixabay.com/ja/
-- かわいいフリー素材集 いらすとや https://www.irasutoya.com/
-- ピアノ曲事典 | ピティナ・ピアノホームページ - ピティナ・ピアノ曲事典 https://enc.piano.or.jp/
-
-
+- [2.400万点以上の高品質なフリー画像素材 - Pixabay](https://pixabay.com/ja/)
+- [かわいいフリー素材集 いらすとや](https://www.irasutoya.com/)
+- [ピアノ曲事典 | ピティナ・ピアノホームページ - ピティナ・ピアノ曲事典](https://enc.piano.or.jp/)
+- [Font Awesome](https://fontawesome.com/)
