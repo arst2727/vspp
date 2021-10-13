@@ -19,7 +19,7 @@
         A. 詳しくは、<%= link_to "こちら", home_about_path %>のページをご覧ください。
         <hr>
         Q. <span class="bg-infomation">誰かをフォローすることで、何か良いことはありますか？</span><br>
-        A. あります。タイムラインでは自分がフォローしているユーザのコメントだけが見られます。
+        A. あります。タイムラインでは自分がフォローしているメンバーのコメントだけが見られます。
         そして、<a href="#follow">相互フォロー</a>になると<a href="#dm">ダイレクトメッセージ</a>機能が使えるようになります。<br>
         <hr>
         Q. <span class="bg-infomation">レビューしたい楽曲名が見つからないのですが...</span><br>
@@ -46,9 +46,9 @@
       <section id="follow" class="anchor">
         <h5 class="bg-cool">相互フォローについて</h5>
         当サイトでは<span class="bg-infomation">自分と相手がお互いにフォローしている状態</span>を、相互フォローと定義します。<br>
-        相互フォローになると、<span class="font-weight-bold">ユーザ一覧、自分のフォロー、自分のフォロワー画面</span>で
-        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。<br>
-        <span class="font-weight-bold">ユーザ一覧</span>、または<span class="font-weight-bold">自分のフォロー画面</span>では、
+        相互フォローになると、<span class="font-weight-bold">メンバー一覧、自分のフォロー、自分のフォロワー画面</span>で
+        メンバーの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。<br>
+        <span class="font-weight-bold">メンバー一覧</span>、または<span class="font-weight-bold">自分のフォロー画面</span>では、
         下図の丸で示すように[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが
         付いていない場合があります。<br>これは相互フォローではないことを意味しています。
         <br>
@@ -58,7 +58,7 @@
           <div><%= image_tag 'follower.png',:size =>"350x262" %></div>
         </div>
         上のメニューバーにある自分のニックネーム名を押して出てくるメニューの<span class="text-nowrap">[ <i class="fas fa-hands-helping"></i> 相互フォロー ]</span>
-        から相互フォローのユーザを確認できます。<br><a href="#dm">ダイレクトメッセージ</a>を送りたい場合はここから入ると便利です。
+        から相互フォローのメンバーを確認できます。<br><a href="#dm">ダイレクトメッセージ</a>を送りたい場合はここから入ると便利です。
       </section>
       <hr>
       <section id="dm" class="anchor">
@@ -67,9 +67,9 @@
         その相手のページで[ フォロー中 ]というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。<br>
         自分がフォローをしていても、その相手から自分をフォローしてもらわない限りこのマークは出てきません。<br>
         あくまでも<a href="#follow">相互フォロー</a>限定の機能となります。<br>
-        <span class="font-weight-bold pl-3">相互フォローしている相手ユーザのページ <i class="fas fa-arrow-down"></i></span>
+        <span class="font-weight-bold pl-3">相互フォローしている相手メンバーのページ <i class="fas fa-arrow-down"></i></span>
         <div><%= image_tag 'dm.png', :class =>"w-100" %></div>
-        <i class="far fa-envelope"></i>のマークを押すと、自分とそのユーザの2人だけのチャットルームが作られます。
+        <i class="far fa-envelope"></i>のマークを押すと、自分とそのメンバーの2人だけのチャットルームが作られます。
         ここでDMを送ることができます(140文字以内)。<br>
         <span class="font-weight-bold pl-3">DMを送るチャットルーム <i class="fas fa-arrow-down"></i></span>
         <div><%= image_tag 'dm2.png', :size =>"350x382" %></div>

@@ -50,7 +50,7 @@
       <% else %>
         <div class="text-center mt-5">
           <span class="bg-infomation h5">現在、<%= current_member.nickname %>さんは<span class="br"></span>誰もフォローしておりません</span><br>
-          <i class="fas fa-check-square"></i> タイムラインでは、自分がフォローしている利用者のレビューを最新順で最大100件までチェックできます。<br>
+          <i class="fas fa-check-square"></i> タイムラインでは、自分がフォローしているメンバーのレビューを最新順で最大100件までチェックできます。<br>
           <span class="bg-infomation h5">まずは私(管理人)のページにて<span class="br"></span>[フォローする]を押してみてください</span>
           <span class="text-nowrap"><i class="far fa-hand-point-right"></i><%= link_to " check", member_path(Member.find(1)), class: "btn btn-info" %></span>
         </div>

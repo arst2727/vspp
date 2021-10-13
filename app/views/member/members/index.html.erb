@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">ユーザ一覧</h4>
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">メンバー一覧</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-xs-12 col-md-12 col-lg-9'>
@@ -13,7 +13,7 @@
         <div class="search-form pb-3">
           <%= form_with(scope: :search, url: members_path, method: :get, local: true) do |f| %>
             <div class="col-xs-7 col-md-7 col-lg-6">
-              <i class="fas fa-search"></i> ユーザを見つける
+              <i class="fas fa-search"></i> メンバーを見つける
               <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力', autocomplete: :off %>
               <div class="pl-2">
                 <%= f.submit("検索", class: 'btn btn-sm btn-outline-dark') %>
@@ -70,7 +70,7 @@
           </tbody>
         </table>
       <% else %>
-        <span class='text-center'>まだ利用者はいません</span>
+        <span class='text-center'>まだメンバーはいません</span>
       <% end %>
     </div>
   </div>

@@ -6,7 +6,7 @@ class Member::MembersController < ApplicationController
     @members = Member.search(@search_params)
   end
 
-  # ログインしているユーザのマイページ
+  # ログインしているメンバーのマイページ
   def my_page
     @musical_piece_comments = MusicalPieceComment.where(member_id: current_member)
   end
