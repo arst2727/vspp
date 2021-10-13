@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       collection do
         get "my_page", to: 'members#my_page', as: :my_page
         get "timeline", to: 'members#timeline', as: :timeline
+        get "ff_message", to: 'members#ff_message', as: :ff_message
       end
     end
 

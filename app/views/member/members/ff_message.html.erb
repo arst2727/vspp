@@ -1,0 +1,41 @@
+<div class='container'>
+  <div class="row justify-content-center">
+    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">相互フォロー</h4>
+  </div>
+  <div class='row justify-content-center'>
+    <div class='col-xs-12 col-md-12 col-lg-9'>
+      <% if @members.present? %>
+        <div class="search-form pb-3">
+          <%= form_with(scope: :search, url: ff_message_members_path, method: :get, local: true) do |f| %>
+            <div class="col-xs-7 col-md-7 col-lg-6">
+              <i class="fas fa-search"></i> 相互フォロー内でユーザを見つける
+              <%= f.text_field :nickname, value: @search_params[:nickname], class: "form-control fas fa-search", placeholder: 'ニックネームを入力', autocomplete: :off %>
+              <div class="pl-2">
+                <%= f.submit("検索", class: 'btn btn-sm btn-outline-dark') %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <% @members.each do |member| %>
+            <!--相互フォローのフィルター-->
+            <% if current_member.following?(member) && current_member.followed?(member) %>
+              <div class="d-inline-flex justify-content-between py-2 px-2">
+                <%= link_to member_path(member), class: "text-dark" do %>
+                  <% if member.profile_image.attached? %>
+                    <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+                  <% end %>
+                  <%= member.nickname.truncate(15) %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <span class='text-center'>まだ利用者はいません</span>
+      <% end %>
+    </div>
+  </div>
+</div>

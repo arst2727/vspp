@@ -130,6 +130,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to " マイページ", my_page_members_path, method: :get, class: 'fas fa-user dropdown-item' %>
                     <%= link_to " マイリスト", lists_path, method: :get, class: 'fas fa-list dropdown-item' %>
+                    <%= link_to " 相互フォロー", ff_message_members_path, method: :get, class: 'fas fa-hands-helping dropdown-item' %>
                     <div class="dropdown-divider"></div>
                     <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt dropdown-item' %>
                   </div>

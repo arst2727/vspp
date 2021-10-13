@@ -47,7 +47,7 @@
         <!--コメント投稿済みであればformは非表示-->
         <% if  @musical_piece_comments.where(member_id: current_member.id).present? %>
          <p class='pt-3'>
-           すでにコメントを投稿済みです。<br>
+           すでにレビュー済みです。<br>
            再評価したい場合には、<br>
            自分のレビューの削除が必要です。
          </p>

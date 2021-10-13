@@ -41,6 +41,11 @@ class Member::MembersController < ApplicationController
     end
   end
 
+  def ff_message
+    @search_params = member_search_params
+    @members = Member.search(@search_params)
+  end
+
   # 自分のタイムライン(最新100件取得)
   def timeline
     # 自分がフォローしているメンバーのidを取得(複数)
