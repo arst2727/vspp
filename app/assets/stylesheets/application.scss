@@ -193,8 +193,7 @@ footer {
   height: 300px;
   background-color: #fff;
 }
-
-section.anchor{
+section.anchor {
   padding-top: 90px;
   margin-top: -90px;
 }
@@ -363,13 +362,18 @@ section.anchor{
 }
 // DMのメッセージフォーム
 #dm-form {
-  text-align: center;
+  // text-align: center;
   display: inline-block;
   bottom: 32px;
-  background: #ffffff;
-  z-index: 1;
+  // background: #ffffff;
+  // z-index: 1;
 }
-// メッセージのふきだし
+.messages-area {
+  // overflow-y: scroll;//要素の縦横を固定し、スクロールバーが表示
+  //height: calc(100% - 850px);
+  background-color: rgba( 255, 232, 209, 0.25 );
+}
+// メッセージのふきだし自分側
 .balloon-right {
   position: relative;
   display: inline-block;
@@ -382,20 +386,11 @@ section.anchor{
   background: #e0edff;
   // border-radius: 15px;
 }
-.balloon-right:before {
-  content: "";
-  position: absolute;
-  // topとleftで吹き出す位置指定
-  top: 50%;
-  left: 100%;
-  margin-top: -10px;
-  border: 10px solid transparent;
-  border-left: 10px solid #e0edff;
-}
 .balloon-right p {
   margin: 0;
   padding: 0;
 }
+// メッセージのふきだし相手側
 .balloon-left {
   position: relative;
   display: inline-block;
@@ -405,9 +400,10 @@ section.anchor{
   max-width: 100%;
   // color: #555;
   font-size: 16px;
-  background: #fff7ef;
+  background: #ffd1a3;
   // border-radius: 15px;
 }
+// ふきだし部分(左側)
 .balloon-left:before {
   content: "";
   position: absolute;
@@ -415,7 +411,7 @@ section.anchor{
   left: -20px;
   margin-top: -10px;
   border: 10px solid transparent;
-  border-right: 10px solid #fff7ef;
+  border-right: 10px solid #ffd1a3;
 }
 .balloon-left p {
   margin: 0;

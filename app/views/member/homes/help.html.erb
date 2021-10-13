@@ -45,8 +45,12 @@
       <section id="follow" class="anchor">
         <h5>相互フォローについて</h5>
         当サイトでは<span class="bg-infomation">自分と相手がお互いにフォローしている状態</span>を、相互フォローと定義します。
-        相互フォローになると、ユーザ一覧、自分のフォロー、自分のフォロワー画面で
-        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。<br>
+        相互フォローになると、<span class="font-weight-bold">ユーザ一覧、自分のフォロー、自分のフォロワー画面</span>で
+        ユーザの[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが付いてることが確認できます。
+        <span class="font-weight-bold">ユーザ一覧</span>、または<span class="font-weight-bold">自分のフォロー画面</span>では、
+        下図の丸で示すように[ フォロー中 ]のボタンの横に<i class="fas fa-hands-helping"></i>のマークが
+        付いていない場合があります。これは相互フォローではないことを意味しています。
+        <br>
         <div class="help-images ff">
           <div><%= image_tag 'member.png',:size =>"322x300" %></div>
           <div><%= image_tag 'follow.png',:size =>"350x290" %></div>
@@ -59,7 +63,7 @@
         <h5>ダイレクトメッセージについて</h5>
         <a href="#follow">相互フォロー</a>の場合、その相手とダイレクトメッセージ(以下「DM」とする)機能が使えます。
         その相手のページで[ フォロー中 ]というボタンと一緒に<i class="far fa-envelope"></i>のマークがあると思います。
-        自分だけフォローしていても、その相手に自分をフォローしてもらわない限りこのマークは出てきません。
+        自分がフォローをしていても、その相手から自分をフォローしてもらわない限りこのマークは出てきません。
         あくまでも<a href="#follow">相互フォロー</a>限定の機能となります。<br>
         <span class="font-weight-bold pl-3">相互フォローしている相手ユーザのページ <i class="fas fa-arrow-down"></i></span>
         <div><%= image_tag 'dm.png', :class =>"w-100" %></div>
