@@ -1,4 +1,5 @@
 class Member::MusicalPieceListsController < ApplicationController
+  before_action :authenticate_member!
   def create
     @musical_piece_list = MusicalPieceList.new(musical_piece_list_params)
     if @musical_piece_list.save

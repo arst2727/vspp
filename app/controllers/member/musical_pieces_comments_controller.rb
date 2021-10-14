@@ -1,4 +1,5 @@
 class Member::MusicalPiecesCommentsController < ApplicationController
+  before_action :authenticate_member!
   def create
     @musical_piece = MusicalPiece.find(params[:musical_piece_id])
     @musical_piece_comment = current_member.musical_piece_comments.new(musical_piece_comment_params)

@@ -1,4 +1,5 @@
 class Member::SearchesController < ApplicationController
+  before_action :authenticate_member!
   def search
     # 楽曲追加申請用
     @musical_piece = MusicalPiece.new
