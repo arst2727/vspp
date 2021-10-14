@@ -47,14 +47,17 @@
         <% end %>
       </div>
       <hr>
-      <div id="dm-form" class="form-inline">
+      <div class="form-group">
         <%= form_with model: @message, local: :true do |f| %>
-          <%= f.text_field :message, placeholder: "メッセージを作成", size: 60 , class: "form-control", autocomplete: "off" %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
-            <i class = 'far fa-paper-plane'></i>
-          <% end %>
+          <div class="form-inline">
+            <%= f.text_field :message, placeholder: "メッセージを作成", class: "form-control w-75", autocomplete: "off" %>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+              <i class = 'far fa-paper-plane'></i>
+            <% end %>
+          </div>
         <% end %>
+      </div>
       </div>
     </div>
   </div>

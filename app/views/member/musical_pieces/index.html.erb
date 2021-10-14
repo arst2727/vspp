@@ -4,32 +4,91 @@
       <div class="col-lg-3">
         <h4 class="py-2 mt-5 text-center">楽曲一覧</h4>
       </div>
-      <div class="col-lg-4 offset-lg-3 mt-lg-5 form-inline">
-        <%= form_with(url: search_path, method: :get, local: true) do |f| %>
-          <i class="fas fa-search"></i>
-          <%= f.text_field :content, value: nil, placeholder: '楽曲名', class: "form-control", autocomplete: "off" %>
-          <%= f.hidden_field :model, value: "musical_pieces" %>
-          <%= f.submit('検索', class: 'btn-sm btn-dark') %>
-        <% end %>
-      </div>
-      <div class="w-100"></div>
-      <div class="py-2">
-        <% if params[:musical_pieces_all] == 'true' %>
-          <%= link_to " 15件ずつ表示", musical_pieces_path, class: 'btn btn-outline-dark fas fa-book' %>
-        <% else %>
-          <%= link_to " 全件表示", musical_pieces_path(musical_pieces_all: true), class: 'btn btn-outline-dark fas fa-book' %>
-        <% end %>
-      </div>
     </div>
-    <div class='row'>
-      <div class='col'>
-        <% if params[:musical_pieces_all] == 'true' %>
-          <%= render partial: "index", :locals => { musical_pieces: MusicalPiece.all.order(musical_piece_name: :asc) } %>
-        <% else %>
-          <span class='pagecolor'><%= paginate @musical_pieces %></span>
-          <%= render partial: "index", :locals => { musical_pieces: @musical_pieces } %>
-        <% end %>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <!--楽曲検索用アコーディオン-->
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header py-0" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  楽曲名で検索する <i class="fas fa-arrow-circle-down"></i>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body pb-1">
+                <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+                  <div class="form-group">
+                    <div class="form-inline">
+                      <%= f.text_field :content, value: nil, placeholder: '楽曲名', class: "form-control w-75", autocomplete: "off" %>
+                      <!--すでに楽曲ページにいるため非表示-->
+                      <%= f.hidden_field :model, value: "musical_pieces" %>
+                      <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+                        <i class = 'fas fa-search'></i>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header py-0" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  作曲年で検索する  <i class="fas fa-arrow-circle-down"></i>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body pb-1">
+                <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+                  <div class="form-group">
+                    <div class="form-inline">
+                      <%= f.text_field :start_year, value: nil, placeholder: '1830', class: "form-control w-25", autocomplete: "off" %>
+                      <%= "　-　" %>
+                      <%= f.text_field :end_year, value: nil, placeholder: '1860', class: "form-control w-25", autocomplete: "off" %>
+                      <!--searchコントローラーのsearchメソッド内のreturn nil対策-->
+                      <%= f.hidden_field :content, value: "not nil" %>
+                      <!--すでに楽曲ページにいるため非表示-->
+                      <%= f.hidden_field :model, value: "musical_pieces" %>
+                      <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+                        <i class = 'fas fa-search'></i>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <span class="small">検索したい西暦の範囲を<span class="text-danger">半角数字</span>で指定</span>
+              </div>
+            </div>
+          </div>
+        </div><!--楽曲検索用アコーディオンend-->
       </div>
-    </div>
-  </div>
+      <div class='col-lg-4 offset-lg-2'>
+        <div class="py-2 text-center">
+          <% if params[:musical_pieces_all] == 'true' %>
+            <%= link_to " 10件ずつ表示", musical_pieces_path, class: 'btn btn-outline-dark fas fa-book' %>
+          <% else %>
+            <%= link_to " 全件表示", musical_pieces_path(musical_pieces_all: true), class: 'btn btn-outline-dark fas fa-book' %>
+          <% end %>
+        </div>
+      </div>
+      <div class='col-lg-12'>
+        <div class="py-2 text-center">
+          <% if params[:musical_pieces_all] == 'true' %>
+            <%= render partial: "index", :locals => { musical_pieces: MusicalPiece.all.order(musical_piece_name: :asc) } %>
+          <% else %>
+            <span class='pagecolor'><%= paginate @musical_pieces %></span>
+            <%= render partial: "index", :locals => { musical_pieces: @musical_pieces } %>
+            <!--スマホではページ下部にもページネーション表示-->
+            <span class='pagecolor smp'><%= paginate @musical_pieces %></span>
+          <% end %>
+        </div>
+      </div>
+    </div><!--row end-->
+  </div><!--container end-->
+<% else %>
+  楽曲データがありません
 <% end %>

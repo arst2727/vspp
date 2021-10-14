@@ -2,7 +2,7 @@ class Member::ComposersController < ApplicationController
   before_action :authenticate_member!, except: [:index, :chronology]
   # 作曲家一覧
   def index
-    @composers = Composer.all.order(name_kana: :asc).page(params[:page]).per(15)
+    @composers = Composer.all.order(name_kana: :asc).page(params[:page]).per(10)
   end
 
   # 作曲家詳細

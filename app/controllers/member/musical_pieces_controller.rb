@@ -3,7 +3,7 @@ class Member::MusicalPiecesController < ApplicationController
 
   # 楽曲一覧
   def index
-    @musical_pieces = MusicalPiece.all.order(musical_piece_name: :asc).page(params[:page]).per(15)
+    @musical_pieces = MusicalPiece.all.order(musical_piece_name: :asc).page(params[:page]).per(10)
     @musical_piece = MusicalPiece.new
   end
 
@@ -21,7 +21,7 @@ class Member::MusicalPiecesController < ApplicationController
   def create
     @musical_piece = MusicalPiece.new(musical_piece_params)
     if @musical_piece.save
-      @musical_pieces = MusicalPiece.all.page(params[:page]).per(15)
+      @musical_pieces = MusicalPiece.all.page(params[:page]).per(10)
       flash[:success] = '楽曲の追加申請が完了しました。反映までお待ち下さい。'
       render 'index'
     else
