@@ -5,7 +5,12 @@
       <% if notifications.exists? %>
         <%= render notifications %>
       <% else %>
-        <p>通知はございません</p>
+        <div class="pc">
+          <h5 class="text-center pt-5">通知はありません</h5>
+        </div>
+        <div class="smp">
+          <p class="text-center pt-3">通知はありません</p>
+        </div>
       <% end %>
     </div>
   </div>

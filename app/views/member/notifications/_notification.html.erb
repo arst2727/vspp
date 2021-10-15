@@ -8,10 +8,10 @@
       <% else %>
         <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
       <% end %>
-      <%= visitor.nickname.truncate(12) %>さん
+      <%= visitor.nickname.truncate(12) %>
     <% end %>
     <% if notification.action == 'dm' %>
-      があなた(<%= visited.nickname.truncate(12) %>)にDMを送りました
+      さんがあなた(<%= visited.nickname.truncate(12) %>)にDMを送りました
     <% end %>
     <%= link_to ' 既読にする', notification_path(notification.id), method: :put, class: "fas fa-check btn btn-outline-info btn-sm" %>
   </div>
