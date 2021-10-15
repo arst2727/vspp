@@ -1,0 +1,29 @@
+<div class='container'>
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <h4 class="py-2 mt-5 text-center">楽曲追加申請フォーム</h4>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <%= render 'layouts/error_messages', model: @musical_piece %>
+      <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
+        <table class='table table-borderless field d-flex justify-content-center'>
+          <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th>
+          <td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana, class: "form-control", prompt: "--作曲家を選択--" %></td></tr>
+          <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th>
+          <td><%= f.text_field :musical_piece_name, :placeholder => "バラード第1番", autocomplete: "off", class: "form-control" %></td></tr>
+          <tr><th>作曲年</th>
+          <td><%= f.text_field :year_of_composition, :placeholder => "1831", autocomplete: "off", class: "form-control w-50" %></td></tr>
+          <tr><th>総演奏時間[min]</th>
+          <td><%= f.text_field :performance_time, :placeholder => "8", autocomplete: "off", class: "form-control w-50" %></td></tr>
+          <tr><th>参考リンク</th>
+          <td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135", autocomplete: "off", class: "form-control" %></td></tr>
+          <tr><td colspan="2" class="text-center"><button type="submit" class="btn btn-outline-dark">
+            <% f.submit %>楽曲追加申請
+          </button></td></tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

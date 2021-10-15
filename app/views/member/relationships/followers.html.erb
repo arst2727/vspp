@@ -3,7 +3,7 @@
     <h4 class="py-2 mt-5 text-dark"><%= @member.nickname %>のフォロワー</h4>
     <div class='w-100'></div>
     <div class="px-5 py-2 mt-xs-5">
-      <%= link_to "戻る", :back, class: "btn btn-outline-dark" %>
+      <%= link_to "戻る", member_path(@member), class: "btn btn-outline-dark" %>
     </div>
   </div>
   <div class='row justify-content-center'>

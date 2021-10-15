@@ -1,0 +1,18 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<% if notification.checked == false %>
+  <div>
+    <%= link_to room_path(notification.room_id) do %>
+      <% if visitor.profile_image.attached? %>
+        <%= image_tag visitor.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
+      <% end %>
+      <%= visitor.nickname.truncate(12) %>さん
+    <% end %>
+    <% if notification.action == 'dm' %>
+      があなた(<%= visited.nickname.truncate(12) %>)にDMを送りました
+    <% end %>
+    <%= link_to ' 既読にする', notification_path(notification.id), method: :put, class: "fas fa-check btn btn-outline-info btn-sm" %>
+  </div>
+<% end %>

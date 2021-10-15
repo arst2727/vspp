@@ -1,39 +1,33 @@
 <div class="container">
-  <div class="row">
-    <div class="<col-2></col-2>">
-      <h4 class="px-5 py-2 mt-5 ml-5 text-dark">作曲家データ登録</h4>
+  <div class="row justify-content-center">
+    <div class="col-lg-4">
+      <h4 class="px-5 py-2 mt-5">作曲家データ登録</h4>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col">
-      <div class="text-center">
-      <% if @composer.errors.any? %>
-        <%= @composer.errors.count %> errors prohibited this composer from being saved:<br>
-        <% @composer.errors.full_messages.each do |message| %>
-          <%= message %><br>
-        <% end %>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <%= render 'layouts/error_messages', model: @composer %>
+      <%= form_with model: @composer, url: admin_composers_path, local: true do |f| %>
+        <table class='table table-borderless field d-flex justify-content-center'>
+          <tr><th>作曲家名(カタカナ)</th><td><%= f.text_field :name_kana, :placeholder => "ショパン" %></td></tr>
+          <tr><th>作曲家名(英語)</th><td><%= f.text_field :name_lang_en, :placeholder => "Chopin, Frederic" %></td></tr>
+          <tr><th>作曲家画像</th><td><%= f.file_field :image %></td></tr>
+          <tr><th>生誕年-没年</th><td><%= f.text_field :year_of_birth, :placeholder => "1810", class: "w-25" %>
+          <%= "　-　"%><%= f.text_field :year_of_death, :placeholder => "1849", class: "w-25" %></td></tr>
+          <tr><th>参考URL</th><td><%= f.text_field :reference_url, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
+          <tr><th>表示ステータス<br>(管理者のみ選択可)</th><td>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "公開中" %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "非公開中" %>
+          </td></tr>
+          <tr><th></th><td>
+          <button type="submit" class="btn btn-success">
+          <% f.submit %>新規登録
+          </button>
+          </td></tr>
+        </table>
       <% end %>
-      </div>
-    <%= form_with model: @composer, url: admin_composers_path, local: true do |f| %>
-      <table class='table table-borderless field d-flex justify-content-center'>
-        <tr><th>作曲家名(カタカナ)</th><td><%= f.text_field :name_kana, :placeholder => "ショパン" %></td></tr>
-        <tr><th>作曲家名(英語)</th><td><%= f.text_field :name_lang_en, :placeholder => "Chopin, Frederic" %></td></tr>
-        <tr><th>作曲家画像</th><td><%= f.file_field :image %></td></tr>
-        <tr><th>生誕年-没年</th><td><%= f.text_field :year_of_birth, :placeholder => "1810" %>-<%= f.text_field :year_of_death, :placeholder => "1849" %></td></tr>
-        <tr><th>参考URL</th><td><%= f.text_field :reference_url, :placeholder => "https://enc.piano.or.jp/persons/135" %></td></tr>
-        <tr><th>表示ステータス</th><td>
-        <%= f.radio_button :is_active, true %>
-        <%= f.label :is_active, "公開中" %>
-        <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, "非公開中" %>
-        </td></tr>
-        <tr><th></th><td>
-        <button type="submit" class="btn btn-success">
-        <% f.submit %>新規登録
-        </button>
-        </td></tr>
-      </table>
-    <% end %>
     </div>
   </div>
 </div>

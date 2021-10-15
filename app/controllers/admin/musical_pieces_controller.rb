@@ -31,9 +31,9 @@ class Admin::MusicalPiecesController < ApplicationController
   def update
     @musical_piece = MusicalPiece.find(params[:id])
     if @musical_piece.update(musical_piece_params)
-      redirect_to admin_musical_pieces_path, notice: "You have updated musical_piece successfully."
+      redirect_to admin_musical_pieces_path, notice: "楽曲データが更新されました"
     else
-      render "index"
+      render "edit", danger: "楽曲データが更新できませんでした"
     end
   end
 

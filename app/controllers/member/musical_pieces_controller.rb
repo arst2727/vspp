@@ -17,6 +17,10 @@ class Member::MusicalPiecesController < ApplicationController
     @musical_piece_list = MusicalPieceList.new
   end
 
+  def new
+    @musical_piece = MusicalPiece.new
+  end
+
   # 楽曲登録処理
   def create
     @musical_piece = MusicalPiece.new(musical_piece_params)
@@ -25,8 +29,7 @@ class Member::MusicalPiecesController < ApplicationController
       flash[:success] = '楽曲の追加申請が完了しました。反映までお待ち下さい。'
       render 'index'
     else
-      @musical_pieces = nil
-      render 'index'
+      render 'new'
     end
   end
 
