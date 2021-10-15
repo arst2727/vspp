@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about"
     get "home/help" => "homes#help"
     get '/search', to: 'searches#search'
+    resources :notifications, only: [:index, :update]
 
     resources :musical_pieces, only: [:index, :show, :new, :create] do
       resources :musical_pieces_comments, only: [:create, :destroy] do

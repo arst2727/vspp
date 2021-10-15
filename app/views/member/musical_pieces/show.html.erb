@@ -35,15 +35,7 @@
           マイリストを作成してください<br><%= link_to " 作成画面へ", new_list_path, class: "far fa-plus-square btn-sm btn-dark" %>
         <% end %>
         <!--コメントcreate時のエラーメッセージ-->
-        <% if @musical_piece_comment.errors.any? %>
-          <div class = "alert">
-            <ul>
-              <% @musical_piece_comment.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <%= render 'layouts/error_messages', model: @musical_piece_comment %>
         <!--コメント投稿済みであればformは非表示-->
         <% if  @musical_piece_comments.where(member_id: current_member.id).present? %>
          <p class='pt-3'>

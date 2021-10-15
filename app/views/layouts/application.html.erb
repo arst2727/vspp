@@ -106,11 +106,17 @@
                 <li class="nav-item pr-2 my-auto text-nowrap">
                   <%= link_to " 作曲家", composers_path, method: :get, class: 'fas fa-portrait btn btn-outline-dark' %>
                 </li>
-                <li class="nav-item my-auto text-nowrap">
+                <li class="nav-item pr-1 text-nowrap">
                   <%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'fas fa-paper-plane btn btn-outline-dark' %>
-                  <!--ヘルプボタン-->
+                  <!--ヘルプボタン(スマホ用)-->
                   <%= link_to home_help_path do %>
-                    <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:30px;height:30px;"><i class="fas fa-question"></i></button>
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-0 smp" style="width:30px;height:30px;"><i class="fas fa-question"></i></button>
+                  <% end %>
+                </li>
+                <li class="nav-item my-auto text-nowrap">
+                  <!--ヘルプボタン(PC用)-->
+                  <%= link_to home_help_path do %>
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-0 pc" style="width:30px;height:30px;"><i class="fas fa-question"></i></button>
                   <% end %>
                 </li>
               </ul>
@@ -125,12 +131,13 @@
                     <% else %>
                       <%= image_tag 'no_image.jpg', class: "rounded-circle", size: '50x50' %>
                     <% end %>
-                    <%= current_member.nickname.truncate(14) %>
+                    <%= current_member.nickname.truncate(10) %>
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <%= link_to " マイページ", my_page_members_path, method: :get, class: 'fas fa-user dropdown-item' %>
                     <%= link_to " マイリスト", lists_path, method: :get, class: 'fas fa-list dropdown-item' %>
                     <%= link_to " 相互フォロー", ff_message_members_path, method: :get, class: 'fas fa-hands-helping dropdown-item' %>
+                    <%= link_to " 通知", notifications_path, method: :get, class: 'fas fa-hands-helping dropdown-item' %>
                     <div class="dropdown-divider"></div>
                     <%= link_to " ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt dropdown-item' %>
                   </div>

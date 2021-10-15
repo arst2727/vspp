@@ -15,10 +15,10 @@
             <% if musical_piece.is_active == true %>
               <tr>
                 <td class="text-left">
-                  <span class="text-nowrap br">[<%= musical_piece.composer.name_kana %>]</span>
                   <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
                     <%= musical_piece.musical_piece_name %>
                   <% end %>
+                  <span class="text-nowrap">[<%= musical_piece.composer.name_kana %>]</span>
                 </td>
                 <td><%= musical_piece.musical_piece_comment_ids.count %></td>
                 <td>
@@ -45,25 +45,7 @@
           楽曲数を増やすためにも、<span class="br"></span>
           ぜひご協力をお願いいたします。<br>
           </p>
-          <% if @musical_piece.errors.any? %>
-            <p class='w-100 pt-3'></p>
-            <%= @musical_piece.errors.count %>件のエラーが発生しました<br>
-            <% @musical_piece.errors.full_messages.each do |message| %>
-              <%= message %><br>
-            <% end %>
-          <% end %>
-          <%= form_with model: @musical_piece, url: musical_pieces_path, method: :post, local: true do |f| %>
-            <table class='table table-borderless field d-flex justify-content-center'>
-              <tr><th>作曲家名 <span class="badge badge-danger">必須</span></th><td><%= f.collection_select :composer_id, Composer.all.order(name_kana: :asc), :id, :name_kana %></td></tr>
-              <tr><th>楽曲名 <span class="badge badge-danger">必須</span></th><td><%= f.text_field :musical_piece_name, :placeholder => "バラード第1番", autocomplete: "off" %></td></tr>
-              <tr><th>作曲年</th><td><%= f.text_field :year_of_composition, :placeholder => "1831", autocomplete: "off" %></td></tr>
-              <tr><th>総演奏時間[min]</th><td><%= f.text_field :performance_time, :placeholder => "8", autocomplete: "off" %></td></tr>
-              <tr><th>参考リンク</th><td><%= f.text_field :reference_URL, :placeholder => "https://enc.piano.or.jp/persons/135", autocomplete: "off" %></td></tr>
-              <tr><td colspan="2"><button type="submit" class="btn btn-outline-dark">
-                <% f.submit %>楽曲追加申請
-              </button></td></tr>
-            </table>
-          <% end %>
+          <i class="far fa-hand-point-right"></i><%= link_to "楽曲追加申請フォーム", new_musical_piece_path, method: :get, class: 'btn btn-outline-info' %>
         </div>
       <% end %>
     </div>
