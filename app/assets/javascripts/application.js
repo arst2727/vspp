@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function () {
       $('#wrap').css('padding-top', '80px')
     } else {
       // ハンバーガーメニュー開いている時→アイコン増えたらheight調整
-      $('#wrap').css('padding-top', '400px')
+      $('#wrap').css('padding-top', '410px')
     }
   })
 });
