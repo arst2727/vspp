@@ -24,10 +24,10 @@
 $(document).on('turbolinks:load', function () {
   $('.navbar-toggler').click(function() {
     if ($('.navbar-collapse').hasClass('show')) {
-      $('#wrap').css('padding-top', '80px')
+      $('#wrap').css('padding-top', '92px')
     } else {
       // ハンバーガーメニュー開いている時→アイコン増えたらheight調整
-      $('#wrap').css('padding-top', '410px')
+      $('#wrap').css('padding-top', '420px')
     }
   })
 });
