@@ -22,9 +22,11 @@ ja:
       musical_piece_comment: 楽曲コメント
       member: メンバー情報
       composer: 作曲家情報
+      list: リスト
     attributes:
       musical_piece:
         musical_piece_name: 楽曲名
+        composer: 作曲家名
       musical_piece_comment:
         comment: コメント
         evaluation: 評価
@@ -35,3 +37,5 @@ ja:
       composer:
         name_kana: 作曲家名(カナ)
         name_lang_en: 作曲家名(英語)
+      list:
+        name: リスト名

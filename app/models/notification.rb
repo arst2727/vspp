@@ -1,5 +1,5 @@
 class Notification < ApplicationRecord
-  # 常に新しい通知からデータを
+  # 常に新しい通知からデータを取得することができる
   default_scope -> { order(created_at: :desc) }
 
   belongs_to :room, optional: true
