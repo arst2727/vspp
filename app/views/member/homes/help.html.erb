@@ -24,8 +24,12 @@
         <hr>
         Q. <span class="bg-infomation">レビューしたい楽曲名が見つからないのですが...</span><br>
         A. 検索フォームで入力したキーワードは、部分一致での検索に対応しております。
-        検索ワードを変えて再び検索してみてください。なお、ヒットしなかった場合には、楽曲申請フォームが表示されます。
+        検索ワードを変えて再び検索してみてください。なお、ヒットしなかった場合には、楽曲追加申請フォームのボタンが表示されます。
         今後レビューを書きたい楽曲である場合には、ぜひ楽曲申請フォームにご記入いただき、申請のご協力をお願いいたします。
+        楽曲追加申請フォームは<%= link_to "こちら", new_musical_piece_path, method: :get %>からでも入れます。(サインインしないと入れません)
+        <div class="text-right">
+          <i class="far fa-hand-point-right"></i><%= link_to "楽曲追加申請フォーム", new_musical_piece_path, method: :get, class: 'btn btn-outline-dark' %>
+        </div>
         <hr>
         Q. <span class="bg-infomation">作曲家が見つからないのですが...</span><br>
         A. 検索フォームで入力したキーワードは、部分一致での検索に対応しております。作曲家名は、英語表記でも検索できます。

@@ -21,7 +21,7 @@
               <%= form_with(url: search_path, method: :get, local: true) do |f| %>
                 <div class="form-group">
                   <div class="form-inline">
-                    <%= f.text_field :content, value: nil, placeholder: '作曲家名', class: "form-control w-75", autocomplete: "off" %>
+                    <%= f.text_field :content, value: nil, placeholder: '作曲家名', class: "form-control w-75", autocomplete: "off", required: true %>
                     <!--すでに作曲家ページにいるため非表示-->
                     <%= f.hidden_field :model, value: "composers" %>
                     <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
@@ -46,9 +46,9 @@
               <%= form_with(url: search_path, method: :get, local: true) do |f| %>
                 <div class="form-group">
                   <div class="form-inline">
-                    <%= f.text_field :start_year, value: nil, placeholder: '1830', class: "form-control w-25", autocomplete: "off" %>
+                    <%= f.text_field :start_year, value: nil, placeholder: '1830', class: "form-control w-25", autocomplete: "off", required: true %>
                     <%= "　-　" %>
-                    <%= f.text_field :end_year, value: nil, placeholder: '1860', class: "form-control w-25", autocomplete: "off" %>
+                    <%= f.text_field :end_year, value: nil, placeholder: '1860', class: "form-control w-25", autocomplete: "off", required: true %>
                     <!--searchコントローラーのsearchメソッド内のreturn nil対策-->
                     <%= f.hidden_field :content, value: "not nil" %>
                     <!--すでに作曲家ページにいるため非表示-->

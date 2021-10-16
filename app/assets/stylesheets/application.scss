@@ -23,7 +23,18 @@
   .pc	{ display:none!important; }
   .smp { display:inline!important; }
 }
-
+//ヘッダーアイコン箱
+@media screen and (min-width: 768px) {
+  .w-icon{
+    width: 80px;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 767.98px) {
+  .w-icon{
+    text-align: right;
+  }
+}
 // 見出しアレンジ
 h4 {
   font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
@@ -333,6 +344,10 @@ section.anchor {
 // ヘルプページ(DMの自分側のふきだしと同じ色)
 .bg-cool {
   background: #e0edff;
+}
+// ログイン前ヘッダー新規登録背景色
+.bg-new {
+  background: #ffc0cb;
 }
 // シンプルカレンダー内背景色独自クラス
 .bg-kusa1 {

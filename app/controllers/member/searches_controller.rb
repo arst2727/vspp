@@ -4,7 +4,7 @@ class Member::SearchesController < ApplicationController
     # 楽曲追加申請用
     @musical_piece = MusicalPiece.new
     @model = params["model"]
-    # 何も入力せずに検索ボタンを押した場合に対応
+    # 何も入力せずに検索ボタンを押した場合に対応(この行を消すと全データが検索結果に表示される)
     return nil if params["content"] == ""
     # 入力された文字
     @content = params["content"]
@@ -12,7 +12,7 @@ class Member::SearchesController < ApplicationController
     @end_year = params["end_year"]
     if (@start_year == nil && @end_year == nil )
       @records = search_for(@model, @content)
-    elsif (@start_year != nil && @end_year != nil &&(@start_year <= @end_year) )
+    elsif ((@start_year != nil && @end_year != nil) && (@start_year <= @end_year))
       records = search_for_second(@model, @start_year, @end_year)
       # return対策で入れていた文字列を一度空にする
       @content = nil
