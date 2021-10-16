@@ -1,7 +1,6 @@
 class Member::MembersController < ApplicationController
   before_action :authenticate_member!
   def index
-    # @members = Member.all.page(params[:page]).per(100)
     @search_params = member_search_params
     @members = Member.search(@search_params)
   end

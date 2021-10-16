@@ -25,18 +25,18 @@ class Member::SearchesController < ApplicationController
     end
     # インクリメンタル検索結果用文字列を用意
     if @model == 'musical_pieces'
-      musical_piece_names = @records.map(&:musical_piece_name)
+      # musical_piece_names = @records.map(&:musical_piece_name)
       respond_to do |format|
         format.html
         # ↓検索結果のデータをレスポンスするコード
-        format.json { render json: musical_piece_names }
+        format.json { render json: {mode: 'musical_pieces', data: @records.select(:id, :musical_piece_name)} }
       end
     elsif @model == 'composers'
-      composer_names = @records.map(&:name_kana)
+      # composer_names = @records.map(&:name_kana)
       respond_to do |format|
         format.html
         # ↓検索結果のデータをレスポンスするコード
-        format.json { render json: composer_names }
+        format.json { render json: {mode: 'composers', data: @records.select(:id, :name_kana)} }
       end
     end
   end
