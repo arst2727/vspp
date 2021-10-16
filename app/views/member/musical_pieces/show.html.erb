@@ -1,7 +1,7 @@
 <% if @musical_piece.is_active == true %>
   <div class='container'>
-    <div class="row">
-      <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">
+    <div class="row justify-content-center">
+      <h4 class="px-5 py-2 mt-3 text-dark">
         <%= link_to composer_path(@musical_piece.composer), class: 'text-dark' do %>
           <%= @musical_piece.composer.name_kana %>
         <% end %>
@@ -29,19 +29,18 @@
             <%= f.collection_select :list_id, current_member.lists.all, :id, :name, include_blank: "--リストを選択--" %>
 
             <%= f.hidden_field :musical_piece_id, :value => @musical_piece.id %>
-            <%= f.submit "選択したリストに追加", class: "btn-sm btn-outline-dark" %>
+            <%= f.submit "選択したリストに追加", class: "btn btn-sm btn-outline-info" %>
           <% end %>
         <% else %>
-          マイリストを作成してください<br><%= link_to " 作成画面へ", new_list_path, class: "far fa-plus-square btn-sm btn-dark" %>
+          マイリストを作成してください<br><%= link_to " 作成画面へ", new_list_path, class: "far fa-plus-square btn btn-sm btn-dark" %>
         <% end %>
         <!--コメントcreate時のエラーメッセージ-->
         <%= render 'layouts/error_messages', model: @musical_piece_comment %>
         <!--コメント投稿済みであればformは非表示-->
         <% if  @musical_piece_comments.where(member_id: current_member.id).present? %>
          <p class='pt-3'>
-           すでにレビュー済みです。<br>
-           再評価したい場合には、<br>
-           自分のレビューの削除が必要です。
+           あなた(<%= current_member.nickname.truncate(10) %>)はすでに<span class="bg-infomation">レビュー済み</span>です。<br>
+           再評価したい場合には、自分のレビューの削除が必要です。
          </p>
         <% else %>
           <!---------------->
@@ -49,7 +48,7 @@
           <!---------------->
           <%= form_with model: @musical_piece_comment, url: musical_piece_musical_pieces_comments_path(musical_piece_id: @musical_piece.id), local:true, method: :post do |f| %>
             <div class='pt-3'>
-              <%= f.text_area :comment, size: "37x10", placeholder: 'ここにコメントを200文字まで入力できます' %>
+              <%= f.text_area :comment, class: "form-control w-100", rows: "8", placeholder: 'ここにコメントを200文字まで入力できます' %>
             </div>
             <p class='pt-2'>
               星0.5〜5.0の10段階で評価できます。<br>
@@ -82,7 +81,7 @@
       <!---------------->
       <div class='col-xs-6 col-md-6 col-lg-7 offset-lg-1'>
         <% if @musical_piece.musical_piece_comments.count == 0 %>
-          この楽曲には、まだレビューはありません。
+          <p class="pt-3">この楽曲には、まだレビューはありません。レビュー内容はここに表示されます。</p>
         <% end %>
         <% musical_piece_comments = @musical_piece.musical_piece_comments.order(created_at: :desc).page(params[:page]).per(5) %>
         <span class='pagecolor'><%= paginate musical_piece_comments %></span>
