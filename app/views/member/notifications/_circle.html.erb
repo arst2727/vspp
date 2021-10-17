@@ -1,0 +1,10 @@
+<% if unchecked_notifications.present? %>
+<!--通知の確認有無で場合分け-->
+<!--Fontawesomeを重ねる-->
+  <span class="fa-stack">
+    <i class="fas fa-bell fa-stack-2x" style="font-size: 16px;"></i>
+    <i class="fas fa-circle n-circle fa-stack" style="font-size: 8px;"></i>
+  </span>
+<% else %>
+  <i class="fas fa-bell" style="font-size: 16px;"></i>
+<% end %>

@@ -35,6 +35,16 @@
     text-align: right;
   }
 }
+// 通知アリのマーク位置
+.n-circle {
+  position: absolute;
+  padding-left: 12px;
+  padding-top: 0;
+  color: #8a2be2;
+}
+.h-24px {
+  height: 24px;
+}
 // 見出しアレンジ
 h4 {
   font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
