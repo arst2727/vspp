@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function () {
 });
 $(document).on('turbolinks:load', function () {
   // チェックボックスの取得
-  const btn = document.querySelector("#btn-mode");
+  let btn = document.querySelector("#btn-mode");
 
   // チェックした時の挙動
   btn.addEventListener("change", () => {
