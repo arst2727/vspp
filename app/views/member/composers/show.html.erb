@@ -1,7 +1,7 @@
 <% if @composer.is_active == true %>
   <div class='container'>
     <div class="row">
-      <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">
+      <h4 class="px-5 py-2 mt-5">
         <%= @composer.name_kana %> <span class='h5'><%= @composer.year_of_birth %>-<%= @composer.year_of_death %> <%= @composer.name_lang_en %></span>
       </h4>
     </div>
@@ -29,7 +29,7 @@
               <% if musical_piece.is_active == true %>
                 <tr>
                   <td>
-                    <%= link_to musical_piece_path(musical_piece), class: 'text-dark' do %>
+                    <%= link_to musical_piece_path(musical_piece) do %>
                       <%= musical_piece.musical_piece_name %>
                     <% end %>
                   </td>

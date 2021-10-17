@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="py-2 mt-5 text-dark"><%= @member.nickname %>のフォロワー</h4>
+    <h4 class="py-2 mt-5"><%= @member.nickname %>のフォロワー</h4>
     <div class='w-100'></div>
     <div class="px-5 py-2 mt-xs-5">
       <%= link_to "戻る", member_path(@member), class: "btn btn-outline-dark" %>
@@ -20,7 +20,7 @@
               <tr class="text-center">
                 <div class="col-xs-6 col-md-4 col-lg-3 text-nowrap">
                   <td class="text-left">
-                    <%= link_to member_path(member), class: "text-dark" do %>
+                    <%= link_to member_path(member) do %>
                       <% if member.profile_image.attached? %>
                         <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                       <% else %>

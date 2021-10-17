@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 ml-lg-5 text-dark">相互フォロー</h4>
+    <h4 class="px-5 py-2 mt-5">相互フォロー</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-xs-12 col-md-12 col-lg-9'>
@@ -21,7 +21,7 @@
             <!--相互フォローのフィルター-->
             <% if current_member.following?(member) && current_member.followed?(member) %>
               <div class="d-inline-flex justify-content-between py-2 px-2">
-                <%= link_to member_path(member), class: "text-dark" do %>
+                <%= link_to member_path(member) do %>
                   <% if member.profile_image.attached? %>
                     <%= image_tag member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
                   <% else %>

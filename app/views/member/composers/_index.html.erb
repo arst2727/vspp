@@ -16,12 +16,12 @@
               <% if composer.is_active == true %>
                 <tr>
                   <td class="text-left">
-                    <%= link_to composer_path(composer), class: 'text-dark' do %>
+                    <%= link_to composer_path(composer) do %>
                       <%= composer.name_kana %>
                     <% end %>
                   </td>
                   <td class="text-left">
-                    <%= link_to composer_path(composer), class: 'text-dark' do %>
+                    <%= link_to composer_path(composer) do %>
                       <%= composer.name_lang_en %>
                     <% end %>
                   </td>

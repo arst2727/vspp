@@ -19,7 +19,7 @@
                 <span class='text-muted'><%= l comment.created_at, format: :default %></span>
                 <br>
                 <span class='text-muted'>[<%= comment.musical_piece.composer.name_kana %>]</span>
-                <%= link_to musical_piece_path(comment.musical_piece), class: 'text-dark' do %>
+                <%= link_to musical_piece_path(comment.musical_piece) do %>
                   <%= comment.musical_piece.musical_piece_name %>
                 <% end %>
                 <div class="musical_piece-evaluation text-nowrap" data-score="<%= comment.evaluation %>"></div>

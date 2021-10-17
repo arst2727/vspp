@@ -127,7 +127,7 @@
                   <span class='text-muted'><%= l mc.created_at, format: :default %></span>
                   <br>
                   <span class='text-muted'>[<%= mc.musical_piece.composer.name_kana %>]</span>
-                  <%= link_to musical_piece_path(mc.musical_piece), class: 'text-dark' do %>
+                  <%= link_to musical_piece_path(mc.musical_piece) do %>
                     <%= mc.musical_piece.musical_piece_name %>
                   <% end %>
                   <div class="musical_piece-evaluation text-nowrap" data-score="<%= mc.evaluation %>"></div>

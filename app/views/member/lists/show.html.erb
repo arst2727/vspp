@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 text-dark"><%= @list.name %></h4>
+    <h4 class="px-5 py-2 mt-5"><%= @list.name %></h4>
     <div class='w-100'></div>
       <div class="px-5 py-2 mt-xs-5">
         <%= link_to "マイリストに戻る", lists_path, class: "btn btn-outline-dark" %>
@@ -27,7 +27,7 @@
                   <%= list.musical_piece.composer.name_kana %>
                 </td>
                 <td>
-                  <%= link_to musical_piece_path(list.musical_piece), class: 'text-dark' do %>
+                  <%= link_to musical_piece_path(list.musical_piece) do %>
                     <%= list.musical_piece.musical_piece_name %>
                   <% end %>
                 </td>

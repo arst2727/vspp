@@ -4,7 +4,7 @@
       <% @member_rooms.each do |mr| %>
         <% unless mr.member == current_member %>
           <div class="text-center pt-3 fixed-top" id='dm-title'>
-            <%= link_to member_path(mr.member), class: "text-dark" do %>
+            <%= link_to member_path(mr.member) do %>
               <% if mr.member.profile_image.attached? %>
                 <%= image_tag mr.member.profile_image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "rounded-circle" %>
               <% else %>

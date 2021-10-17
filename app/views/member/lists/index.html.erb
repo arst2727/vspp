@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row justify-content-center">
-    <h4 class="px-5 py-2 mt-5 text-dark"><%= current_member.nickname %>のマイリスト</h4>
+    <h4 class="px-5 py-2 mt-5"><%= current_member.nickname %>のマイリスト</h4>
   </div>
   <div class='row justify-content-center'>
     <div class='col-lg-8'>
@@ -29,7 +29,7 @@
             <% @lists.each do |list| %>
               <tr>
                 <td>
-                  <%= link_to list_path(list), class: 'text-dark' do %>
+                  <%= link_to list_path(list) do %>
                     <%= list.name %>
                   <% end %>
                   <!--リスト名編集のFontawesome-->
