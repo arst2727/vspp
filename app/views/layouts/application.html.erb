@@ -183,12 +183,6 @@
             <!--管理者でも会員でもログインしていないとき-->
             <% else %>
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item my-auto text-center bg-danger w-icon">
-                  <%= link_to new_member_registration_path do %>
-                    <i class="fas fa-user-plus fa-2x text-white"></i><span class="pc"><br></span>
-                    <span class="text-white text-nowrap small">新規登録</span>
-                  <% end %>
-                </li>
                 <li class="nav-item my-auto w-icon">
                   <%= link_to home_about_path, class: "text-dark" do %>
                     <span class="text-nowrap smp">About</span>
@@ -226,6 +220,12 @@
                 </li>
               </ul>
               <ul class="navbar-nav">
+                <li class="nav-item my-auto text-center bg-danger w-icon">
+                  <%= link_to new_member_registration_path do %>
+                    <i class="fas fa-user-plus fa-2x text-white"></i><span class="pc"><br></span>
+                    <span class="text-white text-nowrap small">新規登録</span>
+                  <% end %>
+                </li>
                 <li class="nav-item text-nowrap text-center bg-info w-icon">
                   <%= link_to new_member_session_path, class: "text-dark" do %>
                     <i class="fas fa-sign-in-alt fa-2x text-white text-center"></i><span class="pc"><br></span>
