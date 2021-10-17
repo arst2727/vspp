@@ -31,21 +31,3 @@ $(document).on('turbolinks:load', function () {
     }
   })
 });
-$(document).on('turbolinks:load', function () {
-  // チェックボックスの取得
-  const checkbtn = document.querySelector("#btn-mode");
-
-  // チェックした時の挙動
-  checkbtn.addEventListener("change", () => {
-    if (checkbtn.checked == true) {
-      // application.scssで定義したクラスを使う
-      // ダークモード
-      document.body.classList.remove("light-theme");
-      document.body.classList.add("dark-theme");
-    } else {
-      // ライトモード
-      document.body.classList.remove("dark-theme");
-      document.body.classList.add("light-theme");
-    }
-  });
-});

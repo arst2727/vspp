@@ -15,14 +15,6 @@
  *= require_self
  */
 @import "bootstrap";
-.light-theme {
-  background: #fff;
-  color: #333;
-}
-.dark-theme {
-  background: #000;
-  color: #ddd
-}
 // PCとその他で非表示と表示の切り替え
 .pc	{ display:inline!important; }
 .smp	{ display:none!important; }
