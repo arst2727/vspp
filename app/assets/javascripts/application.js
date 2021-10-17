@@ -33,11 +33,11 @@ $(document).on('turbolinks:load', function () {
 });
 $(document).on('turbolinks:load', function () {
   // チェックボックスの取得
-  let btn = document.querySelector("#btn-mode");
+  const checkbtn = document.querySelector("#btn-mode");
 
   // チェックした時の挙動
-  btn.addEventListener("change", () => {
-    if (btn.checked == true) {
+  checkbtn.addEventListener("change", () => {
+    if (checkbtn.checked == true) {
       // application.scssで定義したクラスを使う
       // ダークモード
       document.body.classList.remove("light-theme");
