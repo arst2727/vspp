@@ -66,7 +66,7 @@ h4:after {
 }
 // headerの分下げ、footerの分上げる
 #wrap {
-  padding-top: 90px;
+  padding-top: 80px;
   padding-bottom: 32px;
 }
 
@@ -225,6 +225,7 @@ footer {
   }
   background-color: #fff;
 }
+// 同ページリンクでスクロールする位置
 section.anchor {
   padding-top: 100px;
   margin-top: -100px;
@@ -384,7 +385,7 @@ section.anchor {
 }
 // 作曲家年表凡例表示順
 #legend {
-  top: 90px; //ヘッダーの高さ
+  top: 90px; //ヘッダーの高さ+10px
   z-index: 1;
 }
 /* =====================

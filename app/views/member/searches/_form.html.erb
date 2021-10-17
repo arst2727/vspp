@@ -1,7 +1,7 @@
 <%= form_tag(search_path, method: :get) do %>
   <%= text_field_tag 'content', nil, placeholder: '楽曲・作曲家の名前', class: 'js-text_field form-control', autocomplete: "off" %>
-  <%= select_tag 'model', options_for_select({ "楽曲" => "musical_pieces", "作曲家" => "composers" }), class: "btn-sm btn-outline-dark form-select" %>
-  <%= button_tag :type => "submit", style: 'border-style: none;', class: "btn btn-info" do %>
+  <%= select_tag 'model', options_for_select({ "楽曲" => "musical_pieces", "作曲家" => "composers" }), class: "btn btn-sm btn-dark form-select" %>
+  <%= button_tag :type => "submit", style: 'border-style: none;', class: "btn btn-sm btn-info" do %>
     <i class='fa fa-search mr-auto'></i>
   <% end %>
 <% end %>
