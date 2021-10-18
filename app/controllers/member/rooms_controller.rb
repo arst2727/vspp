@@ -10,7 +10,7 @@ class Member::RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    if MemberRoom.where(member_id: current_member.id,room_id: @room.id).present?
+    if MemberRoom.where(member_id: current_member.id, room_id: @room.id).present?
       @messages = @room.messages
       @message = Message.new
       @member_rooms = @room.member_rooms

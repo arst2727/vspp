@@ -15,8 +15,8 @@
               <%= link_to "フォロー中", member_relationships_path(@member.id), method: :delete, class: "btn btn-outline-dark" %>
               <% if current_member.followed?(@member) %>
               <!--相互フォロー限定ダイレクトメッセージ-->
-                <% if @haveRoom == true %>
-                  <a href="/rooms/<%= @roomId %>" class="btn btn-outline-info">
+                <% if @have_room == true %>
+                  <a href="/rooms/<%= @room_id %>" class="btn btn-outline-info">
                     <i class="far fa-envelope"></i>
                   </a>
                 <% else %>

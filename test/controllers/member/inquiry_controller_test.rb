@@ -15,5 +15,4 @@ class Member::InquiryControllerTest < ActionDispatch::IntegrationTest
     get member_inquiry_thanks_url
     assert_response :success
   end
-
 end

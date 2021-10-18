@@ -9,14 +9,14 @@ class Admin::MembersController < ApplicationController
 
   def update
     member = Member.find(params[:id])
-	  member.update(member_params)
+    member.update(member_params)
     redirect_to admin_member_path(member)
   end
 
   def destroy
     member = Member.find(params[:id])
-	  member.destroy
-	  redirect_to admin_members_path
+    member.destroy
+    redirect_to admin_members_path
   end
 
   private

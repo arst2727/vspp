@@ -15,5 +15,4 @@ class Admin::MembersControllerTest < ActionDispatch::IntegrationTest
     get admin_members_edit_url
     assert_response :success
   end
-
 end

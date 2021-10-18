@@ -10,14 +10,14 @@ class Member::SearchesController < ApplicationController
     @content = params["content"]
     @start_year = params["start_year"]
     @end_year = params["end_year"]
-    if (@start_year == nil && @end_year == nil )
+    if @start_year.nil? && @end_year.nil?
       @records = search_for(@model, @content)
-    elsif ((@start_year != nil && @end_year != nil) && (@start_year <= @end_year))
+    elsif (!@start_year.nil? && !@end_year.nil?) && (@start_year <= @end_year)
       records = search_for_second(@model, @start_year, @end_year)
       # return対策で入れていた文字列を一度空にする
       @content = nil
       # 検索結果キーワード用文字列を作る
-      @content = @start_year+"-"+@end_year+"年"
+      @content = @start_year + "-" + @end_year + "年"
       @records = records
     else
       @content = nil
@@ -29,14 +29,14 @@ class Member::SearchesController < ApplicationController
       respond_to do |format|
         format.html
         # ↓検索結果のデータをレスポンスするコード
-        format.json { render json: {mode: 'musical_pieces', data: @records.select(:id, :musical_piece_name)} }
+        format.json { render json: { mode: 'musical_pieces', data: @records.select(:id, :musical_piece_name) } }
       end
     elsif @model == 'composers'
       # composer_names = @records.map(&:name_kana)
       respond_to do |format|
         format.html
         # ↓検索結果のデータをレスポンスするコード
-        format.json { render json: {mode: 'composers', data: @records.select(:id, :name_kana)} }
+        format.json { render json: { mode: 'composers', data: @records.select(:id, :name_kana) } }
       end
     end
   end
@@ -56,7 +56,7 @@ class Member::SearchesController < ApplicationController
 
   def search_for_second(model, start_year, end_year)
     if model == 'composers'
-      Composer.where('year_of_birth BETWEEN ? AND ? OR year_of_death BETWEEN ? AND ?', start_year, end_year, start_year, end_year )
+      Composer.where('year_of_birth BETWEEN ? AND ? OR year_of_death BETWEEN ? AND ?', start_year, end_year, start_year, end_year)
     elsif model == 'musical_pieces'
       MusicalPiece.where('year_of_composition BETWEEN ? AND ?', start_year, end_year)
     else

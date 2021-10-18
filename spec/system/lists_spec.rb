@@ -3,23 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe 'リストのテスト', type: :system do
-
   # let(:list) { FactoryBot.create(:list) }
   # 事前にログイン処理
   before do
-    @member = FactoryBot.create(:member)#テスト用データを読み込む
+    @member = FactoryBot.create(:member)
     @list = FactoryBot.create(:list)
-  end
-  # サインイン
-  before do
     sign_in @member
   end
-
 
   describe 'リスト画面(lists_path)のテスト' do
     before do
       visit lists_path
     end
+
     context '表示の確認' do
       it 'リスト画面(lists_path)に「マイリスト」が表示されているか' do
         expect(page).to have_content 'マイリスト'
@@ -34,6 +30,7 @@ RSpec.describe 'リストのテスト', type: :system do
     before do
       visit new_list_path
     end
+
     context '表示の確認' do
       it 'new_list_path"/lists/new"であるか' do
         expect(current_path).to eq('/lists/new')
@@ -42,9 +39,10 @@ RSpec.describe 'リストのテスト', type: :system do
         expect(page).to have_button '新規追加'
       end
     end
+
     context '追加処理のテスト' do
       it '追加後のリダイレクト先は正しいか' do
-        fill_in 'list[name]', with: Faker::Lorem.characters(number:10)
+        fill_in 'list[name]', with: Faker::Lorem.characters(number: 10)
         click_button '新規追加'
         list_last = List.last
         expect(page).to have_current_path lists_path
@@ -58,6 +56,7 @@ RSpec.describe 'リストのテスト', type: :system do
     before do
       visit lists_path
     end
+
     context '表示の確認' do
       it '追加されたものが表示されているか' do
         expect(page).to have_content @list.name
@@ -67,9 +66,10 @@ RSpec.describe 'リストのテスト', type: :system do
         expect(page).to have_link '削除'
       end
     end
+
     context 'list削除のテスト' do
       it 'listの削除' do
-        expect{ @list.destroy }.to change{ List.count }.by(-1)
+        expect { @list.destroy }.to change { List.count }.by(-1)
       end
     end
   end
@@ -78,6 +78,7 @@ RSpec.describe 'リストのテスト', type: :system do
     before do
       visit list_path(@list)
     end
+
     context '表示の確認' do
       it '戻るリンクが存在しているか' do
         expect(page).to have_link 'マイリストに戻る'
@@ -89,6 +90,7 @@ RSpec.describe 'リストのテスト', type: :system do
     before do
       visit edit_list_path(@list)
     end
+
     context '表示の確認' do
       it '編集前のリスト名がフォームに表示(セット)されている' do
         expect(page).to have_field 'list[name]', with: @list.name
@@ -97,13 +99,13 @@ RSpec.describe 'リストのテスト', type: :system do
         expect(page).to have_button '編集を保存'
       end
     end
+
     context '更新処理に関するテスト' do
       it '更新後のリダイレクト先は正しいか' do
-        fill_in 'list[name]', with: Faker::Lorem.characters(number:10)
+        fill_in 'list[name]', with: Faker::Lorem.characters(number: 10)
         click_button '編集を保存'
         expect(page).to have_current_path lists_path
       end
     end
   end
-
 end
