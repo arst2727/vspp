@@ -2,7 +2,7 @@
   <div class='container'>
     <div class="row justify-content-center">
       <h4 class="px-5 py-2 mt-3">
-        <%= link_to composer_path(@musical_piece.composer) do %>
+        <%= link_to composer_path(@musical_piece.composer), class: "text-dark" do %>
           <%= @musical_piece.composer.name_kana %>
         <% end %>
         :<%= @musical_piece.musical_piece_name %>

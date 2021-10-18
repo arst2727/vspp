@@ -240,6 +240,13 @@ section.anchor {
   margin-top: -100px;
 }
 
+// 楽曲一覧、作曲家一覧の検索アコーディオンアレンジ
+.card {
+  border-color: #17a2b8;
+}
+.card-header {
+  background-color: #17a2b8;
+}
 
 // 「ログインしました」などのフラッシュ用スタイル
 // flashメッセージでbootstrapを適応後、deviseのフラッシュメッセージに色がついていなかったため、適応確認済みのスタイルを継承させた

@@ -12,7 +12,7 @@
               <% end %>
               <strong><%= mr.member.nickname.truncate(15) %></strong>
             <% end %>
-            とあなた(<%= current_member.nickname %>)のメッセージルーム
+            <span class="pc">とあなた(<%= current_member.nickname.truncate(10) %>)のメッセージルーム</span>
           </div>
         <% end %>
       <% end %>

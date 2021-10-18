@@ -11,7 +11,7 @@
         <div class="card">
           <div class="card-header py-0" id="headingOne">
             <h5 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link text-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 作曲家名で検索する <i class="fas fa-arrow-circle-down"></i>
               </button>
             </h5>
@@ -21,10 +21,10 @@
               <%= form_with(url: search_path, method: :get, local: true) do |f| %>
                 <div class="form-group">
                   <div class="form-inline">
-                    <%= f.text_field :content, value: nil, placeholder: '作曲家名', class: "form-control w-75", autocomplete: "off", required: true %>
+                    <%= f.text_field :content, value: nil, placeholder: '作曲家名', class: "form-control form-control-sm w-75", autocomplete: "off", required: true %>
                     <!--すでに作曲家ページにいるため非表示-->
                     <%= f.hidden_field :model, value: "composers" %>
-                    <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+                    <%= f.button :type => "submit", class: "btn btn-sm btn-outline-info" do %>
                       <i class = 'fas fa-search'></i>
                     <% end %>
                   </div>
@@ -36,7 +36,7 @@
         <div class="card">
           <div class="card-header py-0" id="headingTwo">
             <h5 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-link collapsed text-light" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 西暦で検索する  <i class="fas fa-arrow-circle-down"></i>
               </button>
             </h5>
@@ -46,14 +46,14 @@
               <%= form_with(url: search_path, method: :get, local: true) do |f| %>
                 <div class="form-group">
                   <div class="form-inline">
-                    <%= f.text_field :start_year, value: nil, placeholder: '1830', class: "form-control w-25", autocomplete: "off", required: true %>
+                    <%= f.text_field :start_year, value: nil, placeholder: '1830', class: "form-control form-control-sm w-25", autocomplete: "off", required: true %>
                     <%= "　-　" %>
-                    <%= f.text_field :end_year, value: nil, placeholder: '1860', class: "form-control w-25", autocomplete: "off", required: true %>
+                    <%= f.text_field :end_year, value: nil, placeholder: '1860', class: "form-control form-control-sm w-25", autocomplete: "off", required: true %>
                     <!--searchコントローラーのsearchメソッド内のreturn nil対策-->
                     <%= f.hidden_field :content, value: "not nil" %>
                     <!--すでに作曲家ページにいるため非表示-->
                     <%= f.hidden_field :model, value: "composers" %>
-                    <%= f.button :type => "submit", class: "btn btn-outline-info" do %>
+                    <%= f.button :type => "submit", class: "btn btn-sm btn-outline-info" do %>
                       <i class = 'fas fa-search'></i>
                     <% end %>
                   </div>
