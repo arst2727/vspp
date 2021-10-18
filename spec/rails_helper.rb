@@ -63,6 +63,7 @@ RSpec.configure do |config|
   # devise setting
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :models
   config.include Warden::Test::Helpers
 
   config.include FactoryBot::Syntax::Methods
