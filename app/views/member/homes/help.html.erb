@@ -4,14 +4,16 @@
       <h3 class="pt-3 text-center">ヘルプページ</h3>
       このページで問題が解決されない場合、お手数お掛けしますが、こちらにてお問い合わせください<span class="br"></span>
       <i class="far fa-hand-point-right"></i><%= link_to " お問い合わせ", inquiry_path, method: :get, class: 'btn btn-outline-dark' %>
-      <div>目次</div>
-      <ul>
-        <li><a href="#faq">よくある質問集</a> <i class="far fa-question-circle"></i></li>
-        <li><a href="#follow">相互フォローについて</a> <i class="fas fa-hands-helping"></i></li>
-        <li><a href="#dm">ダイレクトメッセージについて</a> <i class="far fa-envelope"></i></li>
-        <li><a href="#mylist">マイリストについて</a> <i class="fas fa-list"></i></li>
-        <li><a href="#search-point">検索のコツ</a> <i class="fas fa-search"></i></li>
-      </ul>
+      <div class="border rounded">
+        【目次】
+        <ul>
+          <li><a href="#faq">よくある質問集</a> <i class="far fa-question-circle"></i></li>
+          <li><a href="#follow">相互フォローについて</a> <i class="fas fa-hands-helping"></i></li>
+          <li><a href="#dm">ダイレクトメッセージについて</a> <i class="far fa-envelope"></i></li>
+          <li><a href="#mylist">マイリストについて</a> <i class="fas fa-list"></i></li>
+          <li><a href="#search-point">検索のコツ</a> <i class="fas fa-search"></i></li>
+        </ul>
+      </div>
       <hr>
       <section id="faq" class="anchor">
         <h5 class="bg-cool">よくある質問集</h5>
@@ -124,7 +126,7 @@
         <span class="bg-infomation font-weight-bold">一覧表でソート機能を使う</span><br>
         Step.1 楽曲一覧(作曲家一覧)ページから、<span class="text-danger">[ <i class="fas fa-book"></i> 全件表示 ]</span>ボタンを押す<br>
         Step.2 楽曲名(作曲家名)の表のカラム名の右にある上下の<span class="text-danger">三角マークでソート</span>する<br>
-        Step.3 アイウエオ順(他にもABC順など)に変わったことを確認して探す
+        Step.3 五十音順(他にもアルファベット順など)に変わったことを確認して探す
       </section>
     </div>
   </div>
