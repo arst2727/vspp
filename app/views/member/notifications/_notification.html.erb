@@ -15,4 +15,11 @@
     <% end %>
     <%= link_to ' 既読にする', notification_path(notification.id), method: :put, class: "fas fa-check btn btn-outline-info btn-sm" %>
   </div>
+<% else %>
+  <div class="pc">
+    <h5 class="text-center pt-5">通知はありません</h5>
+  </div>
+  <div class="smp">
+    <p class="text-center pt-3">通知はありません</p>
+  </div>
 <% end %>

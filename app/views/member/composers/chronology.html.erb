@@ -52,12 +52,13 @@
 <div class="container">
   <div class='row'>
     <div class='col-lg-4 col-md-12 col-xs-12'>
-      <h4 class="px-5 py-2 mt-5 ml-5 text-center">作曲家年表</h4>
+      <h4 class="px-5 py-2 mt-lg-5 ml-5 text-center">作曲家年表</h4>
     </div>
   </div>
   <!--凡例のスクロール固定表示-->
-  <div class='row fixed-top mt-2' id='legend'>
+  <div class='row fixed-top mt-lg-2 mt-xs-5' id='legend'>
     <div class='col-lg-8 offset-lg-4 col-md-12 col-xs-12'>
+      <div class="pc">
       <h6 class="text-md-nowrap text-right mr-3">
         <span class="bg-season1 px-2">バロック</span>
         <span class="bg-season2 px-2 br">古典派</span>
@@ -65,11 +66,18 @@
         <span class="bg-season4 px-2">後期ロマン派</span>
         <span class="bg-season5 px-2">近現代</span>
       </h6>
+      </div>
+      <div class="smp">
+        <h6 class="text-nowrap text-right mt-5 pt-2">
+          <span class="bg-season1 px-2">バロック</span>
+          <span class="bg-season2 px-2 br">古典派</span>
+          <span class="bg-season3 px-2">初期ロマン派</span>
+          <span class="bg-season4 px-2">後期ロマン派</span>
+          <span class="bg-season5 px-2">近現代</span>
+        </h6>
+      </div>
     </div>
   </div>
-  <!--グラフ描画スマホ-->
-  <!--<div id="timeline" style="height: 500px; width: 700px;"></div>-->
-  <!--グラフ描画PC-->
-  <div id="timeline" style="height: 700px; width: 1200px;"></div>
+  <div id="timeline" style="height: 600px; width: 1200px;"></div>
 </div>
 <% breadcrumb :chronology %>
