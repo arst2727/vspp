@@ -18,8 +18,11 @@ class Member::MusicalPiecesCommentsController < ApplicationController
   end
 
   def destroy
-    MusicalPieceComment.find_by(id: params[:id], musical_piece_id: params[:musical_piece_id]).destroy
-    flash[:info] = 'レビューを削除しました'
+    musical_piece_comment = MusicalPieceComment.find_by(id: params[:id], musical_piece_id: params[:musical_piece_id])
+    if musical_piece_comment.member_id == current_member.id
+      musical_piece_comment.destroy
+      flash[:info] = 'レビューを削除しました'
+    end
     redirect_to musical_piece_path(params[:musical_piece_id])
   end
 

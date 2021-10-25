@@ -12,9 +12,11 @@ class Member::MusicalPieceListsController < ApplicationController
   end
 
   def destroy
-    @musical_piece_list = MusicalPieceList.find(params[:id])
-    @musical_piece_list.destroy
-    flash[:info] = "マイリストから削除しました"
+    musical_piece_list = MusicalPieceList.find(params[:id])
+    if musical_piece_list.list.member_id == current_member.id
+      musical_piece_list.destroy
+      flash[:info] = "マイリストから削除しました"
+    end
     redirect_back fallback_location: root_path
   end
 
