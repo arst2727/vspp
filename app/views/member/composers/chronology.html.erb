@@ -48,11 +48,17 @@
     };
     chart.draw(dataTable, options);
   }
+  // onReSizeイベント
+  window.onresize = function(){
+
+    drawChart();
+
+  }
 </script>
 <div class="container">
   <div class='row'>
     <div class='col-lg-4 col-md-12 col-xs-12'>
-      <h4 class="px-5 py-2 mt-lg-5 ml-5 text-center">作曲家年表</h4>
+      <h4 class="px-5 py-2 mt-lg-5 mt-md-5 ml-5 text-center">作曲家年表</h4>
     </div>
   </div>
   <!--凡例のスクロール固定表示-->
@@ -78,6 +84,8 @@
       </div>
     </div>
   </div>
-  <div id="timeline" style="height: 600px; width: 1200px;"></div>
+  <div class="chronology-graph">
+    <div id="timeline" style="height: 600px; width: 1200px;" class="pt-5 mt-2"></div>
+  </div>
 </div>
 <% breadcrumb :chronology %>

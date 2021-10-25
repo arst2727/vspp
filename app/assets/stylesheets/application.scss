@@ -404,6 +404,15 @@ section.anchor {
   top: 90px; //ヘッダーの高さ+10px
   z-index: 1;
 }
+// 作曲家年表レスポンシブ対応
+.chronology-graph {
+  @media screen and (max-width: 767.98px) {
+    overflow: auto;
+    max-width: 100%;
+    max-height: 70vh;
+    // white-space: nowrap;
+  }
+}
 /* =====================
   DM関連
 ===================== */
