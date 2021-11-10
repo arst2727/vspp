@@ -64,7 +64,8 @@ function search() {
     var search_result_data = [] // 空の配列を用意
       // modeで条件分岐後、配列にデータ(aタグ)を追加
     if (data.mode === "musical_pieces") {
-      data.data.forEach(result => {// 検索結果をループ
+      data.data.forEach(result => {
+        // 検索結果をループ
         // >>push() メソッドは、配列の末尾に1つ以上の要素を追加する
         // >>テンプレートリテラルは、ダブルクオートやシングルクオートの代わりにバックティック文字 (` `) (グレイヴ・アクセント) で囲みます。
         // >>テンプレートリテラルにはプレースホルダーを含めることができます。
@@ -72,7 +73,8 @@ function search() {
         search_result_data.push(`<a href="/musical_pieces/${result.id}">${result.musical_piece_name}</a>`)
       })
     } else {// modeがcomposersの場合
-      data.data.forEach(result => {// 検索結果をループ
+      data.data.forEach(result => {
+        // 検索結果をループ
         search_result_data.push(`<a href="/composers/${result.id}">${result.name_kana}</a>`)
       })
     }
