@@ -48,8 +48,8 @@ $(document).on('turbolinks:load', function () {
   });
 });
 function search() {
-  let content = $('.js-text_field').val();
-  let target = $('#model option:selected').val();
+  var content = $('.js-text_field').val();
+  var target = $('#model option:selected').val();
   $.ajax({
     type: 'GET', // リクエストのタイプ
     url: '/search', // リクエストを送信するURL
@@ -61,7 +61,7 @@ function search() {
     // >>{mode: 'musical_pieces', data: Array(5)}
     // >>data: (5) [{…}, {…}, {…}, {…}, {…}]
     // >>mode: "musical_pieces"
-    let search_result_data = [] // 空の配列を用意
+    var search_result_data = [] // 空の配列を用意
       // modeで条件分岐後、配列にデータ(aタグ)を追加
     if (data.mode === "musical_pieces") {
       data.data.forEach(result => {// 検索結果をループ
